@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+    <script src="../js/common-util.js"></script>
+
+    <meta charset="UTF-8">
+    <title>订单</title>
+    <link rel="stylesheet" type="text/css" href="addOrder.css">
+</head>
+<body class="m-0 p-0">
+<div class="head h-90 bg-w">
+    <div class="top h-90 w-1000 m-c">
+        <div class="picture w-460 pt-15 f-l">
+            <a href="#"><img src="pictures/logo.png"></a>
+        </div>
+        <div class="topmenu h-90 w-460 ml-60 f-l fs-12 ">
+            <ul class="mt-60">
+                <li class="f-l p-5 br-1"><a href="../index/index.html">首页</a></li>
+                <li class="f-l p-5 br-1"><a href="#">出境旅游</a></li>
+                <li class="f-l p-5 br-1"><a href="#">国内旅游</a></li>
+                <li class="f-l p-5 br-1"><a href="#">周边旅游</a></li>
+                <li class="f-l p-5 br-1"><a href="#">自由行</a></li>
+                <li class="f-l p-5 br-1"><a href="#">自驾游</a></li>
+                <li class="f-l p-5 br-1"><a href="#">定制团队游</a></li>
+                <li class="f-l p-5 "><a href="#">签证</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container m-c w-1100">
+    <!--<div class="menu-first mt-15">-->
+        <!--<div class="menu-first-top m-0 h-40">-->
+            <!--<ul class="m-0 p-0">-->
+                <!--<li>-->
+                    <!--<div class="step-name" title="填写订单">填写订单</div>-->
+                    <!--<div class="step">1</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<div class="step-name" title="填写订单">核对订单</div>-->
+                    <!--<div class="step">2</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<div class="step-name" title="填写订单">付款</div>-->
+                    <!--<div class="step">3</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<div class="step-name" title="填写订单">预定成功</div>-->
+                    <!--<div class="step">4</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="main m-0 p-0 mt-60 w-820 h-1320 f-l">
+        <div class="main-left">
+            <table class="dingdan w-820 b-1 bg-w " cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr class="h-40 bg-c">
+                    <th class="pl-20">订单名称</th>
+                    <th>出发城市</th>
+                    <th>出发时间</th>
+                    <th>归来时间</th>
+                </tr>
+                <tr class="dingdan-name">
+                    <td>
+                        <span class="target-p pl-20" id="travel_name">
+                            -
+                        </span>
+                    </td>
+                    <td id="fromName">宁波</td>
+                    <td><span id="go_time">-</span></td>
+                    <td><span id="back_time">-</span></td>
+                </tr>
+                </tbody>
+            </table>
+            <h4 class="h-30 bg-c p-10-20 b-1 m-0 mt-20">联系人信息</h4>
+            <div class="p-20-40 b-1 m-0 bg-w">
+                <dl>
+                    <dt class="f-l w-100 mt-5">
+                        <span style="color: red;">*</span>
+                        联系手机：
+                    </dt>
+                    <dd class="mt-5">
+                        <input class="input-info h-30 w-300" id="phone">
+                    </dd>
+                    <dt class="f-l w-100 mt-5">
+                        <span style="color: red;">*</span>
+                        联系人：
+                    </dt>
+                    <dd class="mt-5 fs-13">
+                        <input class="input-info h-30 w-300" id="name">&nbsp
+                        <!--<input value="1" name="sex" id="male" type="radio">-->
+                        <!--<label for="male">男</label>-->
+                        <!--<input value="2" name="sex" id="female" type="radio" checked="checked">-->
+                        <!--<label for="female">女</label>-->
+                    </dd>
+                    <dt class="f-l w-100 mt-5">
+                        <span style="color: red;">*</span>
+                        联系邮箱：
+                    </dt>
+                    <dd class="fs-13 mt-5">
+                        <input class="input-info h-30 w-300" id="email">
+                        &nbsp请正确填写您的Email地址，谢谢。
+                    </dd>
+                    <dt class="f-l w-100 mt-5">
+                        <span style="color: red;">*</span>
+                        身份证号：
+                    </dt>
+                    <dd class="fs-13 mt-5">
+                        <input class="input-info h-30 w-300" id="idcard">
+                        &nbsp请核对您的身份证号,这是我们与您确认身份重要的证明
+                    </dd>
+                </dl>
+            </div>
+            <div class="h-20 bg-c b-1 mt-20 p-20">
+                <h4 class="m-0 p-0">
+                    人员信息
+                    <label class="adult ml-100 f-n">成人</label>
+                    <button class="h-w-20 b-r" onclick="changeNum('adult','+');">+</button>
+                    <input class="h-w-20 m-0 p-0 t-c c-r" value="1" id="adult">
+                    <button class="h-w-20 b-r" onclick="changeNum('adult','-');">-</button>
+                    <label class="children ml-100 f-n">儿童</label>
+                    <button class="h-w-20 b-r" onclick="changeNum('child','+');">+</button>
+                    <input class="h-w-20 m-0 p-0 t-c c-r" value="1" id="child">
+                    <button class="h-w-20 b-r" onclick="changeNum('child','-');">-</button>
+                </h4>
+            </div>
+                 
+            <h4 class="h-30 bg-c p-10-20 b-1 m-0 mt-20">集合解散地</h4>
+            <div class="togather m-0 p-0 p-20-40 b-1 fs-13 bg-w">
+                <table class="togather_p ">
+                    <tbody>
+                    <tr class="h-30">
+                        <th class="f-n w-200 bb-1">集合时间</th>
+                        <th class="f-n w-200 bb-1">集合地点</th>
+                        <th class="f-n w-200 bb-1">解散地点</th>
+                    </tr>
+                    <tr class="h-30">
+                        <td class="bb-1" id="gather_time">00:00</td>
+                        <td class="bb-1" id="gather_place">大地楼下</td>
+                        <td class="bb-1" id="dismiss_place">宁波栎社国际机场</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="h-30 bg-c p-10-20 b-1 m-0 mt-20">预定说明</h4>
+            <div class="shuoming m-0 p-0 p-20-40 b-1 fs-13 bg-w">
+                1、请在预订时再次核对预订内容及注意事项及出行日期；
+                <br/>2、旅客信息请务必填写正确，因客人原因填写错误产生的责任及费用，需由客人自行承担；
+                <br/>3、据新修订的《居民身份证法》规定，一代居民身份证已于2013年1月1日起停止使用，请使用二代居民 身份证，以便顺利出游；
+                <br/>4、本网站不接受未成年人单独报名，必须有成年人同行或提供家长同意书方可报名；
+                <br/>5、因接待条件有限，不接受孕妇及80周岁以上人士报名。
+            </div>
+            <h4 class="h-30 bg-c p-10-20 b-1 m-0 mt-20">备注</h4>
+            <div class="request m-0 p-0 p-20-40 b-1 fs-13 bg-w">
+                <textarea class="request" id="remarks"></textarea>
+            </div>
+        </div>
+        <div class="w-820 h-60 submit" id="submit">
+            <button onclick="submit()">提交</button>
+        </div>
+    </div>
+    <div class="side-layer f-l">
+        <h3 class="bb-1 ">结算信息</h3>
+        <div class="order_price">
+            <dl class="bb-1">
+                <dt class="p-10">出游团费</dt>
+                <dd class="m-0 p-5" id="price_inf">
+                    <span>-成人×¥-</span>
+                    <br>
+                    <span>-成人×¥-</span>
+                </dd>
+            </dl>
+            <!--<dl class="bb-1">-->
+                <!--<dt class="p-10">燃油机建费</dt>-->
+                <!--<dd class="m-0 p-5">-->
+                    <!--<span>1成人 × ¥100 </span>-->
+                <!--</dd>-->
+            <!--</dl>-->
+            <dl class="bb-1">
+                <dt class="p-10">总计</dt>
+                <dd class="m-0 p-5" id="total">
+                    <span>¥-</span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class=" footer h-90 w-1000 m-c" style="clear: both;">
+    Copyright © 大地国旅旅游集团股份有限公司 |  2002-2012, All Rights Reserved
+</div>
+<script type="text/javascript" src="addOrder.js"></script>
+</body>
+</html>

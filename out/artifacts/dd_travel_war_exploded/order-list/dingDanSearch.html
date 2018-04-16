@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="dingDanSearch.css">
+    <link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
+    <title>订单列表</title>
+    
+    <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+    <script src="../js/common-util.js"></script>
+    <script type="text/javascript" src="../js/order-list.js"></script>
+
+</head>
+<body class="m-0 p-0">
+<div class="container h-1600 w-1400 " style="position: relative;height: auto;">
+    <!--<div class="topmenu h-30 fs-12 b-1 bg-w w-1400">-->
+        <!--<ul class="topmenu p-0 w-1200 pt-5 h-25 m-c ">-->
+            <!--<li class="f-l pd-5">宁波站</li>-->
+            <!--<li class="f-l pd-5">[切换]</li>-->
+            <!--<li class="f-l pd-5 br-1"><a href="../user/login.html">登录</a></li>-->
+            <!--<li class="f-l pd-5 "><a href="../user/register.html">免费注册</a></li>-->
+            <!--<li class="f-l pd-5 br-1 ml-800"><a href="#">微博</a></li>-->
+            <!--<li class="f-l pd-5 "><a href="#">微信</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div class="top">
+        <script type="text/javascript"></script>
+        <div class="top_nav">
+            <i class="Hui-iconfont" style="color: red;position: relative;padding: 0 7px 0 7px">&#xe671;</i>
+            <span style="font-size: 12px;position: relative;">宁波站</span>
+            <span style="color: #EA6037;font-size: 12px;position: relative;">[切换]</span>
+            <span style="position: relative;margin-top: 4px;font-size: 13px;opacity: 0.3;">|</span>
+            <div id="login-inf" style="display: inline;">
+                <a href="/dd_travel_war/user/login.html" class="tt" style="font-size: 12px;position: relative;text-decoration: none;">登录</a>
+                <span style="position: relative;font-size: 13px;opacity: 0.3;">|</span>
+                <a href="/dd_travel_war/user/register.html" class="tt" style="font-size: 12px;;position: relative;text-decoration: none;">免费注册</a>
+            </div>
+            <!--<a href="#" class="tt"><p style="font-size: 12px;padding: 5px 0 5px 0;pxopacity: 0.8;float: right;">+微信</p>-->
+            <!--</a><i class="Hui-iconfont" style="line-height: 30px;font-size: 20px;opacity: 0.4;float: right;">&#xe694;</i>-->
+
+            <!--<span style="margin-top: 5px;font-size: 13px;opacity: 0.9;float: right;">|</span>-->
+            <!--<a href="#" class="tt"><p style="font-size: 12px;padding: 5px 0 5px 0;opacity: 0.8;float: right;">+微博</p><i-->
+                    <!--class="Hui-iconfont" style="line-height: 30px;font-size: 20px;opacity: 0.4;float: right;;">&#xe6da;</i>-->
+            <!--</a>-->
+        </div>
+    </div>
+    <div class="searchblock ml-100 h-120 m-c w-1200">
+        <div class="f-l h-80 w-300 ">
+            <img class="h-35 w-300 mt-35" src="pictures/logo.png">
+        </div>
+        <div class="search f-l h-80 w-520 mt-35 ">
+            <div class="m-0 p-0 h-35 w-440 br-3 f-l">
+                <select class="w-80 h-35 b-0 f-l fs-12 bg-w" id="lineType">
+                    <option value="-1">全部产品</option>
+                    <option value="0">周边游</option>
+                    <option value="1">国内游</option>
+                    <option value="2">国际游</option>
+                </select>
+                <input class="h-35 w-260 b-0 f-l p-0" id="key">
+                <button class="h-35 w-90 br-3 f-w bg-r f-r" onclick="toSearchPage();">搜索</button>
+            </div>
+            <!--<label class="fs-12 f-l mt-10 ml-5">高级搜索</label>-->
+            <div class="f-l fs-12">
+                <ul class="m-0 p-0">
+                    <li class="f-l mt-10 pd-10 br-1"><a href="#">日本</a></li>
+                    <li class="f-l mt-10 pd-10 br-1"><a href="#">新加坡</a></li>
+                    <li class="f-l mt-10 pd-10 br-1"><a href="#">邮轮</a></li>
+                    <li class="f-l mt-10 pd-10 br-1"><a href="#">欧洲游</a></li>
+                    <li class="f-l mt-10 pd-10 "><a href="#">港澳</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="menu h-40 bb-2 w-1400">
+        <ul class="p-0 h-40 w-1200 m-c">
+            <li class="f-l pd-23 h-30 pt-10 bg-w"><a href="#">全部旅游产品分类</a></li>
+            <li class="f-l pd-23 h-30 pt-10"><a href="../index/index.html">首页</a></li>
+            <li class="f-l pd-23 h-30 pt-10"><a href="../line-list/line-list.html?lineType=2">出境旅游</a></li>
+            <li class="f-l pd-23 h-30 pt-10"><a href="../line-list/line-list.html?lineType=1">国内旅游</a></li>
+            <li class="f-l pd-23 h-30 pt-10"><a href="../line-list/line-list.html?lineType=0">周边旅游</a></li>
+        </ul>
+    </div>
+    <div class="mainblock h-900 w-1200 m-c mt-20 ">
+        <div class="menuleft w-200 b-1 f-l">
+            <li class="f-w" style="padding:15px 40px"><a class="fc-r fs-17" href="#">我的首页</a></li>
+            <li class="p-10-40 bg-w"><a href="#">订单管理</a></li>
+            <li class="p-10-40"><a class="fs-14" href="#" onclick="initOrders();">所有订单</a></li>
+            <li class="p-10-40 bg-w"><a href="#">我的信息</a></li>
+            <li class="p-10-40"><a class="fs-14" href="#" onclick="initUserInf();">个人资料</a></li>
+            <li class="p-10-40"><a class="fs-14" href="#">密码修改</a></li>
+        </div>
+        <div id="inf-area">
+            <div class="order-area w-970 ml-20 f-l">
+                <div class="h-40 bb-1">
+                    <h3 class="m-0 pt-5 w-750 f-l">我的订单</h3>
+                    <span class="f-l">
+						<select class="h-25 w-90" id="states">
+                            <option value="-1">所有状态</option>
+                            <option value="0">待确认</option>
+                            <option value="1">待付款</option>
+                            <option value="2">进行中</option>
+                            <option value="3">已完成</option>
+                            <option value="9">已取消</option>
+						</select>
+						<select class="h-25 w-90" id="types">
+                            <option value="-1">所有订单</option>
+                            <option value="0">周边游</option>
+                            <option value="1">国内游</option>
+                            <option value="2">国际游</option>
+						</select>
+                </span>
+                </div>
+                <div class="order">
+                    <table width="100%">
+                        <tr>
+                            <th width="50%">产品信息</th>
+                            <th width="20%">付款情况</th>
+                            <th width="15%">订单状态</th>
+                            <th width="15%">操作</th>
+                        </tr>
+                    </table>
+                    <ul class="order-list p-0 m-0">
+                    </ul>
+                    <!--<p><a href="" class="f-r" style="color: #ff4a00">查看更多...</a></p>-->
+                </div>
+            </div>
+            <div class="user-area hide">
+                <div class="h-40 bb-1">
+                    <h3 class="m-0 pt-5 w-750 f-l">我的订单</h3>
+                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="editInfo">
+                    <tbody>
+                    <tr>
+                        <td align="right">手机：</td>
+                        <td class="cu xiug">
+                            <input id="user_phone" type="text" maxlength="32">
+                        </td>
+                        <!--<td>&nbsp;</td>-->
+                    </tr>
+                    <tr>
+                        <td align="right">邮箱：</td>
+                        <td class="cu xiug">
+                            <input id="user_email" type="text" maxlength="32">
+                        </td>
+                        <!--<td>&nbsp;</td>-->
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <p><span style="color:red;">*&nbsp;</span>姓名：</p>
+                        </td>
+                        <td class="xiug">
+                            <input value="" id="user_name" name="CustomerName" type="text" maxlength="32">
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right">性别：</td>
+                        <td class="xz"><input type="hidden">
+                            <span id="Uusers_Sex">
+                              <li class="f-l">
+                                <input value="1" type="radio" name="sex" checked="checked">
+                                <label>男</label>
+                              </li>
+                              <li class="f-l">
+                                <input value="2" type="radio" name="sex">
+                                <label>女</label>
+                              </li>
+                              <li class="f-l">
+                                <input value="3" type="radio" name="sex">
+                                <label>保密</label>
+                              </li>
+                            </span>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<td align="right">地址：</td>-->
+                        <!--<td class="xiug xiug01">-->
+                            <!--<input type="text" id="user_address">-->
+                        <!--</td>-->
+                        <!--<td>&nbsp;</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input   type="button" value="保存" onclick="updateUserInf();"></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <!--<div class="h-250 w-1400 b-1 bg-w">-->
+    <div class="fy_foot">
+        <div class="f_center">
+            <ul style="width: 200px;height: 106px;margin-left: 50px;margin-top: 30px;float: left;list-style-type:none;">
+                <li><i class="Hui-iconfont" style="color: #000;font-size:20px;position: absolute;"></i><span
+                        style="margin-left: 25px;font-weight: bold;">预订常见问题</span></li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;display: block;margin-top: 10px;margin-left: 25px;">如何预订旅游线路？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">单房差是什么？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">双飞、双卧都是什么意思？</a>
+                </li>
+            </ul>
+            <ul style="width: 200px;height: 106px;margin-left: 20px;margin-top: 30px;float: left;list-style-type:none">
+                <li><i class="Hui-iconfont" style="color: #000;font-size:20px;position: absolute;"></i><span
+                        style="margin-left: 25px;font-weight: bold;">付款和发票</span></li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;display: block;margin-top: 10px;margin-left: 25px;">签约可以刷卡吗？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">付款方式有哪些？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">怎么网上支付？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">是否可提供发票？</a>
+                </li>
+            </ul>
+            <ul style="width: 200px;height: 106px;margin-top: 30px;float: left;list-style-type:none">
+                <li><i class="Hui-iconfont" style="color: #000;font-size:20px;position: absolute;"></i><span
+                        style="margin-left: 25px;font-weight: bold;">签署旅游合同</span></li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;display: block;margin-top: 10px;margin-left: 25px;">有旅游合同范本下载吗？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">能传真签约吗？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">可以不签合同吗？</a>
+                </li>
+            </ul>
+            <ul style="width: 200px;height: 106px;margin-top: 30px;float: left;list-style-type:none">
+                <li><i class="Hui-iconfont" style="color: #000;font-size:20px;position: absolute;"></i><span
+                        style="margin-left: 25px;font-weight: bold;">旅游预订优惠政策</span></li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;display: block;margin-top: 10px;margin-left: 25px;">什么是抵用券？</a>
+                </li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;margin-left: 25px;">如何获得抵用券？</a>
+                </li>
+            </ul>
+            <ul style="width: 200px;height: 106px;margin-top: 30px;float: left;list-style-type:none">
+                <li><i class="Hui-iconfont" style="color: #000;font-size:20px;position: absolute;"></i><span
+                        style="margin-left: 25px;font-weight: bold;">会员中心</span></li>
+                <li><a href="#" class="tt"
+                       style="font-size: 14px;text-decoration: none;line-height: 30px;display: block;margin-top: 10px;margin-left: 25px;">会员有哪些特权？</a>
+                </li>
+            </ul>
+            <!--<ul style="width: 200px;height: 106px;margin-top: 30px;float: left;list-style-type:none">-->
+            <!--<li><i class="Hui-iconfont" style="color: #000;font-size:20px;position: absolute;"></i><span style="margin-left: 25px;font-weight: bold;">大地APP</span></li>-->
+            <!--<li style="font-size: 14px;text-decoration: none;line-height: 30px;display: block;margin-top: 10px;">扫描微信二维码关注我们</li>-->
+            <!--<img src="picture/fy_weixin.jpg">-->
+            <!--</ul>-->
+        </div>
+    </div>
+    <!--</div>-->
+    <div class="fy_bottom">
+        <!--<div class="fy_bottom_nav">-->
+        <!--<p>-->
+        <!--<a href="#" class="tt" style="font-size: 13px;opacity: 0.8;float: left;text-decoration: none;">大地文化</a>-->
+        <!--<span style="margin-left: 5px;font-size: 13px;opacity: 0.3;float: left;">|</span>-->
+        <!--<a href="#" class="tt" style="margin-left: 5px;font-size: 13px;opacity: 0.8;float: left;text-decoration: none;">大地荣誉</a>-->
+        <!--<span style="margin-left: 5px;font-size: 13px;opacity: 0.3;float: left;">|</span>-->
+        <!--<a href="#" class="tt" style="margin-left: 5px;font-size: 13px;opacity: 0.8;float: left;text-decoration: none;">诚征英才</a>-->
+        <!--<span style="margin-left: 5px;font-size: 13px;opacity: 0.3;float: left;">|</span>-->
+        <!--<a href="#" class="tt" style="margin-left: 5px;font-size: 13px;opacity: 0.8;float: left;text-decoration: none;color: #E62537">经营范围</a>-->
+        <!--<span style="margin-left: 5px;font-size: 13px;opacity: 0.3;float: left;">|</span>-->
+        <!--<a href="#" class="tt" style="margin-left: 5px;font-size: 13px;opacity: 0.8;float: left;text-decoration: none;">相关法律</a>-->
+        <!--<span style="margin-left: 5px;font-size: 13px;opacity: 0.3;float: left;">|</span>-->
+        <!--<a href="#" class="tt" style="margin-left: 5px;font-size: 13px;opacity: 0.8;float: left;text-decoration: none;">联系方式</a>-->
+        <!--<span style="margin-left: 5px;font-size: 13px;opacity: 0.3;float: left;">|</span>-->
+        <!--<a href="#" class="tt" style="margin-left: 5px;font-size: 13px;opacity: 0.8;float: left;text-decoration: none;">友情链接</a><span style="margin-left: 5px;font-size: 13px;opacity: 0.3;float: left;"></span>-->
+        <!--</p>-->
+        <!--</div>-->
+        <div class="copyright">
+            <p style="text-align: center;font-size: 13px;opacity: 0.7">Copyright © 浙江大地国旅集团股份有限公司 | 大地国际旅游广场 2002-2018,
+                All Rights Reserved</p>
+            <p style="text-align: center;font-size: 13px;opacity: 0.7">总部地址：宁波市中山东路2437号五一广场东楼\大地旅游广场 投诉电话：0574-87238555
+                旅游质监投诉电话：12301 旅游许可证号：L-ZJ-CJ00063 浙ICP备09059850号-2 浙ICP证B2-20140054 </p>
+            <p style="text-align: center;font-size: 13px;opacity: 0.7">24小时旅游预订电话(免长途费)：4000-365-666 大地旅游网呼叫中心位于宁波 |
+                统一呼出电话为 0574-27666666 </p>
+            <p style="text-align: center;font-size: 13px;opacity: 0.7">法律顾问：袁汝中（浙江共业律师事务所）</p>
+            <p style="text-align: center;font-size: 13px;opacity: 0.7">浙江大地国旅集团股份有限公司 版权所有 站长统计</p>
+        </div>
+    </div>
+</div>
+<script>
+</script>
+</body>
+</html>

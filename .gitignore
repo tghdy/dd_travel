@@ -6,7 +6,6 @@
 
 #kdiff3 ignore
 target/
-out/
 
 #eclipse ignore
 .settings/
@@ -24,7 +23,7 @@ out/
 *.log
 *.cache
 *.diff
-*.patchx
+*.patch
 *.tmp
 
 #system ignore
