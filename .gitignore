@@ -1,12 +1,12 @@
 *.class
 
 #package files
-
 *.war
 *.ear
 
 #kdiff3 ignore
 target/
+out/
 
 #eclipse ignore
 .settings/
@@ -21,9 +21,6 @@ target/
 *.iws
 
 # temp file
-
-
-
 *.log
 *.cache
 *.diff
