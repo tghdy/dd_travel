@@ -24,7 +24,7 @@ out/
 *.log
 *.cache
 *.diff
-*.patch
+*.patchx
 *.tmp
 
 #system ignore
