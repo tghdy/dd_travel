@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="dd_travel:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/dd_travel_war</output-path>
-    <root id="archive" name="dd_travel_war.war">
-      <element id="artifact" artifact-name="dd_travel:war exploded" />
-    </root>
-  </artifact>
-</component>
