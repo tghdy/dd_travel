@@ -6,6 +6,7 @@
 
 #kdiff3 ignore
 target/
+out/
 
 #eclipse ignore
 .settings/
@@ -27,5 +28,5 @@ target/
 *.tmp
 
 #system ignore
-.DS_Store
+*.DS_Store
 Thumbs.db
