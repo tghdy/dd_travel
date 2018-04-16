@@ -300,6 +300,7 @@
 
     $(function () {
         redNavItem(getUrlParam('lineType'));
+        updateRightAdbInf();
         showUserInf();
         if(getUrlParam('key')!=null)
             initPage(getUrlParam('key'),null,getUrlParam('lineType'));

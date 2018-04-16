@@ -1,8 +1,8 @@
-html{font-size: 62.5%;width: 1519px;margin: auto;}
+html{font-size: 62.5%;margin: auto;}
 *{padding: 0;margin: 0;}
 a{text-decoration:none}
 .head{height: 149.6px;width: 100%;}
-.ma{margin-left: 10%;margin-right: 10%;width: 80%;}
+.ma{margin:0 auto; width: 1250px;}
 .denglu{height: 20%;background: #f4f4f4;}
 .weizhi{color: #e62637;text-align: center;position: relative;top: 0.5rem;font-size: 2rem;}
 .weibo,.weixin{color: #666666;text-align: center;position: relative;top: 0.5rem;font-size: 2rem;}
