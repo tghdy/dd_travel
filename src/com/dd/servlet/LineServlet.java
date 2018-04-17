@@ -9,6 +9,7 @@ import com.dd.util.JsonData;
 import com.dd.util.UserUtil;
 import com.oracle.javafx.jmx.json.JSONDocument;
 import net.sf.json.JSONObject;
+import org.junit.jupiter.api.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sound.sampled.Line;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -44,6 +47,15 @@ public class LineServlet extends HttpServlet {
 		
 	}
 
+	@Test
+	public void testMethod() throws IOException {
+		PrintWriter pw = new PrintWriter(new FileWriter("/Users/tusuzer/pic/asdasd.txt"));
+		pw.println("abc ");
+		pw.println("def ");
+		pw.println("hef ");
+		pw.close();
+
+	}
 	private void lineAllInf(HttpServletRequest request, HttpServletResponse response) {
 		JsonData jsonData = null;
 		try {

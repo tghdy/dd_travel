@@ -29,7 +29,10 @@ public final class Base64Uploader {
 		
 		savePath = savePath + suffix;
 		String physicalPath = (String) conf.get("rootPath") + savePath;
-
+		//TusuZer
+		physicalPath = 
+		
+		
 		State storageState = StorageManager.saveBinaryFile(data, physicalPath);
 
 		if (storageState.isSuccess()) {

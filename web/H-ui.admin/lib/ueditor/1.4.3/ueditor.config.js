@@ -21,7 +21,7 @@
      */
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();
     
-    URL = '/H-ui.admin/lib/ueditor/1.4.3/';
+    URL = '/dd_travel_war/H-ui.admin/lib/ueditor/1.4.3/';
 
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
