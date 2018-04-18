@@ -5,7 +5,6 @@ import com.dd.serviceImpl.UserServiceImpl;
 import com.dd.util.BeanUtil;
 import com.dd.util.JsonData;
 import com.dd.util.UserUtil;
-import com.oracle.javafx.jmx.json.JSONDocument;
 import jdk.nashorn.internal.scripts.JD;
 
 import javax.servlet.ServletException;
