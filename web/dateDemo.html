@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日历测试</title>
+    <script src="H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+    <link rel="stylesheet" href="css/rili.css">
+
+</head>
+<body>
+<div id="res">
+    <table border="0" cellspacing="0" cellpadding="0" class="calendar" style="width: 580px;" id="calendar">
+        <caption style="height: 41px;background-color:#d9d9d9;line-height: 41px;text-align:left;color: #f16a54;">
+            本月班次日历
+        </caption>
+        <tbody>
+        <tr>
+            <th><span class="datax" style="color:#f86b4f;">日</span></th>
+            <th><span class="datax">一</span></th>
+            <th><span class="datax">二</span></th>
+            <th><span class="datax">二</span></th>
+            <th><span class="datax">四</span></th>
+            <th><span class="datax">五</span></th>
+            <th><span class="datax" style="color:#f86b4f;">六</span></th>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>1</td>
+            <td>2</td>
+            <td bgcolor="#fefedd">
+                <span>3</span>
+                <br>
+                <i>¥29</i>
+            </td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script !src="">
+
+    function createCaldender(planArray) {
+        var lastDate = getCurrentMonthLast(4);
+        var firstDate = getCurrentMonthFirst(4);
+        console.log(lastDate);
+        console.log(firstDate);
+
+
+        var dayNum = lastDate.getDate();//当前月天数
+        var firstDayWeekIndex = firstDate.getDay();//月第一天的星期下标 0对应星期日1到6则对应正常周一到周六
+
+        var rowNum = Math.ceil((firstDayWeekIndex + dayNum) / 7);
+        var ins = '' +
+            '<tr>' +
+            '<th><span class="datax" style="color:#f86b4f;">日</span></th>' +
+            '<th><span class="datax">一</span></th>' +
+            '<th><span class="datax">二</span></th>' +
+            '<th><span class="datax">二</span></th>' +
+            '<th><span class="datax">四</span></th>' +
+            '<th><span class="datax">五</span></th>' +
+            '<th><span class="datax" style="color:#f86b4f;">六</span></th>' +
+            '</tr>';
+
+        //准备插入表格
+        var flag = 0;//开始标记
+        var nowIndex = 1;//当前待插入号数
+        
+        // var planArryString = ['01, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 22];
+        for (var i = 0; i <= rowNum; i++) {
+            ins +=
+                '<tr>';
+
+            for (var j = 0; j < 7; j++) {
+                if ((j >= firstDayWeekIndex || flag == 1) && nowIndex <= dayNum) {
+                    if (flag == 0) {
+                        flag = 1;
+                    }
+
+                    if (planArray.indexOf(nowIndex) !== -1) {
+                        //有计划
+                        ins +=
+                            '<td bgcolor="#fefedd">' +
+                            (nowIndex++) + '<br>' + '<i>¥29</i>' +
+                            '</td>';
+                        continue;
+                    }
+                    //无计划
+                    ins +=
+                        '<td>' +
+                        (nowIndex++) +
+                        '</td>';
+                    continue;
+                }
+                //空白格
+                ins +=
+                    '<td>' +
+                    '&nbsp;' +
+                    '</td>';
+            }
+
+            ins +=
+                '<tr>';
+
+        }
+
+        $('tbody').html(ins);
+
+    }
+
+    //获取某月的第一天
+    function getCurrentMonthFirst(m) {
+        var now = new Date();
+        var date = new Date(now.getFullYear(), m, 1);
+        // date.setDate(1);
+        return date;
+    }
+
+    <!--获取某月最后一天-->
+    function getCurrentMonthLast(m) {
+        var now = new Date();
+        // var currentMonth=date.getMonth();
+        var nextMonth = ++m;
+        var nextMonthFirstDay = new Date(now.getFullYear(), nextMonth, 1);
+        var oneDay = 1000 * 60 * 60 * 24;
+        return new Date(nextMonthFirstDay - oneDay);
+    }
+</script>
+
+<script>
+    $(function () {
+        // alert(Math.ceil(10.1));
+        // alert(Math.ceil(10/3));
+        // var mydate=new Date();
+        // var myddy=mydate.getDay();//获取存储当前日期
+        // var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        // document.write("今天是：" + weekday[myddy]);
+        // document.write("本月最后一天：" + weekday[getCurrentMonthLast().getDay()]);
+        // document.write("本月最后一天：" + getCurrentMonthLast().getDate());
+        var planArry = [1, 2, 3, 6, 7, 8, 9, 11, 13, 22];
+        createCaldender(planArry);
+        
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+.calendar td,.calendar th {
+    /*display: flex;*/
+    width: 50px;
+    padding: 0 10px;
+    border-bottom: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+}
+.calendar td:first-child,.calendar th:first-child {
+    border-left: 1px solid #f0f0f0;
+}
+.calendar td {
+    height: 50px;
+    text-align: right;
+    vertical-align: top;
+}
+
+td i {
+    color: #f86b4f;
+    /*display: inline;*/
+}
