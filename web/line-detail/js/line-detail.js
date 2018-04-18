@@ -1,7 +1,7 @@
 $(function () {
     initLineDetail();
-    
-})
+
+});
 $(function () {
     $(function () {
         $.ajaxSetup({crossDomain: true, xhrFields: {withCredentials: true}});
@@ -102,7 +102,7 @@ function initLineDetail(type) {
         dataType: 'json',
         success: function (json) {
             // console.log("lineDetail Ok");
-            console.log(json);
+            // console.log(json);
             
             if (json.flag == 1) {
                 var data = json.data;
@@ -223,21 +223,21 @@ function dealPlans(plans) {
 
 //生成日历
 function createCalendar(plans) {
-    // console.log(plans);
+    //实现思路为：将本月的班次从plans取出加入数组，然后用代表当前号数的nowIndex和数组中的值进行比对若能匹配则特殊处理
+    console.log(plans);
     var planArray = new Array(100);
+    var currentMonth = new Date().getMonth()+1;
+    var c=0;//用来添加本月的班次信息
     $.each(plans, function (index, item) {
-        planArray[index] = parseInt(item.start_time.substring(item.start_time.length-2,item.start_time.length));
+        if(currentMonth==item.start_time.substring(5,7))//判断是否是本月班次
+            planArray[c++] = parseInt(item.start_time.substring(item.start_time.length-2,item.start_time.length));
     });
-
-    var lastDate = getCurrentMonthLast(new Date().getMonth());
-    var firstDate = new Date();
+    console.log("asd");
+    console.log(planArray);
+    var lastDate = getCurrentMonthLast(new Date().getMonth());//本月最后一天
+    var firstDate = new Date();//本月第一天
     firstDate.setDate(1);
     
-
-    console.log(firstDate);
-    
-
-
     var dayNum = lastDate.getDate();//当前月天数
     var firstDayWeekIndex = firstDate.getDay();//月第一天的星期下标 0对应星期日1到6则对应正常周一到周六
 
@@ -259,7 +259,7 @@ function createCalendar(plans) {
     var nowIndex = 1;//当前待插入号数
 
     // var planArryString = ['01, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 22];
-    console.log(planArray);
+    // console.log(planArray);
     for (var i = 0; i <= rowNum; i++) {
         ins +=
             '<tr>';
