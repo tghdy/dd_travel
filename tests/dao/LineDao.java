@@ -24,7 +24,7 @@ public class LineDao {
 	}
 	
 	@Test
-	public void testMethodLineSearch() throws SQLException {
+	public void testMethodLineSearch() throws Exception{
 		LineSearchItem item = new LineSearchItem();
 		item.setDay(1);
 		//item.setName("宁波");
@@ -51,17 +51,22 @@ public class LineDao {
 	}
 	
 	@Test
-	public void testMethodOrderList() throws SQLException {
+	public void testMethodOrderList() throws Exception{
 		//测试完毕
 		//lineDao.selectOrderListByUserId(1).size();
-		lineDao.selectOrderDetailByOrderId(7);
+		System.out.println(lineDao.selectOrderDetailByOrderId(7));
 	}
 	
 	@Test
-	public void testMethodTransctionInsert() {
+	public void testMethodTransctionInsert() throws Exception {
 		TravelLine travelLine = new TravelLine();
 		System.out.println(lineDao.insertTravelLine(travelLine));
 
+	}
+	
+	@Test
+	public void testMethodOne() throws Exception {
+		System.out.println(lineDao.selectLinePlanList(1));
 	}
 	
 }

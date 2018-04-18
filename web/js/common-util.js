@@ -80,3 +80,20 @@ function exitUser() {
     });
     
 }
+//获取某月的第一天
+function getCurrentMonthFirst(m) {
+    var now = new Date();
+    var date = new Date(now.getFullYear(), m, 1);
+    // date.setDate(1);
+    return date;
+}
+
+<!--获取某月最后一天-->
+function getCurrentMonthLast(m) {
+    var now = new Date();
+    // var currentMonth=date.getMonth();
+    var nextMonth = ++m;
+    var nextMonthFirstDay = new Date(now.getFullYear(), nextMonth, 1);
+    var oneDay = 1000 * 60 * 60 * 24;
+    return new Date(nextMonthFirstDay - oneDay);
+}

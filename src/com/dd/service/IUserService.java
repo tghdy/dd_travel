@@ -13,14 +13,14 @@ public interface IUserService {
 	 * @Date: 2018/2/13 下午9:58
 	 * @Des: 根据账号获取用户
 	 **/
-	TravelUser selectByAccount(String account) throws SQLException;
+	TravelUser selectByAccount(String account) throws Exception;
 
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/2/13 下午9:58
 	 * @Des: 根据账号密码获取用户
 	 **/
-	TravelUser selectByAccountAndPassword(String account, String password) throws SQLException;
+	TravelUser selectByAccountAndPassword(String account, String password) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -34,7 +34,7 @@ public interface IUserService {
 	 * @Date: 2018/2/25 下午1:59
 	 * @Des: 获取用户总数
 	 **/
-	long selectAccountTotal(UserSearchItem searchItem) throws SQLException;
+	long selectAccountTotal(UserSearchItem searchItem) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -69,7 +69,7 @@ public interface IUserService {
 	 * @Date: 2018/2/28 上午11:32
 	 * @Des: 通过id获取travel_user
 	 **/
-	Map<String, Object> selectUserAllInf(long id) throws SQLException;
+	Map<String, Object> selectUserAllInf(long id) throws Exception;
 
 	/**
 	 * @Author: TusuZer

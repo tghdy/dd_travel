@@ -12,7 +12,7 @@ public class DemoDao {
 	public void testMethod() {
 		try {
 			System.out.println(demoDao.selectDemoById(1));
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

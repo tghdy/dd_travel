@@ -12,14 +12,14 @@ public interface IArticleDao {
 	 * @Date: 2018/3/14 上午9:46
 	 * @Des: 获取全部文章
 	 **/
-	List<Map<String, Object>> selectAllArticle() throws SQLException, Exception;
+	List<Map<String, Object>> selectAllArticle() throws Exception, Exception;
 
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/3/14 下午2:01
 	 * @Des: 根据id获取文章
 	 **/
-	Map<String,Object> selectArticleById(Integer id) throws SQLException;
+	Map<String,Object> selectArticleById(Integer id) throws Exception;
 
 	/**
 	 * @Author: TusuZer

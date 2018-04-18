@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+    <script src="H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
     <script !src="">
         $(function () {
+            alert($('#one').offset().top);
+            alert($('#one').offset().left);
             $.ajax({
                 type: 'get',
                 url: 'demo.json',
                 dataType: 'json',
                 success: function (json) {
-                    console.log(json);
+                    // console.log(json);
                 },
                 error: function (data) {
                     console.log("asda")
@@ -22,6 +24,9 @@
     </script>
 </head>
 <body>
+<div id="one" style="margin-left: 30px;margin-top: 30px;">
+    asdasd
+</div>
 </body>    
 </body>
 </html>

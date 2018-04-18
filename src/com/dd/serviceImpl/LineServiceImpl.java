@@ -54,7 +54,7 @@ public class LineServiceImpl implements ILineService {
 	}
 
 	@Override	
-	public Map<String, Object> selectAllOrderInfByOrderId(int orderId) throws SQLException {
+	public Map<String, Object> selectAllOrderInfByOrderId(int orderId) throws Exception{
 		return lineDao.selectOrderDetailByOrderId(orderId);
 	}
 
@@ -64,12 +64,12 @@ public class LineServiceImpl implements ILineService {
 	}
 
 	@Override
-	public Map<String, Object> selectTravelLine(int travelId) throws SQLException {
+	public Map<String, Object> selectTravelLine(int travelId) throws Exception{
 		return lineDao.selectTravelLine(travelId);
 	}
 	
 	@Override
-	public Map<String, Object> selectLineDetail(int travelId) throws SQLException {
+	public Map<String, Object> selectLineDetail(int travelId) throws Exception{
 		return lineDao.selectLineDetail(travelId);
 	}
 
@@ -84,7 +84,7 @@ public class LineServiceImpl implements ILineService {
 	}
 	
 	@Override
-	public int insertTravelLine(TravelLine travelLine) {
+	public int insertTravelLine(TravelLine travelLine) throws Exception {
 		return lineDao.insertTravelLine(travelLine);
 	}
 
@@ -124,12 +124,12 @@ public class LineServiceImpl implements ILineService {
 	}
 
 	@Override
-	public Map<String, Object> selectLinePlan(Integer id, Integer seq) throws SQLException {
+	public Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception{
 		return lineDao.selectLinePlan(id, seq);
 	}
 
 	@Override
-	public Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws SQLException {
+	public Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws Exception{
 		return lineDao.selectLineSchedule(id, seq);
 	}
 

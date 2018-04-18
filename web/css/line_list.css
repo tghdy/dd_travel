@@ -6,6 +6,9 @@
 a {
     text-decoration: none !important;
 }
+h2>a {
+    color: #436eba !important;
+}
 a:hover {
     color: #f86b4f;
 }
@@ -90,7 +93,7 @@ a:hover {
     width: 100%;
 }
 .line-mid-wrap {
-    color: red;
+    color: #ef5924;;
 }
 .right-adb>ul>li {
     position: relative;

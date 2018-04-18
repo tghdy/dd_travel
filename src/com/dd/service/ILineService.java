@@ -38,7 +38,7 @@ public interface ILineService {
 	 * @Date: 2018/2/23 下午2:06
 	 * @Des: 根据订单id获取订单详细信息
 	 **/
-	Map<String, Object> selectAllOrderInfByOrderId(int orderId) throws SQLException;
+	Map<String, Object> selectAllOrderInfByOrderId(int orderId) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -53,14 +53,14 @@ public interface ILineService {
 	 * @Des: 获取线路基本信息
 	 * 线路信息获取开始！！！
 	 **/
-	Map<String, Object> selectTravelLine(int travelId) throws SQLException;
+	Map<String, Object> selectTravelLine(int travelId) throws Exception;
 
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/3/1 下午4:44
 	 * @Des: 获取线路详情
 	 **/
-	Map<String, Object> selectLineDetail(int travelId) throws SQLException;
+	Map<String, Object> selectLineDetail(int travelId) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -82,7 +82,7 @@ public interface ILineService {
 	 * @Date: 2018/2/28 下午5:12
 	 * @Des: 插入线路
 	 **/
-	int insertTravelLine(TravelLine travelLine);
+	int insertTravelLine(TravelLine travelLine) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -138,12 +138,12 @@ public interface ILineService {
 	 * @Date: 2018/3/2 下午1:40
 	 * @Des: 根据线路id以及次序获取一条班次
 	 **/
-	Map<String, Object> selectLinePlan(Integer id, Integer seq) throws SQLException;
+	Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception;
 
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/3/2 下午1:40
 	 * @Des: 根据线路id以及次序获取一条班次
 	 **/
-	Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws SQLException;
+	Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws Exception;
 }

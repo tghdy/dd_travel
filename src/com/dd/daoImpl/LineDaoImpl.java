@@ -30,13 +30,14 @@ public class LineDaoImpl implements ILineDao {
 	}
 
 	@Override
-	public Map<String, Object> selectAsideByLineType(int lineType) throws SQLException {
+	public Map<String, Object> selectAsideByLineType(int lineType) throws Exception{
 		String sql = "SELECT * FROM travel_adb ta, travel_line tl WHERE ta.travel_id=tl.id AND ta.line_type=?";
-		return JdbcUtils_DBCP.selectMap(sql, new Object[]{lineType});
+		Map<String, Object> map = JdbcUtils_DBCP.selectMap(sql, new Object[]{lineType});
+		return map;
 	}
 
 	@Override
-	public Map<String, Object> selectLineInf(int lineId) throws SQLException {
+	public Map<String, Object> selectLineInf(int lineId) throws Exception{
 		String sql = "SELECT tl.*,ld.*,tp1.place_name fromName,tp2.place_name toName FROM travel_line tl, line_detail ld, travel_place tp1, travel_place tp2 " +
 				" WHERE tl.id=? AND ld.travel_from=tp1.id AND ld.travel_to=tp2.id";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{lineId});
@@ -102,7 +103,7 @@ public class LineDaoImpl implements ILineDao {
 
 
 	@Override
-	public Map<String, Object> selectOrderDetailByOrderId(int orderId) throws SQLException {
+	public Map<String, Object> selectOrderDetailByOrderId(int orderId) throws Exception{
 		String sql = "SELECT tot.*, todt.*, tlt.travel_name FROM travel_order tot, travel_order_detail todt, travel_line tlt WHERE tot.id=? and " +
 				"tot.id=todt.order_id and tlt.id=tot.travel_id";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{orderId});
@@ -115,13 +116,13 @@ public class LineDaoImpl implements ILineDao {
 	}
 
 	@Override
-	public Map<String, Object> selectTravelLine(int travelId) throws SQLException {
+	public Map<String, Object> selectTravelLine(int travelId) throws Exception{
 		String sql = "SELECT * FROM travel_line WHERE  id = ?";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{travelId});
 	}
 
 	@Override
-	public Map<String, Object> selectLineDetail(int travelId) throws SQLException {
+	public Map<String, Object> selectLineDetail(int travelId) throws Exception{
 		String sql = "SELECT * FROM line_detail WHERE  travel_id = ?";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{travelId});
 	}
@@ -139,7 +140,7 @@ public class LineDaoImpl implements ILineDao {
 	}
 
 	@Override
-	public int insertTravelLine(TravelLine travelLine) {
+	public int insertTravelLine(TravelLine travelLine) throws Exception {
 		int flag = 0;
 		Object[] lineParams = travelLine.params();
 		String lineSql = "insert into travel_line values (?,?,?,?,?,?,?,?,?,?,?)";
@@ -214,13 +215,13 @@ public class LineDaoImpl implements ILineDao {
 	}
 
 	@Override
-	public Map<String, Object> selectLinePlan(Integer id, Integer seq) throws SQLException {
+	public Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception{
 		String sql = "SELECT * FROM line_plan WHERE  travel_id = ? AND seq = ?";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{id, seq});
 	}
 
 	@Override
-	public Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws SQLException {
+	public Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws Exception{
 		String sql = "SELECT * FROM line_schedule WHERE  travel_id = ? AND seq = ?";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{id, seq});
 	}

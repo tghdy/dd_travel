@@ -23,7 +23,7 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public TravelUser selectByAccount(String account) throws SQLException {
+	public TravelUser selectByAccount(String account) throws Exception{
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * FROM travel_user WHERE user_account = ?");
 		TravelUser travelUser = JdbcUtils_DBCP.select(sql.toString(), new Object[]{account}, TravelUser.class);
@@ -31,7 +31,7 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public TravelUser selectByAccountAndPassword(String account, String password) throws SQLException {
+	public TravelUser selectByAccountAndPassword(String account, String password) throws Exception{
 		String sql = "SELECT * FROM travel_user WHERE user_account = ? AND password = ?";
 		TravelUser travelUser = JdbcUtils_DBCP.select(sql, new Object[]{account, password}, TravelUser.class);
 		return travelUser;
@@ -48,7 +48,7 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public long selectAccountTotal(UserSearchItem searchItem) throws SQLException {
+	public long selectAccountTotal(UserSearchItem searchItem) throws Exception {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT COUNT(*) FROM travel_user WHERE state = 1");
 		if (searchItem.getName() != null) {
@@ -102,7 +102,7 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public Map<String, Object> selectById(long id) throws SQLException {
+	public Map<String, Object> selectById(long id) throws Exception{
 		String sql = "SELECT * FROM travel_user WHERE id = ?";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{id});
 	}

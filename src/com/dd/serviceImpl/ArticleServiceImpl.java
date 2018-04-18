@@ -25,7 +25,7 @@ public class ArticleServiceImpl implements IArticleService{
 	}
 
 	@Override
-	public Map<String, Object> selectArticleById(Integer id) throws SQLException {
+	public Map<String, Object> selectArticleById(Integer id) throws Exception{
 		return articleDao.selectArticleById(id);
 	}
 

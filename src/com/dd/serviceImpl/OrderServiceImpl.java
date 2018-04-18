@@ -24,7 +24,7 @@ public class OrderServiceImpl implements IOrderService {
 	private ILineDao lineDao = LineDaoImpl.getInstance();
 
 	@Override
-	public Map<String, Object> orderPageInit(int travelId, int seq) throws SQLException {
+	public Map<String, Object> orderPageInit(int travelId, int seq) throws Exception{
 		Map<String, Object> map = new HashMap<>();
 		map.put("lineInf", lineDao.selectLineInf(travelId));
 		map.put("linePlan", lineDao.selectLinePlan(travelId, seq));

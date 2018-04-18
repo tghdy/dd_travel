@@ -14,7 +14,7 @@ public interface IOrderService {
 	 * @Date: 2018/3/10 下午1:23
 	 * @Des: 订单界面初始化信息获取
 	 **/
-	Map<String, Object> orderPageInit(int travelId, int seq) throws SQLException;
+	Map<String, Object> orderPageInit(int travelId, int seq) throws Exception;
 
 	int insertOrder(TravelOrder order) throws Exception;
 

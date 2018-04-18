@@ -21,14 +21,14 @@ public interface ILineDao {
 	 * @Date: 2018/2/22 下午12:42
 	 * @Des: 根据线路类型获取侧边推荐线路
 	 **/
-	Map<String, Object> selectAsideByLineType(int lineType) throws SQLException;
+	Map<String, Object> selectAsideByLineType(int lineType) throws Exception;
 
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/2/22 下午12:43
 	 * @Des: 根据线路id获取线路详情，涵盖travel_line以及liene_detail信息
 	 **/
-	Map<String, Object> selectLineInf(int lineId) throws SQLException;
+	Map<String, Object> selectLineInf(int lineId) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -57,7 +57,7 @@ public interface ILineDao {
 	 * @Date: 2018/2/22 下午4:49
 	 * @Des: 根据订单id获取订单详情
 	 **/
-	Map<String, Object> selectOrderDetailByOrderId(int orderId) throws SQLException;
+	Map<String, Object> selectOrderDetailByOrderId(int orderId) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -73,13 +73,13 @@ public interface ILineDao {
 	 * @Des: 获取线路基本信息
 	 * 线路信息获取开始！！！
 	 **/
-	Map<String, Object> selectTravelLine(int travelId) throws SQLException;
+	Map<String, Object> selectTravelLine(int travelId) throws Exception;
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/3/1 下午4:44
 	 * @Des: 获取线路详情
 	 **/
-	Map<String, Object> selectLineDetail(int travelId) throws SQLException;
+	Map<String, Object> selectLineDetail(int travelId) throws Exception;
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/3/1 下午4:44
@@ -101,7 +101,7 @@ public interface ILineDao {
 	 * @Date: 2018/2/28 下午2:57
 	 * @Des: 插入线路信息
 	 **/
-	int insertTravelLine(TravelLine travelLine);
+	int insertTravelLine(TravelLine travelLine) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -157,14 +157,14 @@ public interface ILineDao {
 	 * @Date: 2018/3/2 下午1:40
 	 * @Des: 根据线路id以及次序获取一条班次
 	 **/
-	Map<String, Object> selectLinePlan(Integer id, Integer seq) throws SQLException;
+	Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception;
 	
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/3/2 下午1:40
 	 * @Des: 根据线路id以及次序获取一条日程
 	 **/
-	Map<String,Object> selectLineSchedule(Integer id, Integer seq) throws SQLException;
+	Map<String,Object> selectLineSchedule(Integer id, Integer seq) throws Exception;
 
 	/**
 	 * @Author: TusuZer

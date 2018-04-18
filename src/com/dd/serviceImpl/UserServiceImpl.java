@@ -23,13 +23,13 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public TravelUser selectByAccount(String account) throws SQLException {
+	public TravelUser selectByAccount(String account) throws Exception{
 		TravelUser travelUser = iUserDao.selectByAccount(account);
 		return travelUser;
 	}
 
 	@Override
-	public TravelUser selectByAccountAndPassword(String account, String password) throws SQLException {
+	public TravelUser selectByAccountAndPassword(String account, String password) throws Exception{
 		TravelUser travelUser = iUserDao.selectByAccountAndPassword(account, password);
 		return travelUser;
 	}
@@ -41,7 +41,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public long selectAccountTotal(UserSearchItem searchItem) throws SQLException {
+	public long selectAccountTotal(UserSearchItem searchItem) throws Exception {
 		return iUserDao.selectAccountTotal(searchItem);
 	}
 	
@@ -81,7 +81,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public Map<String, Object> selectUserAllInf(long id) throws SQLException {
+	public Map<String, Object> selectUserAllInf(long id) throws Exception{
 		return iUserDao.selectById(id);
 	}
 

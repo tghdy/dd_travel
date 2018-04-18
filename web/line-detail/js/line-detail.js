@@ -45,13 +45,15 @@ $(function () {
     $(window).scroll(function () {
 
         var a = document.getElementById("eqq").offsetTop;
-        console.log("c:::");
+        // console.log("c:::");
         var c = $(".bm_left").offset().left;
-        console.log(c);
+        // console.log(c);
         var d = $(".bm_right").offset().left;
         if (a < $(window).scrollTop()) {
-            $("#eqq").css({"position": "fixed", "top": "0", "left": c + 974});
+            $("#eqq").css({"position": "fixed", "top": "0", "left": d});
             $("#eqqq").css({"position": "fixed", "top": "0", "left": c});
+            // console.log("asdasd")
+            // $("#eqqq").css({"border": "2px solid #f86b4f", "top": "0"});
         }
         if (b > $(window).scrollTop()) {
             $("#eqq").css({"position": "relative", "left": "0"});
@@ -115,6 +117,8 @@ function initLineDetail(type) {
                 dealDetail(data);
                 //处理班次内容
                 dealPlans(plans);
+                //生成日历
+                createCalendar(plans);
                 //处理日程信息
                 dealSchedules(schedules);
                 //处理关联线路信息
@@ -217,6 +221,88 @@ function dealPlans(plans) {
     });
 }
 
+//生成日历
+function createCalendar(plans) {
+    // console.log(plans);
+    var planArray = new Array(100);
+    $.each(plans, function (index, item) {
+        planArray[index] = parseInt(item.start_time.substring(item.start_time.length-2,item.start_time.length));
+    });
+
+    var lastDate = getCurrentMonthLast(new Date().getMonth());
+    var firstDate = new Date();
+    firstDate.setDate(1);
+    
+
+    console.log(firstDate);
+    
+
+
+    var dayNum = lastDate.getDate();//当前月天数
+    var firstDayWeekIndex = firstDate.getDay();//月第一天的星期下标 0对应星期日1到6则对应正常周一到周六
+
+    var rowNum = Math.ceil((firstDayWeekIndex + dayNum) / 7);
+    
+    var ins = '' +
+        '<tr>' +
+        '<th><span class="datax" style="color:#f86b4f;">日</span></th>' +
+        '<th><span class="datax">一</span></th>' +
+        '<th><span class="datax">二</span></th>' +
+        '<th><span class="datax">二</span></th>' +
+        '<th><span class="datax">四</span></th>' +
+        '<th><span class="datax">五</span></th>' +
+        '<th><span class="datax" style="color:#f86b4f;">六</span></th>' +
+        '</tr>';
+    
+    //准备插入表格
+    var flag = 0;//开始标记
+    var nowIndex = 1;//当前待插入号数
+
+    // var planArryString = ['01, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 22];
+    console.log(planArray);
+    for (var i = 0; i <= rowNum; i++) {
+        ins +=
+            '<tr>';
+        
+        for (var j = 0; j < 7; j++) {
+            if ((j >= firstDayWeekIndex || flag == 1) && nowIndex <= dayNum) {
+                if (flag == 0) {
+                    flag = 1;
+                }
+
+                if (planArray.indexOf(nowIndex) !== -1) {
+                    //有计划
+                    ins +=
+                        '<td bgcolor="#fefedd">' +
+                        (nowIndex++) + '<br>' + '<i>¥29</i>' +
+                        '</td>';
+                    continue;
+                }
+                //无计划
+                ins +=
+                    '<td>' +
+                    (nowIndex++) +
+                    '</td>';
+                continue;
+            }
+            //空白格
+            ins +=
+                '<td>' +
+                '&nbsp;' +
+                '</td>';
+        }
+
+        ins +=
+            '<tr>';
+
+    }
+
+    $('#calendar').find('tbody').html(ins);
+
+
+
+}
+
 //插入日程数据
 function dealSchedules(schedules) {
     var scheduleTableHtml = '';
@@ -276,7 +362,7 @@ function dealRelatedLine(relatedLine) {
         ins +=
             '<div class="bm_right_pic1">' +
             '<div class="bm_right_pic1_top">' +
-            '<a href="/line-detailN/line-detail.html?id='+item.id+'">' +
+            '<a href="/dd_travel_war/line-detail/line-detail.html?id='+item.id+'">' +
             '<img src="img/5.jpg" height="100%" width="100%"/>' +
             '<p style="color: black;font-size: 10px;">' +
             item.travel_name +

@@ -11,7 +11,7 @@ public class UserDao {
 	private IUserDao userDao = UserDaoImpl.getInstance();
 	
 	@Test
-	public void testMethodGetTotal() throws SQLException {
+	public void testMethodGetTotal() throws Exception {
 		System.out.println(userDao.selectAccountTotal(null));
 	}
 	@Test

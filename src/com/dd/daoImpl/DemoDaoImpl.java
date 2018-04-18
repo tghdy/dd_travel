@@ -14,7 +14,7 @@ public class DemoDaoImpl implements IDemoDao {
 	}
 	
 	@Override
-	public Map<String, Object> selectDemoById(Integer id) throws SQLException {
+	public Map<String, Object> selectDemoById(Integer id) throws Exception{
 		String sql = "select * from demo_t where id = ?";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{id});
 	}

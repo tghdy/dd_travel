@@ -7,6 +7,7 @@
     <link href="css/head.css" type="text/css" rel="stylesheet"/>
     <link href="css/body_1.css" type="text/css" rel="stylesheet"/>
     <link href="css/body_2.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/rili.css" type="text/css" rel="stylesheet"/>
     <style>
         a {
             color: #333;
@@ -26,7 +27,7 @@
 <div class="main">
     <div class="head">
         <div class="header-wrap">
-            <div class="container" style="width: 80%;margin: 0 auto;">
+            <div class="container" style="width: 1250px;margin: 0 auto;background: #f4f4f4f;">
                 <i class="Hui-iconfont" style="color: red;position: relative;padding: 0 7px 0 7px">&#xe671;</i>
                 <span style="font-size: 12px;position: relative;">宁波站</span>
                 <span style="color: #EA6037;font-size: 12px;position: relative;">[切换]</span>
@@ -156,6 +157,64 @@
                                 </div>
                             </div>
                         </div>
+                        <div style="margin-left: 10px;width: 580px;height: 400px;border: 1px solid #ff4a00" id="rili">
+                            <table border="0" cellspacing="0" cellpadding="0" class="calendar" style="width: 580px;" id="calendar">
+                                <caption style="height: 41px;background-color:#d9d9d9;line-height: 41px;text-align:left;color: #f16a54;">
+                                    <span style="margin-left: 15px;font-size:15px;">本月班次</span>
+                                </caption>
+                                <tbody>
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sec_right">
+                        <div class="price">
+                            <div class="price_fir">
+                                <div style="display: flex;align-items:flex-end;">
+                                    <p style="font-size: 20px;">大&nbsp;地&nbsp;价:¥<strong style="font-size: 30px;" id="travel_price">998</strong>&nbsp;起</p>
+                                    <!--<p style="font-size: 40px;" id="travel_price">无数据</p>-->
+                                    <!--<p style="font-size: 20px;"></p>-->
+                                </div>
+                            </div>
+                            <div class="price_sec">
+                                <div class="price_sec_left">
+                                    <div class="tianchong"></div>
+                                    <p style="color: #f86b4f;font-size: 20px;" id="travel_count">0</p>
+                                    <p style="color: #d6d6d3;font-size: 15px;">剩余位数</p>
+                                    <div class="tianchong"></div>
+                                </div>
+                                <div class="price_sec_left">
+                                    <div class="tianchong"></div>
+                                    <p style="color: #f86b4f;font-size: 20px;" id="travel_views">0</p>
+                                    <p style="color: #d6d6d3;font-size: 15px;">此路线总浏览数</p>
+                                    <div class="tianchong"></div>
+                                </div><div class="price_sec_left">
+                                    <div class="tianchong"></div>
+                                    <p style="color: #f86b4f;font-size: 20px;" id="">0</p>
+                                    <p style="color: #d6d6d3;font-size: 15px;">点评数</p>
+                                    <div class="tianchong"></div>
+                                </div>
+                                <div class="price_sec_right">
+                                    <div class="tianchong"></div>
+                                    <p style="color: #f86b4f;font-size: 20px;" id="satisfy">满意度</p>
+                                    <p style="color: #d6d6d3;font-size: 15px;">99%</p>
+                                    <div class="tianchong"></div>
+                                </div>
+                            </div>
+                            <div class="price_thi">
+                                <div class="price_thi_left">
+                                    <p id="travel_day">行程天数：无数据</p><br/>
+                                    <p id="travel_no">线路编号：无数据</p>
+                                </div>
+                                <div class="price_thi_right">
+                                    <p id="fromName">出发城市：？？？</p><br/>
+                                    <p id="traffic_type">往返交通：？？？</p>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
                         <div class="buy">
                             <div class="buy_fir">
                                 <select id="line_plans">
@@ -176,42 +235,6 @@
                                 <!--<input type="button" value="大地小团队定制" class="button_2">-->
                                 <a href="#"><img src="img/客服.png"/></a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="sec_right">
-                        <div class="price">
-                            <div class="price_fir">
-                                <div style="display: flex;align-items:flex-end;">
-                                    <p style="font-size: 20px;">飞&nbsp;扬&nbsp;价:¥</p>
-                                    <p style="font-size: 40px;" id="travel_price">无数据</p>
-                                    <p style="font-size: 20px;">&nbsp;起</p>
-                                </div>
-                            </div>
-                            <div class="price_sec">
-                                <div class="price_sec_left">
-                                    <div class="tianchong"></div>
-                                    <p style="color: #f86b4f;font-size: 35px;" id="travel_count">无数据</p>
-                                    <p style="color: #d6d6d3;font-size: 20px;">剩余位数</p>
-                                    <div class="tianchong"></div>
-                                </div>
-                                <div class="price_sec_right">
-                                    <div class="tianchong"></div>
-                                    <p style="color: #f86b4f;font-size: 35px;" id="travel_views">无数据</p>
-                                    <p style="color: #d6d6d3;font-size: 20px;">此路线总浏览数</p>
-                                    <div class="tianchong"></div>
-                                </div>
-                            </div>
-                            <div class="price_thi">
-                                <div class="price_thi_left">
-                                    <p id="travel_day">行程天数：无数据</p><br/>
-                                    <p id="travel_no">线路编号：无数据</p>
-                                </div>
-                                <div class="price_thi_right">
-                                    <p id="fromName">出发城市：？？？</p><br/>
-                                    <p id="traffic_type">往返交通：？？？</p>
-                                </div>
-                            </div>
-
                         </div>
                         <div class="detail">
                             <div class="detil_title">
@@ -240,13 +263,6 @@
                     </div>
                     <div class="bm_left_body">
                         <div class="bm_left_fir">
-                            <!--<div class="bm_left_fir_1" style="padding-bottom: 20px;" id="b_1">-->
-                            <!--<div>-->
-                            <!--<p style="float: left;font-size: 14px;font-weight: 600;">路线选择</p>-->
-                            <!--<a href="#" style="font-size: 14px;color: #e62637;border: 1px solid #e62637;padding: 2px;margin-left: 15px;">A行程</a>-->
-                            <!--</div>-->
-                            <!--<div class="download_2"><i class="Hui-iconfont Hui-iconfont-down"></i><a href="#">下载行程</a></div>-->
-                            <!--</div>-->
                             <div class="bm_left_fir_2">
                                 <p style="font-size: 14px;font-weight: 600;">适用班期</p>
                                 <p style="font-size: 12px;margin-left: 30px;">2月7日、2月9日、2月16日</p>
@@ -377,8 +393,9 @@
                         <p>推荐旅游路线</p>
                     </div>
                 </div>
+                <!--线路推荐结束-->
+                <div style="clear: both;"></div>
             </div>
-            <!--线路推荐结束-->
         </div>
 
     </div>

@@ -168,7 +168,7 @@ public class OrderServlet extends HttpServlet {
 			map = orderService.orderPageInit(travelId, seq);
 			jsonData = new JsonData(JsonData.SUCCESS, "获取成功", map);
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			jsonData = new JsonData(JsonData.FAILED, "获取成功", map);
 			e.printStackTrace();
 

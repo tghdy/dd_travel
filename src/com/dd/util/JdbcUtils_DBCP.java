@@ -48,7 +48,6 @@ public class JdbcUtils_DBCP {
 	 * 参数说明：
 	 * 返回值：DataSource
 	 * 备注：
-	 * 
 	 * 作者：ariclee		时间：2016年6月12日下午1:23:39
 	 */
 	public static DataSource getDataSource() {
@@ -61,7 +60,6 @@ public class JdbcUtils_DBCP {
 	 * 参数说明：
 	 * 返回值：Connection
 	 * 备注：
-	 * 
 	 * 作者：ariclee		时间：2016年5月26日下午5:41:49
 	 */
 	public static Connection getConnection() {
@@ -89,7 +87,7 @@ public class JdbcUtils_DBCP {
 	 * @Date: 2018/2/13 上午8:06
 	 * @Des: 根据sql与参数获取Bean
 	 **/
-	public static <T> T select(String sql, Object[] params, Class<T> clazz) throws SQLException {
+	public static <T> T select(String sql, Object[] params, Class<T> clazz) throws Exception{
 		T obj = null;
 		obj =  runner.query(sql,
 			(ResultSetHandler<T>) new BeanHandler(clazz, new BasicRowProcessor(new MyBeanProcessor(new HumpMatcher()))), params);
@@ -101,7 +99,7 @@ public class JdbcUtils_DBCP {
 	 * @Date: 2018/2/13 上午10:47
 	 * @Des: 根据sql与参数获取List
 	 **/
-	public static <T> List<T> selectList(String sql, Object[] params, Class<T> clazz) throws SQLException {
+	public static <T> List<T> selectList(String sql, Object[] params, Class<T> clazz) throws Exception{
 		List<T> list = null;
 		list = runner.query(sql,
 			new BeanListHandler<>(clazz, new BasicRowProcessor(new MyBeanProcessor(new HumpMatcher()))), params);
@@ -114,7 +112,7 @@ public class JdbcUtils_DBCP {
 	 * @Date: 2018/2/13 上午11:37
 	 * @Des: 根据sql与参数获取Map
 	 **/
-	public static Map<String, Object> selectMap(String sql, Object[] params) throws SQLException {
+	public static Map<String, Object> selectMap(String sql, Object[] params) throws Exception{
 		Map<String, Object> map = null;
 		map = runner.query(sql, new MapHandler(), params);
 		return map;
@@ -133,15 +131,15 @@ public class JdbcUtils_DBCP {
 
 	}
 
-	public static int transctionInsert(String sql, Object[] params) throws SQLException {
+	public static int transctionInsert(String sql, Object[] params) throws Exception {
 		return runner.update(TransactionUtil.getConnection(), sql, params); 
 	}
 	
-	public static Object transctionSelect(String sql, Object[] params) throws SQLException {
+	public static Object transctionSelect(String sql, Object[] params) throws Exception {
 		return runner.query(TransactionUtil.getConnection(), sql, new ScalarHandler<Long>()); 
 	}
 
-	public static Object selectColumnValue(String sql, Object[] params) throws SQLException {
+	public static Object selectColumnValue(String sql, Object[] params) throws Exception {
 		return runner.query(sql, new ScalarHandler<>(), params);
 	}
 	

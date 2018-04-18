@@ -19,7 +19,7 @@ public interface IArticleService {
 	 * @Date: 2018/3/14 下午1:58
 	 * @Des: 根据id获取文章
 	 **/
-	Map<String, Object> selectArticleById(Integer id) throws SQLException;
+	Map<String, Object> selectArticleById(Integer id) throws Exception;
 
 
 	/**

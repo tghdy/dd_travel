@@ -10,7 +10,7 @@ public class TestUserService {
 	private IUserService iUserService = UserServiceImpl.getInstance();
 	
 	@Test
-	public void testMethod() throws SQLException {
+	public void testMethod() throws Exception{
 		System.out.println(iUserService.selectByAccount("qwe"));
 	}
 }

@@ -25,7 +25,7 @@ public class ArticleDaoImpl implements IArticleDao {
 	}
 
 	@Override
-	public Map<String, Object> selectArticleById(Integer id) throws SQLException {
+	public Map<String, Object> selectArticleById(Integer id) throws Exception{
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT * FROM travel_new WHERE id = ").append(id);
 		return JdbcUtils_DBCP.selectMap(sql.toString(),null);

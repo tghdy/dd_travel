@@ -14,14 +14,14 @@ public interface IUserDao {
 	 * @Date: 2018/2/13 下午9:58
 	 * @Des: 根据账号获取用户
 	 **/
-	TravelUser selectByAccount(String account) throws SQLException;
+	TravelUser selectByAccount(String account) throws Exception;
 
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/2/13 下午9:58
 	 * @Des: 根据账号密码获取用户
 	 **/
-	TravelUser selectByAccountAndPassword(String account, String password) throws SQLException;
+	TravelUser selectByAccountAndPassword(String account, String password) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -35,7 +35,7 @@ public interface IUserDao {
 	 * @Date: 2018/2/25 上午11:49
 	 * @Des: 获得账号的总数量
 	 **/
-	long selectAccountTotal(UserSearchItem searchItem) throws SQLException;
+	long selectAccountTotal(UserSearchItem searchItem) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -63,7 +63,7 @@ public interface IUserDao {
 	 * @Date: 2018/2/28 上午11:31
 	 * @Des: 获取用户详细信息
 	 **/
-	Map<String, Object> selectById(long id) throws SQLException;
+	Map<String, Object> selectById(long id) throws Exception;
 
 	/**
 	 * @Author: TusuZer
