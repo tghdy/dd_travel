@@ -102,14 +102,13 @@ function initLineDetail(type) {
         dataType: 'json',
         success: function (json) {
             // console.log("lineDetail Ok");
-            // console.log(json);
+            console.log(json);
             
             if (json.flag == 1) {
                 var data = json.data;
                 var schedules = data.schedules;
                 var plans = data.plans;
                 var relatedLine = data.relatedLine;
-
 
                 //渲染红色导航栏
                 redNavItem(data.line_type);
@@ -212,9 +211,10 @@ function dealPlans(plans) {
     var ins = '';
     $(plans).each(function (index, item) {
         // console.log(item);
-        ins += '<option value="' + item.seq + '">' +
-            item.start_time +
-            '&nbsp;&nbsp;&nbsp;成人价¥' + item.plan_price + '起' +
+        ins += '<option value="' + item.seq + '">' 
+            + item.start_time
+            + '&nbsp;&nbsp;&nbsp;成人价¥' 
+            + item.plan_price + '起' +
             '儿童价¥' + item.plan_child_price + '起' +
             '</option>';
         $('#line_plans').html(ins);
@@ -245,13 +245,13 @@ function createCalendar(plans) {
     
     var ins = '' +
         '<tr>' +
-        '<th><span class="datax" style="color:#f86b4f;">日</span></th>' +
-        '<th><span class="datax">一</span></th>' +
-        '<th><span class="datax">二</span></th>' +
-        '<th><span class="datax">二</span></th>' +
-        '<th><span class="datax">四</span></th>' +
-        '<th><span class="datax">五</span></th>' +
-        '<th><span class="datax" style="color:#f86b4f;">六</span></th>' +
+        '<th><span style="color:#f86b4f;">日</span></th>' +
+        '<th><span>一</span></th>' +
+        '<th><span>二</span></th>' +
+        '<th><span>二</span></th>' +
+        '<th><span>四</span></th>' +
+        '<th><span>五</span></th>' +
+        '<th><span style="color:#f86b4f;">六</span></th>' +
         '</tr>';
     
     //准备插入表格
@@ -298,8 +298,6 @@ function createCalendar(plans) {
     }
 
     $('#calendar').find('tbody').html(ins);
-
-
 
 }
 

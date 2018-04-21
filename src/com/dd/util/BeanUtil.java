@@ -143,5 +143,13 @@ public class BeanUtil {
 		obj = objectMapper.readValue(request.getParameter("jsonData"), clazz);
 		return obj;
 	}
-
+	
+	public static String  dealParameter(HttpServletRequest request, String paramName) {
+		String paramValue = request.getParameter(paramName);
+		if (paramValue != null && paramValue != "") {
+			return paramValue;
+		}
+		return null;
+	}
+	
 }

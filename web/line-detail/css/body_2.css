@@ -71,7 +71,7 @@
 
 .bm_left_top a {
     display: block;
-    color: black;
+    /*color: black;*/
     text-align: center;
     padding: 17px 16px;
     text-decoration: none;

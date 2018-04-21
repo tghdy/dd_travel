@@ -8,6 +8,7 @@ import com.dd.service.IOrderService;
 import com.dd.serviceImpl.LineServiceImpl;
 import com.dd.serviceImpl.OrderServiceImpl;
 import com.dd.util.*;
+import org.apache.commons.io.filefilter.OrFileFilter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,14 +48,29 @@ public class OrderAdminServlet extends HttpServlet {
 		JsonData jsonData = null;
 		try {
 			TravelUser user = (TravelUser) UserUtil.getUser(request);
+			
+			
+			Integer orderState = null;
+			Integer lineType = null;
+			
+			String temp = BeanUtil.dealParameter(request, "state");
+			if (temp != null)
+				orderState = Integer.parseInt(temp);
+			
+			temp = BeanUtil.dealParameter(request, "lineType");
+			if (temp != null)
+				lineType = Integer.parseInt(temp);
+			
 
-			List<Map<String, Object>> list = orderService.adminSelectOrderList();
-			if (list != null) {
+			List<Map<String, Object>> list = orderService.selectOrderList(null, lineType, orderState);
+			if (list != null && list.size() > 0) {
 				jsonData = new JsonData(JsonData.SUCCESS, "成功", list);
 				return;
 			}
-			jsonData = new JsonData(JsonData.FAILED, "为空");
 
+			jsonData = new JsonData(JsonData.FAILED, "为空", list);
+			System.out.println(jsonData);
+			
 		} catch (Exception e) {
 			jsonData = new JsonData(JsonData.FAILED, "异常");
 			e.printStackTrace();

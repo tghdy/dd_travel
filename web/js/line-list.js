@@ -2,19 +2,19 @@ var area =
     {
         浙江: {
             sonArea: ["杭州", "绍兴", "宁波"],
-            days: [1, 2, 3, 4]
+                days: [1, 2, 3, 4]
         },
         广东: {
             sonArea: ["潮汕", "闽南"],
-            days: [1, 2, 3]
+                days: [1, 2, 3]
         }
     };
 
 
 //初始化界面,此函数废弃
-function inita(area) {
-    //实现方法，先完成父类的地区填充因为地区信息都是相等的，然后搜索线路信息，最后比对确认是哪个区域的线路加红显示
-    //初始化目的地父级信息
+    function inita(area) {
+        //实现方法，先完成父类的地区填充因为地区信息都是相等的，然后搜索线路信息，最后比对确认是哪个区域的线路加红显示
+        //初始化目的地父级信息
     var ins = '<span class="col-sm-1 c-red" onclick="changeColor(this);">不限</span>';
     for (var p in area) {
         ins += '<span class="col-sm-1" onclick="changeColor(this);">' + p + '</span>';
@@ -213,7 +213,7 @@ function dealListJson(json) {
             '</div>' +
             '<div class="line-mid-wrap f-r">' +
             '<p>¥<span class="f-16">' + item.travel_price + '</span>起</p>' +
-            '<p><a href="../line-detail/line-detail.html?id=\'+item.id+\'" class="btn btn-warning pt-10 plr-10">查看详情</a></p>' +
+            '<p><a href="../line-detail/line-detail.html?id='+item.id+'" class="btn btn-warning pt-10 plr-10">查看详情</a></p>' +
             '</div>' +
             '<div class="clearfix"></div>' +
             '</li>';

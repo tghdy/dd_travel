@@ -43,13 +43,13 @@ function showUserInf() {
                 return;
             }
             if (data.userAccount == null) {
-                ins += '<span style="color: #c9c9c9">欢迎您:' + data.mobilePhone + '</span>';
+                ins += '<span style="color: #c9c9c9;font-size: 12px;">欢迎您:' + data.mobilePhone + '</span>';
             } else {
-                ins += '<span style="color: #c9c9c9">欢迎您:' + data.userName + '</span>';
+                ins += '<span style="color: #c9c9c9;font-size: 12px;">欢迎您:' + data.userName + '</span>';
             }
-            ins += '<span><a href="../order-list/dingDanSearch.html" style="margin-left: 10px;">会员中心</a></span>';
-            ins += '<span style="position: relative;font-size: 13px;opacity: 0.3;margin:0 5px;">|</span>';
-            ins += '<span><a href="javascript:;" onclick="exitUser();">退出</a></span>';
+            ins += '<span><a href="../order-list/dingDanSearch.html" style="margin-left: 12px;font-size: 12px">会员中心</a></span>';
+            ins += '<span style="position: relative;opacity: 0.3;margin:0 5px;font-size: 12px">|</span>';
+            ins += '<span><a href="javascript:;" onclick="exitUser();" style="font-size: 12px;">退出</a></span>';
             $('#login-inf').html(ins);
         },
         error: function (data) {
@@ -97,3 +97,8 @@ function getCurrentMonthLast(m) {
     var oneDay = 1000 * 60 * 60 * 24;
     return new Date(nextMonthFirstDay - oneDay);
 }
+
+//返回顶部
+function toUp() {
+    $("html,body").animate({scrollTop:0}, 500);
+};

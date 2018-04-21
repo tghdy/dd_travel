@@ -1,0 +1,18 @@
+#detailUl {
+    padding: 0;
+}
+#detailUl li {
+    list-style: none;
+    position: relative;
+}
+#detailUl span {
+    position: absolute;
+    left: 120px;
+    top: 0px;
+}
+#detailUl li:not(:first-child) {
+    margin-top: 5px;
+}
+#detailUl p {
+    margin: 0;
+}

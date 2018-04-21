@@ -172,3 +172,11 @@ a:hover {
 .middle-content {
     min-height: 950px;
 }
+
+.top_nav span {
+    font-size: 12px;
+}
+
+.top_nav span > a:hover {
+    color: #F86B4F;
+}
