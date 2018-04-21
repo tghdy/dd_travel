@@ -3,7 +3,6 @@ package com.dd.dao;
 import com.dd.entity.TravelOrder;
 import com.dd.entity.TravelOrderDetail;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ public interface IOrderDao {
 	 * @param id
 	 * @param lineType
 	 * @param orderState */
-	List<Map<String,Object>> selectOrderList(long id, Integer lineType, Integer orderState) throws Exception;
+	List<Map<String,Object>> selectOrderList(Long userId, Integer lineType, Integer orderState) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -37,4 +36,25 @@ public interface IOrderDao {
 	 * @Des: 管理员获取全部订单列表
 	 **/
 	List<Map<String,Object>> adminSelectOrderList() throws Exception;
+
+	/**
+	 * @Author: TusuZer
+	 * @Date: 2018/4/19 下午7:39
+	 * @Des: 管理员获取订单详情
+	 **/
+	Map<String, Object> adminSelectOrderDetail(int id) throws Exception;
+
+	/**
+	 * @Author: TusuZer
+	 * @Date: 2018/4/19 下午1:27
+	 * @Des: 获取订单详情
+	 **/
+	Map<String,Object> selectOrderDetail(int id, int seq) throws Exception;
+
+	/**
+	 * @Author: TusuZer
+	 * @Date: 2018/4/20 上午8:45
+	 * @Des: 更新订单信息
+	 **/
+	int adminUpdateOrderInf(Map<String, Object> map);
 }

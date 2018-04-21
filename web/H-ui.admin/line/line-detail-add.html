@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="page-container">
-    <form class="form form-horizontal" id="">
+    <div class="form form-horizontal" id="">
         <!--Id Head-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>ID：</label>
@@ -99,15 +99,18 @@
                 <img style="width: 300px;height: 300px;display: block;"
                      src="http://img1.vbooking.net/prd/201708/15/20170815182525231.jpg" alt="阿斯顿" id="travel_picture">
                 <span class="btn-upload form-group mt-20">
-				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont"></i> 浏览文件</a>
-				<input type="file" multiple="" name="file-2" class="input-file valid">
-                <button id="btn-upload" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
-				</span>
+                    <form action="/dd_travel_war/fileUpload" enctype="multipart/form-data">
+                        <a href="javascript:;" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont"></i> 浏览文件</a>
+                        <input type="file" multiple="" name="file-2" class="input-file valid">
+                        <button id="btn-upload" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
+                    </form>
+                </span>
+
                 <!--<input type="text" class="input-text" value="0" placeholder="" id="travel_picture" name="">-->
                 <!--<input type="file" class="webuploader-pick" value="">-->
                 <!--<button id="btn-upload" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>-->
             </div>
-            <div class="formControls col-xs-8 col-sm-9 col-sm-offset-2 col-xs-offset-4 mt-20"> 
+            <div class="formControls col-xs-8 col-sm-9 col-sm-offset-2 col-xs-offset-4 mt-20">
             </div>
         </div>
         <div class="row cl">
@@ -119,7 +122,7 @@
                 </button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 

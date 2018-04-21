@@ -1,0 +1,228 @@
+<style type="text/css">
+.w-1400{
+	width:1400px;
+}
+.h-1600{
+	height:1600px;
+}
+.h-25{
+	height:25px;
+}
+.m-c{
+	margin:0 auto;
+}
+.m-0{
+	margin:0;
+}
+.ml-800{
+	margin-left:900px;
+}
+.p-0{
+	padding:0;
+}
+.h-30{
+	height:30px;
+}
+.f-l{
+	float: left;
+}
+.f-r{
+	float:right;
+}
+.pt-5{
+	padding-top:5px;
+}
+.pt-10 {
+	padding-top: 10px !important;
+}
+.fs-12{
+	font-size:12px;
+}
+.b-1{
+	border:1px solid #dcdcdc;
+}
+.pd-5{
+	padding: 0 5px;
+}
+.br-1{
+	border-right:0.5px solid #dcdcdc;
+}
+.h-80{
+	height:80px;
+}
+.w-300{
+	width:300px;
+}
+.h-120{
+	height:120px;
+}
+.mt-10{
+	margin-top:10px;	
+}
+.mt-5{
+	margin-top:5px;
+}
+.w-120{
+	width:120px;
+}
+.mt-35{
+	margin-top:35px;
+}
+.h-35{
+	height:35px;
+}
+.h-40{
+	height:40px;
+}
+.br-3{
+	border:3px solid orange;
+}
+.h-30{
+	height:30px;
+}
+.w-520{
+	width: 520px;
+}
+.w-440{
+	width:440px;
+}
+.w-90{
+	width:90px;
+}
+.bg-r{
+	background-color:orange;
+}
+.w-260{
+	width:260px;
+}
+.b-0{
+	border:none;
+}
+.h-80{
+	height:80px;
+}
+.ml-5{
+	margin-left:5px;
+}
+.w-80{
+	width: 80px;
+}
+.f-w{
+	font-weight: bold;
+	font-size:15px;
+	color:white;
+}
+.pd-10{
+	padding: 0 10px;
+}
+.pd-23{
+	padding: 0 23px;
+}
+.bg-w{
+	background-color:#f4f4f4;
+}
+.pt-5{
+	padding-top:5px;
+}
+.pb-5{
+	padding-bottom:5px;
+}
+
+.pd-150{
+	padding:0 150px; 
+}
+.bb-2{
+	border-bottom:2px solid orange;
+}
+.h-900{
+	height:900px;
+}
+.w-1200{
+	width:1200px;
+}
+.w-200{
+	width:200px;
+}
+.h-800{
+	height:800px;
+}
+.mt-20{
+	margin-top:20px;
+}
+.p-10-40{
+	padding:10px 40px;
+}
+.fc-r{
+	color:orange;
+}
+.fs-17{
+	font-size:17px;
+}
+.fs-14{
+	font-size:14px;
+}
+.w-970{
+	width:970px;
+} 
+.h-800{
+	height:800px;
+} 
+.ml-20{
+	margin-left:20px;
+}
+.bb-1{
+	border-bottom:1px solid gray;
+}
+.w-750{
+	width:750px;
+}
+.dingdan th,tr{
+	font-weight:normal;
+	font-size:14px;
+	text-align:left;
+	height:35px;
+}
+.time{
+	color:gray;
+	font-size:13px;
+}
+.price{
+	font-weight:bold;
+	color:rgb(221, 102, 34);
+	font-size:17px;
+}
+.pricelab{
+	color:gray;
+}
+.button{
+	height:20px;
+	width:60px;
+	border:2px solid orange;
+	padding:6px 10px; 
+	border-radius:5px;
+	margin-bottom:2px;
+}
+.h-250{
+	height:250px;
+}
+.h-25{
+	height:25px;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+.page li{
+	width:20px;
+	height:20px;
+	background-color:orange;
+	float:right;
+	text-align:center;
+}
+.page a{
+	color:white;
+}
+</style>

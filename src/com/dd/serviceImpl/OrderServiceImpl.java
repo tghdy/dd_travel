@@ -42,7 +42,12 @@ public class OrderServiceImpl implements IOrderService {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectOrderList(long id, Integer lineType, Integer orderState) throws Exception {
+	public Map<String, Object> selectOrderDetail(int id, int seq) throws Exception {
+		return orderDao.selectOrderDetail(id,seq);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectOrderList(Long id, Integer lineType, Integer orderState) throws Exception {
 		return orderDao.selectOrderList(id,lineType,orderState);
 	}
 
@@ -50,5 +55,10 @@ public class OrderServiceImpl implements IOrderService {
 	public List<Map<String, Object>> adminSelectOrderList() throws Exception {
 		return orderDao.adminSelectOrderList();
 	}
-	
+
+	@Override
+	public int adminUpdateOrderInf(Map<String, Object> map) {
+		return orderDao.adminUpdateOrderInf(map);
+	}
+
 }

@@ -9,6 +9,10 @@ import com.dd.serviceImpl.LineServiceImpl;
 import com.dd.serviceImpl.OrderServiceImpl;
 import com.dd.util.*;
 import com.sun.org.apache.xerces.internal.impl.xs.util.LSInputListImpl;
+import com.sun.tools.javac.comp.Enter;
+import javafx.beans.binding.ObjectExpression;
+import jdk.nashorn.internal.scripts.JD;
+import net.sf.json.processors.JsDateJsonBeanProcessor;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,11 +57,60 @@ public class OrderServlet extends HttpServlet {
 		if ("orderList".equals(request.getParameter("method"))) {
 			orderList(request, response);
 		}
+		if ("orderDetail".equals(request.getParameter("method"))) {
+			orderDetail(request, response);
+		}
+		if ("adminUpdateOrderInf".equals(request.getParameter("method"))) {
+			adminUpdateOrderInf(request, response);
+		}
+		
 
+	}
+
+	private void adminUpdateOrderInf(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		Map<String, String[]> parameterMap = request.getParameterMap();
+		Map<String, Object> map = new HashMap<>();
+		List<Object> list = new ArrayList<>();
+		for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
+			map.put(entry.getKey(), entry.getValue()[0]);
+		}
+		int flag = orderService.adminUpdateOrderInf(map);
+		if (flag == 1) {
+			jsonData = new JsonData(JsonData.SUCCESS, "修改成功");
+		} else {
+			jsonData = new JsonData(JsonData.FAILED, "修改失败");
+		}
+		output(response, jsonData);
+		
+	}
+
+	private void orderDetail(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		Map<String, Object> map = null;
+		try {
+			Integer id = Integer.valueOf(request.getParameter("id"));
+			Integer seq = Integer.valueOf(request.getParameter("seq"));
+			map = orderService.selectOrderDetail(id, seq);
+			if (map != null) {
+				jsonData = new JsonData(JsonData.SUCCESS, "获取成功", map);
+				return;
+			}
+			jsonData = new JsonData(JsonData.FAILED, "为空");
+			
+		} catch (Exception e) {
+			jsonData = new JsonData(JsonData.FAILED, "异常");
+			e.printStackTrace();
+			
+		} finally {
+			output(response, jsonData);
+
+		}
 	}
 
 
 	private void orderList(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("fuck");
 		JsonData jsonData = null;
 		try {
 			TravelUser user = (TravelUser) UserUtil.getUser(request);
@@ -64,7 +119,7 @@ public class OrderServlet extends HttpServlet {
 				return;
 			}
 			long id = user.getId();
-			
+
 			Integer lineType = request.getParameter("lineType") != null ? Integer.parseInt(request.getParameter("lineType")) : null;
 			Integer orderState = request.getParameter("orderState") != null ? Integer.parseInt(request.getParameter("orderState")) : null;
 			//Integer i = Integer.parseInt(null);
