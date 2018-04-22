@@ -113,6 +113,7 @@ li a.bb:hover {
     float: right;
     background: url(picture/1.jpg);
     background-repeat: no-repeat;
+    margin-top: 12px;
 }
 
 .menu {
@@ -132,6 +133,12 @@ li a.bb:hover {
     width: 210px;
     height: 42px;
     background-color: #F4F4F4;
+}
+
+.part_line{
+    width: auto;
+    height: 3px;
+    background: #CB1425;
 }
 
 .banner {
@@ -185,13 +192,6 @@ li a.bb:hover {
     z-index: 1;
     background: url(picture/4.jpg) no-repeat;
     background-position: center 0;
-}
-
-.qiao {
-    width: 1210px;
-    height: 120px;
-    margin: 0 auto;
-    position: relative;
 }
 
 .max {
@@ -320,7 +320,7 @@ li a.bb:hover {
 
 .tab_last {
     width: 1300px;
-    height: 300px;
+    height: 350px;
     margin: 0 auto;
 }
 
@@ -333,60 +333,83 @@ li a.bb:hover {
 .tab_last_left_top {
     width: 1050px;
     height: 40px;
-    margin: 0 auto;
+    margin-bottom: 30px;
     border-bottom: 2px solid #DCDCDC;
+}
+
+.tab_last_left ul{
+    list-style-type: none;
+}
+.tab_last_left li{
+    position: relative;
+    float: left;
+    margin-left: 40px;
+}
+.tab_last_left li:nth-child(1){
+    margin-left: 0px;
 }
 
 .tra_01 {
     width: 226px;
     height: 245px;
     float: left;
-    position: absolute;
     background-image: url(picture/17.jpg);
     background-repeat: no-repeat;
-    float: left;
+    display: flex;
+    align-items: flex-end;
 }
 
 .tra_02 {
     width: 226px;
     height: 245px;
-    position: absolute;
     background-image: url(picture/18.jpg);
     background-repeat: no-repeat;
-    float: left;
+    display: flex;
+    align-items: flex-end;
 }
 
 .tra_03 {
     width: 226px;
     height: 245px;
-    position: absolute;
     background-image: url(picture/19.jpg);
     background-repeat: no-repeat;
-    float: left;
+    display: flex;
+    align-items: flex-end;
 }
 
 .tra_04 {
     width: 226px;
     height: 245px;
-    position: absolute;
     background-image: url(picture/20.jpg);
     background-repeat: no-repeat;
-    float: left;
+    display: flex;
+    align-items: flex-end;
 }
 
 .tra_last_right {
     width: 225px;
     height: 305px;
     float: right;
-    margin-top: 22px;
+    margin-top: 52px;
 }
 
 .title {
-    width: 225px;
+    width: 226px;
     height: 50px;
-    margin-top: 195px;
     background-color: #000;
-    opacity: 0.8;
+    opacity: 0.7;
+    transition:height 0.8s;
+    -webkit-transition:height 0.8s; /* Safari */
+}
+
+.title a{
+    height: 20px;
+    color: #e2e2e2;
+    text-align: center;
+}
+
+.title a:hover{
+    color: #ec664b;
 }
 
 .fy_foot {
@@ -405,22 +428,27 @@ li a.bb:hover {
 
 .fy_bottom {
     width: 100%;
-    height: 300px;
+    height: auto;
     margin: 0 auto;
+    margin-top: 30px;
     float: left;
 }
 
 .fy_bottom_nav {
     width: 530px;
-    height: 30px;
+    height: 20px;
     margin: 0 auto;
 }
 
 .copyright {
     width: 100%;
-    height: 300px;
+    height: 150px;
     text-align: center;
     float: left;
+}
+
+.copyright p{
+    height:20px;
 }
 
 /*TusuZer*/

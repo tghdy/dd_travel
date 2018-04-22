@@ -76,7 +76,7 @@ function getAdbLine(type) {
             lineType:type
         },
         dataType: 'json',
-        success: function (json) {
+        success: function (json) {9
             console.log("indexSixAdbListLine Ok");
             console.log(json);
             if (json.flag == 1) {
@@ -199,3 +199,11 @@ $(function () {
     showUserInf();
 })
 
+$(function () {
+    $(".tra_01,.tra_02,.tra_03,.tra_04").mouseenter(function(){
+        $(".tra_0"+$(this).attr("class")[5]).children(".title").css("height","80px");
+    });
+    $(".tra_01,.tra_02,.tra_03,.tra_04").mouseleave(function(){
+        $(".tra_0"+$(this).attr("class")[5]).children(".title").css("height","50px");
+    });
+})
