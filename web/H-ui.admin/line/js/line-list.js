@@ -1,3 +1,7 @@
+function newxtPage() {
+    page
+}
+
 $(function () {
     $.ajaxSetup({crossDomain: true, xhrFields: {withCredentials: true}});
     // lineList();
@@ -28,25 +32,22 @@ function lineList() {
         }
     });
     
-}
-
-function showLineBase(travelId) {
+}function showLineBase(travelId) {
     var url = './line-base-show.html?id=' + travelId;
     layer_show("基本信息", url, '800', '500');
 }
 function showLineDetail(travelId) {
     var url = './line-detail-show.html?id=' + travelId;
-    layer_show("基本信息", url, '800', '500');
+    layer_show("详情", url, '800', '500');
 }
 function showLinePlans(travelId) {
     var url = './line-plan-list.html?id=' + travelId;
-    layer_show("基本信息", url, '1000', '500');
+    layer_show("班次", url, '1000', '500');
 }
 function showLineSchedules(travelId) {
     var url = './line-schedule-list.html?id=' + travelId;
-    layer_show("基本信息", url, '1000', '500');
+    layer_show("行程", url, '1000', '500');
 }
-
 
 function insertLine() {
     $.ajax({

@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="dingDanSearch.css">
     <link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>订单列表</title>
-    
     <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript" src="../H-ui.admin/lib/layer/2.4/layer.js"></script>
     <script src="../js/common-util.js"></script>
     <script type="text/javascript" src="../js/order-list.js"></script>
-
 </head>
 <body class="m-0 p-0">
 <div class="container h-1600 w-1400 " style="position: relative;height: auto;">
     <!--<div class="topmenu h-30 fs-12 b-1 bg-w w-1400">-->
-        <!--<ul class="topmenu p-0 w-1200 pt-5 h-25 m-c ">-->
-            <!--<li class="f-l pd-5">宁波站</li>-->
-            <!--<li class="f-l pd-5">[切换]</li>-->
-            <!--<li class="f-l pd-5 br-1"><a href="../user/login.html">登录</a></li>-->
-            <!--<li class="f-l pd-5 "><a href="../user/register.html">免费注册</a></li>-->
-            <!--<li class="f-l pd-5 br-1 ml-800"><a href="#">微博</a></li>-->
-            <!--<li class="f-l pd-5 "><a href="#">微信</a></li>-->
-        <!--</ul>-->
+    <!--<ul class="topmenu p-0 w-1200 pt-5 h-25 m-c ">-->
+    <!--<li class="f-l pd-5">宁波站</li>-->
+    <!--<li class="f-l pd-5">[切换]</li>-->
+    <!--<li class="f-l pd-5 br-1"><a href="../user/login.html">登录</a></li>-->
+    <!--<li class="f-l pd-5 "><a href="../user/register.html">免费注册</a></li>-->
+    <!--<li class="f-l pd-5 br-1 ml-800"><a href="#">微博</a></li>-->
+    <!--<li class="f-l pd-5 "><a href="#">微信</a></li>-->
+    <!--</ul>-->
     <!--</div>-->
     <div class="top">
         <script type="text/javascript"></script>
@@ -32,16 +30,18 @@
             <span style="color: #EA6037;font-size: 12px;position: relative;">[切换]</span>
             <span style="position: relative;margin-top: 4px;font-size: 13px;opacity: 0.3;">|</span>
             <div id="login-inf" style="display: inline;">
-                <a href="/dd_travel_war/user/login.html" class="tt" style="font-size: 12px;position: relative;text-decoration: none;">登录</a>
+                <a href="/dd_travel_war/user/login.html" class="tt"
+                   style="font-size: 12px;position: relative;text-decoration: none;">登录</a>
                 <span style="position: relative;font-size: 13px;opacity: 0.3;">|</span>
-                <a href="/dd_travel_war/user/register.html" class="tt" style="font-size: 12px;;position: relative;text-decoration: none;">免费注册</a>
+                <a href="/dd_travel_war/user/register.html" class="tt"
+                   style="font-size: 12px;;position: relative;text-decoration: none;">免费注册</a>
             </div>
             <!--<a href="#" class="tt"><p style="font-size: 12px;padding: 5px 0 5px 0;pxopacity: 0.8;float: right;">+微信</p>-->
             <!--</a><i class="Hui-iconfont" style="line-height: 30px;font-size: 20px;opacity: 0.4;float: right;">&#xe694;</i>-->
 
             <!--<span style="margin-top: 5px;font-size: 13px;opacity: 0.9;float: right;">|</span>-->
             <!--<a href="#" class="tt"><p style="font-size: 12px;padding: 5px 0 5px 0;opacity: 0.8;float: right;">+微博</p><i-->
-                    <!--class="Hui-iconfont" style="line-height: 30px;font-size: 20px;opacity: 0.4;float: right;;">&#xe6da;</i>-->
+            <!--class="Hui-iconfont" style="line-height: 30px;font-size: 20px;opacity: 0.4;float: right;;">&#xe6da;</i>-->
             <!--</a>-->
         </div>
     </div>
@@ -83,12 +83,12 @@
     </div>
     <div class="mainblock h-900 w-1200 m-c mt-20 ">
         <div class="menuleft w-200 b-1 f-l">
-            <li class="f-w" style="padding:15px 40px"><a class="fc-r fs-17" href="#">我的首页</a></li>
-            <li class="p-10-40 bg-w"><a href="#">订单管理</a></li>
-            <li class="p-10-40"><a class="fs-14" href="#" onclick="initOrders();">所有订单</a></li>
-            <li class="p-10-40 bg-w"><a href="#">我的信息</a></li>
-            <li class="p-10-40"><a class="fs-14" href="#" onclick="initUserInf();">个人资料</a></li>
-            <li class="p-10-40"><a class="fs-14" href="#">密码修改</a></li>
+            <li class="f-w" style="padding:15px 30px"><a class="fc-r fs-17" href="#">我的首页</a></li>
+            <li class="p-10-40 bg-w no-hand">订单管理</li>
+            <li class="p-10-20"><a class="fs-14" href="#" onclick="initOrders();">所有订单</a></li>
+            <li class="p-10-40 bg-w no-hand">我的信息</li>
+            <li class="p-10-20"><a class="fs-14" href="#" onclick="initUserInf();">个人资料</a></li>
+            <li class="p-10-20"><a class="fs-14" href="#">密码修改</a></li>
         </div>
         <div id="inf-area">
             <div class="order-area w-970 ml-20 f-l">
@@ -175,15 +175,15 @@
                         <td>&nbsp;</td>
                     </tr>
                     <!--<tr>-->
-                        <!--<td align="right">地址：</td>-->
-                        <!--<td class="xiug xiug01">-->
-                            <!--<input type="text" id="user_address">-->
-                        <!--</td>-->
-                        <!--<td>&nbsp;</td>-->
+                    <!--<td align="right">地址：</td>-->
+                    <!--<td class="xiug xiug01">-->
+                    <!--<input type="text" id="user_address">-->
+                    <!--</td>-->
+                    <!--<td>&nbsp;</td>-->
                     <!--</tr>-->
                     <tr>
                         <td>&nbsp;</td>
-                        <td><input   type="button" value="保存" onclick="updateUserInf();"></td>
+                        <td><input type="button" value="保存" onclick="updateUserInf();"></td>
                         <td>&nbsp;</td>
                     </tr>
                     </tbody>
@@ -293,6 +293,12 @@
     </div>
 </div>
 <script>
+    $(function () {
+        // layer.open({
+        //     title: false
+        //     ,content: '可以填写任意的layer代码'
+        // });
+    });
 </script>
 </body>
 </html>

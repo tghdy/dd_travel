@@ -152,7 +152,7 @@ public class LineDaoImpl implements ILineDao {
 			//JdbcUtils_DBCP.transctionInsert(lineSql, null);
 			id = (BigInteger) JdbcUtils_DBCP.transctionSelect("SELECT LAST_INSERT_ID()", null);
 			JdbcUtils_DBCP.transctionInsert(detailSql, new Object[]{id.intValue()});
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			TransactionUtil.roolback();
 			e.printStackTrace();
 			return 0;
