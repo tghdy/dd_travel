@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>文章</title>
+    <link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/visa-list.css">
+    <style>
+        html {
+            margin: auto;
+            background: #f4f4f4;
+        }
+
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .tab_top_1 {
+            width: 100%;
+            height: 31px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tab_top_nav {
+            width: 1210px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tab_top_left {
+            height: 100%;
+        }
+
+        .tab_top_left li {
+            float: left;
+        }
+
+        .tab_top_left ul {
+            list-style-type: none;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .weizhi {
+            color: #e62637;
+            text-align: center;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .tab_top_left p {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .tab_top_left a {
+            text-decoration: none;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .tab_top_left a:hover {
+            color: #e62637;
+        }
+
+        .tab_top_right li {
+            float: left;
+        }
+
+        .tab_top_right ul {
+            list-style-type: none;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .weibo, .weixin {
+            color: #666666;
+            text-align: center;
+            position: relative;
+            font-size: 20px;
+        }
+
+        .tab_top_right p {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .bg_fff {
+            width: auto;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            background: white;
+        }
+
+        .tab_logo_tel {
+            width: 1210px;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 40px;
+            position: relative;
+            top: 40px;
+            float: left;
+        }
+
+        .searchTool {
+            height: 40px;
+            width: 450px;
+            border: 1.5px solid #e62637;
+            float: left;
+            position: relative;
+            top: 40px;
+        }
+
+        .selSearch {
+            height: 100%;
+            width: 90px;
+            background: #f4f4f4;
+            float: left;
+        }
+
+        .selSearch p {
+            color: #666666;
+            position: relative;
+            top: 12px;
+            font-size: 12px;
+            float: left;
+            margin-left: 15px;
+        }
+
+        .selSearch i {
+            float: left;
+            position: relative;
+            top: 12px;
+        }
+
+        .mainSearch {
+            width: 250px;
+            height: 40px;
+            float: left;
+        }
+
+        .search_r_btn {
+            float: left;
+            height: 100%;
+            width: 110px;
+            background: #e62637;
+        }
+
+        .search_r_btn p {
+            margin-left: 36px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .search_left {
+            position: relative;
+            top: 50px;
+            float: left;
+        }
+
+        .bg_fff a {
+            text-decoration: none;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .search_bottom {
+            position: relative;
+            top: 5px;
+        }
+
+        .search_bottom a:hover {
+            color: #e62637;
+        }
+
+        .search_bottom ul {
+            list-style-type: none;
+        }
+
+        .search_bottom li {
+            float: left;
+        }
+
+        .search_bottom p {
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .icon_purpose {
+            float: right;
+            position: relative;
+            top: 25px;
+        }
+
+        .icon_purpose img {
+            height: 80px;
+            float: right;
+        }
+
+        .menu {
+            height: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: white;
+        }
+
+        .menu_main {
+            width: 1210px;
+            height: 100%;
+        }
+
+        .fl {
+            background: #f4f4f4;
+            height: 30px;
+            width: 190px;
+            color: #e62637;
+            font-weight: 500;
+            font-size: 17px;
+            padding-top: 10px;
+            padding-left: 20px;
+            float: left;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu li {
+            height: 100%;
+            width: 100px;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .menu a:hover {
+            color: #e62637;
+        }
+
+        .clear {
+            width: 100%;
+            height: 2.5px;
+            background: #e62637;
+        }
+
+        .yj_location {
+            display: flex;
+            justify-content: center;
+            top: 10px;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+
+        .yj_location p, a {
+            color: #666666;
+            text-decoration: none;
+            float: left;
+        }
+
+        .yj_location a:hover {
+            color: #e62637;
+        }
+
+        .youji_detail {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .detail_left {
+            height: auto;
+            width: 73%;
+            background: white;
+            float: left;
+        }
+
+        .detail_right {
+            height: auto;
+            width: 25%;
+            background: white;
+            float: left;
+            margin-left: 2%;
+        }
+
+        .author_zl {
+            border-bottom: 1px solid #dcdcdc;
+            width: 800px;
+            margin-left: 41px;
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .top_t img {
+            border-radius: 42.5px;
+            height: 85px;
+            float: left;
+        }
+
+        .author_zl ul {
+            list-style-type: none;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .author_zl li {
+            float: left;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .author_zl h2 {
+            margin-top: 16px;
+            color: #666666;
+        }
+
+        .detail_fb a {
+            height: 38px;
+            width: 102px;
+            float: right;
+            background: #f86b4f;
+            border-radius: 3px;
+            color: white;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: -36px;
+        }
+
+        .detail_fb a:hover {
+            background: #f65d3f;
+        }
+
+        .share {
+            position: relative;
+            margin-top: 20px;
+            border-bottom: 1px solid #dcdcdc;
+            text-align: right;
+            color: #666666;
+            font-size: 12px;
+        }
+
+        .article {
+            height: auto;
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .next_pre {
+            background: #f8f8f8;
+            height: 80.2px;
+        }
+
+        .next_pre_1 {
+            margin-left: 25px;
+            margin-right: 25px;
+            padding-top: 15px;
+        }
+
+        .next_next p, a {
+            float: left;
+        }
+
+        .next_next {
+            margin-bottom: 10px;
+        }
+
+        .next_next a:hover {
+            color: #e62637;
+        }
+
+        .about_rai {
+            padding-top: 20px;
+            background: #f4f4f4;
+            color: #666666;
+        }
+
+        .about_rai a {
+            height: 40px;
+            width: 50%;
+            background: #38b8b9;
+            text-align: center;
+            padding-top: 20px;
+            color: white;
+        }
+
+        .about_rai h3 {
+            padding-bottom: 15px;
+        }
+
+        .about_rai a:hover {
+            color: #e62637;
+        }
+
+        .detail_right {
+            height: auto;
+        }
+
+        .publish {
+            background: white;
+            height: 192px;
+        }
+
+        .publish img {
+            margin: 15px;
+        }
+
+        .divide {
+            height: 10px;
+            background: #f4f4f4;
+        }
+
+        .area_ly {
+            margin: 15px;
+            background: white;
+            height: 120px;
+        }
+
+        .area_ly h3 {
+            border-bottom: 1px solid red;
+            padding-bottom: 5px;
+        }
+
+        .area_ly a:hover {
+            color: #e62637;
+        }
+
+        .fy_foot_cont {
+            margin-top: 40px;
+            border-top: 1px solid #dcdcdc;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .fy_foot_cont_s {
+            height: 204px;
+            width: 1210px;
+            margin: 0 auto;
+        }
+
+        .fy_foot_cont ul {
+            float: left;
+            margin-right: 30px;
+            list-style-type: none;
+            line-height: 25px;
+            color: #666666;
+            font-size: 14px;
+            width: 176px;
+        }
+
+        .fy_foot_cont ul:last-child {
+            margin-right: 0
+        }
+
+        .fy_foot_cont a:hover {
+            color: #e62637;
+        }
+
+        .footer {
+            height: 224px;
+            background: white;
+            text-align: center;
+            padding: 20px;
+            line-height: 25px;
+            color: #666666;
+            font-size: 12px;
+        }
+
+        .footer ul {
+            list-style-type: none;
+            overflow: hidden;
+        }
+
+        .footer li {
+            float: left;
+        }
+
+        .footer a:hover {
+            color: #e62637;
+        }
+
+        .footer p {
+            font-size: 12px;
+        }
+
+        .fir {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sec li {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="tab_top_1">
+    <div class="tab_top_nav">
+        <div class="tab_top_left">
+            <ul>
+                <li><i class="Hui-iconfont Hui-iconfont-weizhi weizhi"></i></li>
+                <li><p>&nbsp;宁波站&nbsp;&nbsp;</p></li>
+                <li><p style="color: red;">[切换]</p></li>
+                <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                <li><a href="#">登陆</a></li>
+                <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                <li><a href="#">免费注册</a></li>
+            </ul>
+        </div>
+        <div class="tab_top_right">
+            <ul>
+                <li><i class="Hui-iconfont Hui-iconfont-share-weibo weibo"></i></li>
+                <li><p style="color: #666666;">&nbsp;+微博</p></li>
+                <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                <li><i class="Hui-iconfont Hui-iconfont-share-weixin weixin"></i></li>
+                <li><p style="color: #666666;">&nbsp;+微信</p></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bg_fff">
+    <div class="tab_logo_tel">
+        <div class="logo">
+            <img src="img/index_logo.png"/>
+        </div>
+        <div class="searchTool">
+            <div class="selSearch">
+                <p>全部产品</p>
+                <i class="Hui-iconfont Hui-iconfont-arrow2-bottom"></i>
+            </div>
+            <div class="mainSearch">
+                <input type="text" name="name" style="outline: none;border:none;height: 100%;width: 100%;">
+            </div>
+            <div class="search_r_btn">
+                <p>搜索</p>
+            </div>
+            <div class="search_bottom">
+                <ul>
+                    <li><a href="#">日本</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#">新加坡</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#">邮轮</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#" style="color: #e62637;">欧洲游</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#">港澳</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="search_left"><a href="#">&nbsp;&nbsp;高级搜索</a></div>
+        <div class="icon_purpose"><img src="img/联系.png"></div>
+    </div>
+</div>
+<!--导航菜单开始-->
+<div class="menu">
+    <div class="menu_main">
+        <div class="fl"><i class="Hui-iconfont Hui-iconfont-menu">&nbsp;&nbsp;全部旅游产品分类</i></div>
+        <ul>
+            <li style="background: #e62637;color: white;">首页</li>
+            <li><a href="#">&nbsp;&nbsp;出境旅游</a></li>
+            <li><a href="#">&nbsp;&nbsp;国内旅游</a></li>
+            <li><a href="#">&nbsp;&nbsp;周边旅游</a></li>
+            <li><a href="#">&nbsp;&nbsp;欧洲游</a></li>
+            <li><a href="#" style="color: blue;">日本</a></li>
+            <li><a href="#">台湾</a></li>
+            <li><a href="#">邮轮</a></li>
+            <li><a href="#">签证</a></li>
+            <li><a href="#">自驾游</a></li>
+            <li><a href="#" style="color: blue;">特价机票</a></li>
+        </ul>
+    </div>
+</div>
+<!--导航菜单结束-->
+<div class="clear"></div>
+<div class="yj_location">
+    <div class="menu_main">
+        <p>当前位置:&nbsp;&nbsp;</p>
+        <a href="#">飞扬旅游网</a>
+        <p>&nbsp;>>&nbsp;</p>
+        <a href="#">目的地</a>
+        <p>&nbsp;>>&nbsp;</p>
+        <a href="#">松阳旅游特色景点有哪些_松阳有什么好玩的</a>
+    </div>
+</div>
+<!--detail start -->
+<div class="visa-wrap">
+    <div class="left-box w-300 f-l">
+        <!--导航信息-->
+        <div class="visa-nav" style="height: 250px;border: 2px solid #f16a54;margin-bottom: 30px;padding: 16px;">
+            <!--国家信息-->
+            <div>
+                <span>国家或地区</span>
+                <input type="text" style="height: 25px;width: 126px;">
+            </div>
+            <!--国家信息end-->
+            <div class="search-btn-box">
+                <button class="search-btn">搜索</button>
+            </div>
+
+        </div>
+        <!--导航信息end-->
+        <!--优势说明-->
+        <div class="visa-dd-power">
+            <div class="power-title">
+                <div class="power-prove-img f-l"
+                     style="background-image: url('img/bz.png'); width: 70px; height: 70px;margin-left: -12px;margin-top: -12px;">
+                </div>
+                <h2 class="power-title-text f-l">选择飞扬 选择放心</h2>
+                <div style="clear: both;"></div>
+            </div>
+            <ul class="power-ul">
+                <li>飞扬签证中心可代签全球多数国家</li>
+                <li>在上海设有独立签证中心,减少二次代理,出签更快</li>
+                <li>从事签证12年,与各大使馆保持着良好的关系</li>
+                <li>1000人就有998人成功出签</li>
+                <li>只与顺丰快递合作,确保客户资料安全</li>
+                <li style="border:none;">程序化管理,即时短信或专属客服提醒签证进展情况</li>
+            </ul>
+        </div>
+    </div>
+    <!--右侧内容-->
+    <div class="right-box f-l">
+        <!--右侧标题-->
+        <h1 style="line-height: 37px;border-bottom: 1px solid #f86b4f;font-size: 18px;">
+            搜索结果
+        </h1>
+        <!--内容-->
+        <ul>
+            <li>
+                <img src="http://img1.vbooking.net/prd/201708/25/20170825093242604.jpg" alt="" width="">
+                <div class="visa-item-cnt">
+                    <h2 class="shua">
+                        <a href="http://www.iflying.com/visa/000000000000000000228023.html" target="_blank">
+                            台湾入台证
+                        </a>
+                    </h2>
+                    <div class="f-l">
+                        <span>受理时间：送签后5-7个工作日</span>
+                        <span>有效日期：90天</span>
+                        <span>办理地点：台湾</span>
+                        <span>签 证 费： 不包含</span>
+                        <span>入境次数：单次入境</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img src="http://img1.vbooking.net/prd/201708/25/20170825093242604.jpg" alt="" width="">
+                <div class="visa-item-cnt">
+                    <h2 class="shua">
+                        <a href="http://www.iflying.com/visa/000000000000000000228023.html" target="_blank">
+                            台湾入台证
+                        </a>
+                    </h2>
+                    <div class="f-l">
+                        <span>受理时间：送签后5-7个工作日</span>
+                        <span>有效日期：90天</span>
+                        <span>办理地点：台湾</span>
+                        <span>签 证 费： 不包含</span>
+                        <span>入境次数：单次入境</span>
+                    </div>
+                </div>
+                <div class="f-r">
+                    <p style="color: #f86b4f;font-size: 18px;text-align: center;">
+                        <em>￥</em>1300
+                    </p>
+                    <a href="http://www.iflying.com/visa/000000000000000000201235.html" target="_blank"
+                       class="visa-button fs-12">
+                        查看详情
+                    </a>
+                </div>
+            </li>
+            <li>
+                <img src="http://img1.vbooking.net/prd/201708/25/20170825093242604.jpg" alt="" width="">
+                <div class="visa-item-cnt">
+                    <h2 class="shua">
+                        <a href="http://www.iflying.com/visa/000000000000000000228023.html" target="_blank">
+                            台湾入台证
+                        </a>
+                    </h2>
+                    <div class="f-l">
+                        <span>受理时间：送签后5-7个工作日</span>
+                        <span>有效日期：90天</span>
+                        <span>办理地点：台湾</span>
+                        <span>签 证 费： 不包含</span>
+                        <span>入境次数：单次入境</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!--内容-->
+        <!--右侧标题end-->
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<!--detail end -->
+<div class="fy_foot_cont">
+    <div class="fy_foot_cont_s">
+        <ul>
+            <h3>常见问题</h3>
+            <li><a href="#">如何预订旅游线路？</a></li>
+            <li><a href="#">单房差是什么？</a></li>
+            <li><a href="#">双飞、双卧都是什么意思？</a></li>
+        </ul>
+        <ul>
+            <h3>付款和发票</h3>
+            <li><a href="#">签约可以刷卡吗？</a></li>
+            <li><a href="#">付款方式有哪些？</a></li>
+            <li><a href="#">怎么网上支付？</a></li>
+            <li><a href="#">是否可提供发票？</a></li>
+        </ul>
+        <ul>
+            <h3>签署旅游合同</h3>
+            <li><a href="#">有旅游合同范本下载吗？</a></li>
+            <li><a href="#">能传真签约吗？</a></li>
+            <li><a href="#">可以不签合同吗？</a></li>
+        </ul>
+        <ul>
+            <h3>旅游预订优惠政策</h3>
+            <li><a href="#">什么是抵用券？</a></li>
+            <li><a href="#">如何获得抵用券？</a></li>
+        </ul>
+        <ul>
+            <h3>会员中心</h3>
+            <li><a href="#">会员有那些特权？</a></li>
+        </ul>
+        <ul>
+            <h3>飞扬APP</h3>
+            <li><a href="#">扫描微信二维码关注我们</a></li>
+        </ul>
+    </div>
+</div>
+<div class="footer">
+    <div class="fir">
+        <ul>
+            <li><a href="#">飞扬文化</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">飞扬荣誉</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">诚征英才</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">经营范围 </a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">相关法律</a></li>
+            <li>
+                <p>&nbsp;|&
+                    <n></n>
+                    bsp;
+                </p>
+            </li>
+            <li><a href="#">联系方式</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">友情链接</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">游客表扬信</a></li>
+        </ul>
+    </div>
+    <p>Copyright © 浙江飞扬国际旅游集团股份有限公司 | 飞扬国际旅游广场 2002-2018, All Rights Reserved</p>
+    <p>总部地址：宁波市中山东路2437号五一广场东楼\飞扬旅游广场 投诉电话：0574-87238555 旅游质监投诉电话：12301 旅游许可证号：L-ZJ-CJ00063 浙ICP备09059850号-2
+        浙ICP证B2-20140054 </p>
+    <p>24小时旅游预订电话(免长途费)：4000-365-666 飞扬旅游网呼叫中心位于宁波 | 统一呼出电话为 0574-27666666 </p>
+    <p>法律顾问：袁汝中（浙江共业律师事务所）</p>
+    <p>浙江飞扬国际旅游集团股份有限公司 版权所有 站长统计</p>
+    <div class="fir sec">
+        <ul>
+            <li><a href="#"><img src="img/1.png"></a></li>
+            <li><a href="#"><img src="img/2.png"></a></li>
+            <li><a href="#"><img src="img/3.png"></a></li>
+            <li><a href="#"><img src="img/4.png"></a></li>
+            <li><a href="#"><img src="img/5.png"></a></li>
+            <li><a href="#"><img src="img/6.png"></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
