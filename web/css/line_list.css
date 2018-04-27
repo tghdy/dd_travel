@@ -180,3 +180,28 @@ a:hover {
 .top_nav span > a:hover {
     color: #F86B4F;
 }
+
+/*右侧导航栏*/
+.right_sidebar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 42px;
+    height: 100%;
+    background: #333;
+    z-index: 10001;
+}
+.right-icon:hover {
+    color: #fff !important;
+}
+.my_top {
+    border-top: 1px solid #454545;
+    position: absolute;
+    bottom: 39px;
+}
+.active {
+    background-color: #f16a54;
+}
+.active a {
+    color: #fff;
+}

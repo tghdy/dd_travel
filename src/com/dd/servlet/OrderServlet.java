@@ -109,7 +109,7 @@ public class OrderServlet extends HttpServlet {
 
 
 	private void orderList(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("fuck");
+		//System.out.println("fuck");
 		JsonData jsonData = null;
 		try {
 			TravelUser user = (TravelUser) UserUtil.getUser(request);
@@ -188,12 +188,13 @@ public class OrderServlet extends HttpServlet {
 			//注入订单信息
 			order.setOrderNo(GenerateRandom.generateShortUuid());
 
-			order.setOrderState(1);
+			order.setOrderState(0);
 			order.setUserId(user.getId());
 			order.setTravelId(travelId);
 			order.setOrderPrice(totalPrice);
 			order.setOrderTime(DateUtil.getNowDateTime());
-
+			order.setPlanSeq(seq);
+			
 			int orderId = orderService.insertOrder(order);
 			if (orderId > 0) {
 				jsonData = new JsonData(JsonData.SUCCESS, "成功", orderId);

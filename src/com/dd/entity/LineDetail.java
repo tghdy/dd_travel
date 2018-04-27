@@ -18,9 +18,17 @@ public class LineDetail {
 	private String lineLabels;//线路标签
 
 	private String travelInfo;//线路信息
-
+	
 	private String travelPicture;//线路首图
+	
+	private String travelPicture2;//线路图2
+	
+	private String travelPicture3;//线路图3
+	
+	private String travelPicture4;//线路图4
 
+	private String schedulesPdf;//日程pdf地址
+	
 	public Long getTravelId() {
 		return travelId;
 	}
@@ -101,6 +109,38 @@ public class LineDetail {
 		this.travelPicture = travelPicture;
 	}
 
+	public String getTravelPicture2() {
+		return travelPicture2;
+	}
+
+	public void setTravelPicture2(String travelPicture2) {
+		this.travelPicture2 = travelPicture2;
+	}
+
+	public String getTravelPicture3() {
+		return travelPicture3;
+	}
+
+	public void setTravelPicture3(String travelPicture3) {
+		this.travelPicture3 = travelPicture3;
+	}
+
+	public String getTravelPicture4() {
+		return travelPicture4;
+	}
+
+	public void setTravelPicture4(String travelPicture4) {
+		this.travelPicture4 = travelPicture4;
+	}
+
+	public String getSchedulesPdf() {
+		return schedulesPdf;
+	}
+
+	public void setSchedulesPdf(String schedulesPdf) {
+		this.schedulesPdf = schedulesPdf;
+	}
+
 	@Override
 	public String toString() {
 		return "LineDetail{" +
@@ -114,11 +154,15 @@ public class LineDetail {
 				", lineLabels='" + lineLabels + '\'' +
 				", travelInfo='" + travelInfo + '\'' +
 				", travelPicture='" + travelPicture + '\'' +
+				", travelPicture2='" + travelPicture2 + '\'' +
+				", travelPicture3='" + travelPicture3 + '\'' +
+				", travelPicture4='" + travelPicture4 + '\'' +
 				'}';
 	}
+
 	public Object[] updateParams() {
 		return new Object[]{travelSubtitle, travelFeature, travelTips, travelFrom, travelTo, travelViews, lineLabels, 
-				travelInfo, travelPicture, travelId};
+				travelInfo, travelPicture,  travelPicture2,  travelPicture3,  travelPicture4, schedulesPdf, travelId};
 	}
 	
 }

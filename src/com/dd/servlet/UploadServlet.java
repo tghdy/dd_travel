@@ -1,5 +1,7 @@
 package com.dd.servlet;
 
+import com.dd.util.JsonData;
+import com.dd.util.UUIDUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -12,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet("/fileUpload")
 public class UploadServlet extends HttpServlet {
@@ -62,15 +66,22 @@ public class UploadServlet extends HttpServlet {
 
 		// 构造临时路径来存储上传的文件
 		// 这个路径相对当前应用的目录
-		String uploadPath = request.getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
-
-
+		//String uploadPath = request.getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
+		// 第一次初始化，设置存储路径
+		String uploadPath = "/usr/local/pic/";
+		
 		// 如果目录不存在则创建
 		File uploadDir = new File(uploadPath);
 		if (!uploadDir.exists()) {
 			uploadDir.mkdir();
+			//throw new RuntimeException();
 		}
+		
+		String fileName = null;
+		String filePath = null;
 
+		List<String> list = new LinkedList<>();  
+		
 		try {
 			// 解析请求的内容提取文件数据
 			@SuppressWarnings("unchecked")
@@ -81,29 +92,49 @@ public class UploadServlet extends HttpServlet {
 				for (FileItem item : formItems) {
 					// 处理不在表单中的字段
 					if (!item.isFormField()) {
-						String fileName = new File(item.getName()).getName();
-						String filePath = uploadPath + File.separator + fileName;
+						fileName = item.getName();
+						System.out.println(fileName);
+						if (fileName == null || fileName == "") {
+							continue;
+						}
+						filePath = uploadPath + UUIDUtil.getUUID() + fileName.substring(fileName.lastIndexOf('.'));
+						System.out.println(filePath);
+						list.add(filePath.substring(filePath.lastIndexOf('/') + 1));
+						
 						File storeFile = new File(filePath);
 						// 在控制台输出文件的上传路径
 						System.out.println(filePath);
 						// 保存文件到硬盘
 						item.write(storeFile);
-						request.setAttribute("message",
-								"文件上传成功!");
+						//System.out.println("完成了");
+						
 					}
 				}
 			}
+			//System.out.println("damn");
+			//JsonData jsonData = new JsonData(1, "igbk");
 		} catch (Exception ex) {
-			request.setAttribute("message",
-					"错误信息: " + ex.getMessage());
+			System.out.println(ex);
+			//request.setAttribute("message",
+			//		"错误信息: " + ex.getMessage());
 		}
 		// 跳转到 message.jsp
-		request.getServletContext().getRequestDispatcher("/message.jsp").forward(
-				request, response);
+		output(response, new JsonData(1,"ok", list));
+		
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
+	}
+
+	private void output(HttpServletResponse response, JsonData jsonData) {
+		try {
+			PrintWriter out = response.getWriter();
+			out.println(jsonData.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 }

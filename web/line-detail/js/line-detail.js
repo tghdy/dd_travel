@@ -178,14 +178,14 @@ function dealDetail(data) {
     $('#travel_feature').text(data.travel_feature);
     //图片开始
     $('#p0').html('<img src="'+data.travel_picture+'"/>');
-    $('#p1').html('<img src="'+data.travel_picture1+'"/>');
-    $('#p2').html('<img src="'+data.travel_picture2+'"/>');
-    $('#p3').html('<img src="'+data.travel_picture3+'"/>');
+    $('#p1').html('<img src="'+data.travel_picture2+'"/>');
+    $('#p2').html('<img src="'+data.travel_picture3+'"/>');
+    $('#p3').html('<img src="'+data.travel_picture4+'"/>');
     
     $('.p0').html('<img src="'+data.travel_picture+'"/>');
-    $('.p1').html('<img src="'+data.travel_picture1+'"/>');
-    $('.p2').html('<img src="'+data.travel_picture2+'"/>');
-    $('.p3').html('<img src="'+data.travel_picture3+'"/>');
+    $('.p1').html('<img src="'+data.travel_picture2+'"/>');
+    $('.p2').html('<img src="'+data.travel_picture3+'"/>');
+    $('.p3').html('<img src="'+data.travel_picture4+'"/>');
 
 
     var navInf = '';
@@ -396,7 +396,9 @@ function toIdPos(idValue) {
 function toReservePage() {
     var adultNum = $('#adultNum').val();
     var childNum = $('#childNum').val();
-    var url = '../order/addOrder.html?adult=' + adultNum + '&child=' + childNum;
+    var plan_seq = $('#line_plans').find('option:selected').val();
+    var url = '../order/addOrder.html?adult=' + adultNum + '&child=' + childNum + '&plan_seq=' + plan_seq;
+    
     window.location.href = url;
     
 }

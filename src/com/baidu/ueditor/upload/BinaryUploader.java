@@ -71,7 +71,7 @@ public class BinaryUploader {
 
 			String physicalPath = (String) conf.get("rootPath") + savePath;
 			
-			physicalPath = "/Users/tusuzer/pic" + savePath;
+			physicalPath = "/usr/local/pic" + savePath;
 
 			InputStream is = fileStream.openStream();
 			State storageState = StorageManager.saveFileByInputStream(is,
