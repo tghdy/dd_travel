@@ -5,6 +5,8 @@
     <title>文章AAAAAd</title>
     <link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/visa-list.css">
+    <script src="js/visa-list.js"></script>
+    <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
     <style>
         html {
             margin: auto;
@@ -617,11 +619,11 @@
             <!--国家信息-->
             <div>
                 <span>国家或地区</span>
-                <input type="text" style="height: 25px;width: 126px;">
+                <input type="text" style="height: 25px;width: 126px;" id="input">
             </div>
             <!--国家信息end-->
             <div class="search-btn-box">
-                <button class="search-btn">搜索</button>
+                <button class="search-btn" onclick="GitAllDetail()">搜索</button>
             </div>
 
         </div>
@@ -652,7 +654,7 @@
             搜索结果
         </h1>
         <!--内容-->
-        <ul>
+        <ul id="search_d">
             <li>
                 <img src="http://img1.vbooking.net/prd/201708/25/20170825093242604.jpg" alt="" width="">
                 <div class="visa-item-cnt">

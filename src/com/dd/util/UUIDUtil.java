@@ -2,7 +2,7 @@ package com.dd.util;
 
 import java.util.UUID;
 
-public class UuidUtil {
+public class UUIDUtil {
 	public static String getUUID() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
