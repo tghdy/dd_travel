@@ -1,0 +1,173 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5shiv.js"></script>
+    <script type="text/javascript" src="../lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/style.css"/>
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>地点管理</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 地点 <span
+        class="c-gray en">&gt;</span> 地点管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+                                              href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="mt-20">
+        <div class="mb-20">
+            <span class="select-box mt-5" style="width: 150px;">
+                <select class="select f-l" size="1" name="state" id="pids" onchange="updatePage(this);">
+                    <option value="-1" selected="">目的地</option>
+                </select>
+            </span>
+        </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
+                <i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            <a href="javascript:;" onclick="article_add('添加文章','article-add.html','','')"
+               class="btn btn-primary radius">
+                <i class="Hui-iconfont">&#xe600;</i> 添加文章</a>
+        </span>
+    </div>
+    <div class="mt-20">
+        <table id="example" class="table table-border table-bordered table-hover table-bg table-sort" cellspacing="0"
+               width="100%">
+            <thead>
+            <tr>
+                <th width="25"><input type="checkbox" name="" value=""></th>
+                <th width="19%">id</th>
+                <th width="19%">父id</th>
+                <th width="19%">地点名</th>
+                <th width="19%">地点描述</th>
+                <th width="19%">管理</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript" src="../lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script src="../../js/common-util.js"></script>
+<!--<script type="text/javascript" src="js/article-list.js"></script>-->
+<script type="text/javascript" src="../lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: 'get',
+                url: '/dd_travel_war/place',
+                data: {
+                    method: "selectAres",
+                    pid: 0
+                },
+                dataType: 'json',
+                success: function (json) {
+                    var ins = '';
+                    $(json.data).each(function (index, item) {
+                        
+                        if(getUrlParam('pid') == item.id) {
+                            ins +=
+                                '<option value="' + item.id + '" selected>' + item.place_name + '</option>';
+                        } else {
+                            ins +=
+                                '<option value="' + item.id + '">' + item.place_name + '</option>';
+                        }
+                        
+                    });
+                    $('#pids').append(ins); 
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                }
+            });
+            var table = $('#example').DataTable({
+                "ajax": {
+                    type: "get",
+                    url: "/dd_travel_war/place",
+                    data: {
+                        method: "selectAres",
+                        pid: getUrlParam("pid")
+                    },
+                    error: function (data) {
+                        console.log(data.msg);
+                    }
+                    
+                },
+                "columns": [
+                    {"defaultContent": '<input type="checkbox" value="" name="">'},
+                    {"data": "id"},
+                    {"data": "parent_id"},
+                    {"data": "place_name"},
+                    {"data": "place_desc"},
+                    {
+                        "data": "id",
+                        "className": "article-manage",
+                        "render": function (data, type, row, meta) {
+                            var res = '';
+                            res += '<a class="btn btn-primary" style="text-decoration:none" onClick="forwardPlaceEdit(' + data + ')" href="javascript:;" title="编辑地点信息">编辑</a>' +
+                                '<a class="btn btn-primary ml-10" style="text-decoration:none" onClick="place_del(this,' + data + ')" href="javascript:;" title="删除地点信息">删除</a>';
+                            return res;
+                        }
+                    }
+
+                ],
+            });
+        });
+
+        /*地点编辑*/
+        function forwardPlaceEdit(id) {
+            layer_show('地点编辑', 'place-edit.html?id=' + id);
+        }
+
+
+        /*地点-删除*/
+        function place_del(obj, id) {
+            layer.confirm('确认要删除吗？', function (index) {
+                $.ajax({
+                    type: "get",
+                    url: "/dd_travel_war/place",
+                    data: {
+                        method: 'deletePlace',
+                        id: id
+                    },
+                    dataType: 'json',
+                    success: function (json) {
+                        $(obj).parents("tr").remove();
+                        layer.msg('已删除!', {icon: 1, time: 1000});
+                    },
+                    error: function (data) {
+                        console.log(data.msg);
+                    },
+                });
+            });
+        }
+
+        function updatePage(o) {
+            window.location.href = '/dd_travel_war/H-ui.admin/place/place-list.html?pid=' + $(o).val();
+        }
+    </script>
+</div>
+</body>
+</html>

@@ -5,10 +5,21 @@
     <title>日历测试</title>
     <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
     <link rel="stylesheet" href="../css/rili.css">
+    <script !src="">
+
+        function demo() {
+            alert("tusuzer")
+        }
+
+    </script>
 
 </head>
 <body>
 <div id="res">
+    <!--<form action="/dd_travel_war/fileUpload" enctype="multipart/form-data" id="form1">-->
+        <!--<input type="file" value="tusuzer" onclick="deaa.click();">-->
+        <!--<input type="button" id="de" value="tusuzer" onclick="deaa.click();">-->
+    <!--</form>-->
     <table border="0" cellspacing="0" cellpadding="0" class="calendar" style="width: 580px;" id="calendar">
         <caption style="height: 41px;background-color:#d9d9d9;line-height: 41px;text-align:left;color: #f16a54;">
             本月班次日历
@@ -57,6 +68,44 @@
         </tbody>
     </table>
 </div>
+<!--<div>-->
+<!--<form method="post" action="../fileUpload" enctype="multipart/form-data">-->
+<!--选择一个文件:-->
+<!--<input type="file" name="hhh"/>-->
+<!--<br/><br/>-->
+<!--<input type="submit" value="上传"/>-->
+<!--</form>-->
+<!--</div>-->
+<div>
+    <form id="form1">
+        <!--<label for="exampleInputEmail1">头像</label>-->
+        <!--<input type="button" value="上传图片" onclick="f.click()" class="btn_mouseout"/><br>-->
+        <input type="file" id="f" name="f" onchange="" style=""/>
+        <input type="button"  id="" name="f" onclick="sc();" style="" value="上传吧"/>
+    </form>
+</div>
+
+<script !src="">
+    function sc() {
+        var data = new FormData($('#form1')[0]);
+        $.ajax({
+            url: "../fileUpload",
+            type: 'POST',
+            data: data,
+            dataType: 'JSON',
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (json) {
+                alert("msg");
+                console.log(json);
+
+            }
+        })
+        // return false;
+
+    }
+</script>
 
 <script !src="">
 
@@ -85,7 +134,7 @@
         //准备插入表格
         var flag = 0;//开始标记
         var nowIndex = 1;//当前待插入号数
-        
+
         // var planArryString = ['01, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 22];
         for (var i = 0; i <= rowNum; i++) {
             ins +=
@@ -159,8 +208,9 @@
         // document.write("本月最后一天：" + getCurrentMonthLast().getDate());
         var planArry = [1, 2, 3, 6, 7, 8, 9, 11, 13, 22];
         createCaldender(planArry);
-        
+
     });
 </script>
+</div>
 </body>
 </html>

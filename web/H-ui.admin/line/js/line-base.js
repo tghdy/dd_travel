@@ -1,27 +1,3 @@
-$(function () {
-    // $('#asd').attr("selected","selected");
-    selectLineBase();
-    // layer.msg('添加成功!',{icon:1});
-    
-});
-
-function getUrlParam(name){
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null)return decodeURI(r[2]);
-    return null;
-}
-
-
-function getValById(idValue) {
-    var res = '#' + idValue;
-    var tagName = $(res)[0].tagName;
-    if (tagName == 'SELECT')
-        return $(res).find('option:selected').val();
-    if (tagName == 'IMG')
-        return $(res).attr('src');
-    return $(res).val();
-}
 //创建线路基本信息（同时也会创建一条detail信息）
 function insertLineBase() {
     $.ajax({
@@ -153,13 +129,4 @@ function selectLineBase() {
         }
     });
 
-}
-function matchOptionAndValue(options, value) {
-    $(options).each(function (index, item) {
-        if($(item).val() == value) {
-            // console.log($(item).text()+$(item).val()+":"+value);
-            // console.log($(item).val() == value);
-            $(item).attr("selected","selected");
-        }
-    });
 }

@@ -80,7 +80,7 @@
         $('#example').DataTable( {
             "ajax": {
                 type: "get",
-                url: "/lineAdmin",
+                url: "/dd_travel_war/lineAdmin",
                 data: {
                     method: "selectLineScheduleList",
                     id:getUrlParam("id")
@@ -121,7 +121,7 @@
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
                 type: 'get',
-                url: '/lineAdmin',
+                url: '/dd_travel_war/lineAdmin',
                 dataType: 'json',
                 data: {
                     method: 'delSchedule',

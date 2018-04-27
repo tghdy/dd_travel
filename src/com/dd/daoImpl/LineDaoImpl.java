@@ -39,7 +39,7 @@ public class LineDaoImpl implements ILineDao {
 	@Override
 	public Map<String, Object> selectLineInf(int lineId) throws Exception{
 		String sql = "SELECT tl.*,ld.*,tp1.place_name fromName,tp2.place_name toName FROM travel_line tl, line_detail ld, travel_place tp1, travel_place tp2 " +
-				" WHERE tl.id=? AND ld.travel_from=tp1.id AND ld.travel_to=tp2.id";
+				" WHERE tl.id=? AND tl.id=ld.travel_id AND ld.travel_from=tp1.id AND ld.travel_to=tp2.id";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{lineId});
 	}
 
@@ -123,7 +123,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public Map<String, Object> selectLineDetail(int travelId) throws Exception{
-		String sql = "SELECT * FROM line_detail WHERE  travel_id = ?";
+		String sql = "SELECT * FROM line_detail ld, travel_place tp WHERE  travel_id = ? ld.";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{travelId});
 	}
 
@@ -140,7 +140,7 @@ public class LineDaoImpl implements ILineDao {
 	}
 
 	@Override
-	public int insertTravelLine(TravelLine travelLine) throws Exception {
+	public int insertTravelLine(TravelLine travelLine) {
 		int flag = 0;
 		Object[] lineParams = travelLine.params();
 		String lineSql = "insert into travel_line values (?,?,?,?,?,?,?,?,?,?,?)";
@@ -195,10 +195,10 @@ public class LineDaoImpl implements ILineDao {
 	@Override
 	public int updateLineDetail(LineDetail detail) throws Exception {
 		String sql = "update line_detail set travel_subtitle=?, travel_feature=?, travel_tips=?, travel_from=?, " +
-				"travel_to=?, travel_views=?,line_labels=?, travel_info=?, travel_picture=? where travel_id =?";
+				"travel_to=?, travel_views=?,line_labels=?, travel_info=?, travel_picture=?, travel_picture2=?, travel_picture3=?, travel_picture4=?, schedules_pdf=?  where travel_id =?";
 		return JdbcUtils_DBCP.update(sql, detail.updateParams());
 	}
-
+	
 	@Override
 	public int updateLinePlan(LinePlan plan) throws Exception {
 		String sql = "update line_plan set start_time=?, plan_price=?, plan_child_price=?, " +

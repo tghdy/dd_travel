@@ -25,7 +25,7 @@ li a.bb:hover {
 }
 
 .line_nav:hover {
-    border: 1px color #F86B4F;
+    border: 1px solid #F86B4F;
 }
 
 .line_nav:hover {
@@ -479,6 +479,7 @@ a {
     display: block;
     float: left;
 }
+/*右侧栏*/
 .right_sidebar {
     position: fixed;
     bottom: 0;
@@ -502,3 +503,4 @@ a {
 .active a {
     color: #fff;
 }
+/*右侧栏end*/

@@ -25,12 +25,12 @@
 </head>
 <body>
 <div class="page-container">
-    <form class="form form-horizontal" id="form-article-add">
+    <div class="form form-horizontal" id="form-article-add">
         <!--Id Head-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>ID：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="travel_id" name="">
+                <input type="text" class="input-text" value="" placeholder="" id="travel_id" name="" disabled="disabled">
             </div>
         </div>
         <!--Id End-->
@@ -61,14 +61,24 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">出发地点</label>
-            <div class="formControls col-xs-8 col-sm-9">
+            <label class="form-label col-xs-4 col-sm-2">出发地ID：</label>
+            <div class="formControls col-xs-8 col-sm-9" id="fromArea">
+                <select name="" class="selected areas">
+                    <option value=""></option>
+                </select>
+                <select name="" class="selected sonAreas">
+                    <option value=""></option>
+                </select>
                 <input type="text" class="input-text" value="0" placeholder="" id="travel_from" name="">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">目的地：</label>
-            <div class="formControls col-xs-8 col-sm-9">
+            <label class="form-label col-xs-4 col-sm-2">目的地ID：</label>
+            <div class="formControls col-xs-8 col-sm-9" id="toAreas">
+                <select name="" class="selected areas">
+                </select>
+                <select name="" class="selected sonAreas">
+                </select>
                 <input type="text" class="input-text" value="0" placeholder="" id="travel_to" name="">
             </div>
         </div>
@@ -78,12 +88,12 @@
                 <input type="text" class="input-text" value="0" placeholder="" id="travel_views" name="">
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">标签：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="line_labels" name="">
-            </div>
-        </div>
+        <!--<div class="row cl">-->
+            <!--<label class="form-label col-xs-4 col-sm-2">标签：</label>-->
+            <!--<div class="formControls col-xs-8 col-sm-9">-->
+                <!--<input type="text" class="input-text" value="0" placeholder="" id="line_labels" name="">-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">其他信息：</label>
             <div class="formControls col-xs-8 col-sm-9">
@@ -93,23 +103,55 @@
                 <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
             </div>
         </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">图片：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <img style="width: 300px;height: 300px;display: block;"
-                     src="http://img1.vbooking.net/prd/201708/15/20170815182525231.jpg" alt="阿斯顿" id="travel_picture">
-                <span class="btn-upload form-group mt-20">
-				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont"></i> 浏览文件</a>
-				<input type="file" multiple="" name="file-2" class="input-file valid">
-                <button id="btn-upload" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
-				</span>
-                <!--<input type="text" class="input-text" value="0" placeholder="" id="travel_picture" name="">-->
-                <!--<input type="file" class="webuploader-pick" value="">-->
-                <!--<button id="btn-upload" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>-->
+        <form action="/dd_travel_war/fileUpload" enctype="multipart/form-data" id="form1">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">图片：</label>
+                <div class="formControls col-xs-8 col-sm-9" id="line_photos">
+                    <div class="col-sm-3">
+                        <img style="width: 200px;height: 200px;display: block;"
+                             src="" alt="未上传图片" id="travel_picture">
+                        <span class="btn-upload form-group mt-20">
+                            <input type="file" name="p1" onchange="" style=""/>
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <img style="width: 200px;height: 200px;display: block;"
+                             src="" alt="未上传图片" id="travel_picture2">
+                        <span class="btn-upload form-group mt-20">
+                            <input type="file" name="p2" onchange="" style=""/>
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <img style="width: 200px;height: 200px;display: block;"
+                             src="" alt="未上传图片" id="travel_picture3">
+                        <span class="btn-upload form-group mt-20">
+                            <input type="file" name="p3" onchange="" style=""/>
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <img style="width: 200px;height: 200px;display: block;"
+                             src="" alt="未上传图片" id="travel_picture4">
+                        <span class="btn-upload form-group mt-20">
+                            <input type="file" name="p4" onchange="" style=""/>
+                        </span>
+                    </div>
+                    <input type="button" class="btn btn-primary radius" onclick="uploadPicture();" style="" value="上传图片"/>
+                </div>
             </div>
-            <div class="formControls col-xs-8 col-sm-9 col-sm-offset-2 col-xs-offset-4 mt-20"> 
+        </form>
+        <form action="/dd_travel_war/fileUpload" enctype="multipart/form-data" id="form2">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">日程pdf文件：</label>
+                <div class="formControls col-xs-8 col-sm-9" id="">
+                    <span class="btn-upload form-group">
+                        <input type="file" name="pdf" onchange="" style=""/>
+                    </span>
+                    <br>
+                    <input type="text" style="display: none;" id="schedules_pdfz">
+                    <input type="button" class="btn btn-primary radius" onclick="uploadPdf();" style="" value="上传日程pdf"/>
+                </div>
             </div>
-        </div>
+        </form>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
                 <button onClick="updateLineDetail();" class="btn btn-secondary radius" type="button"> 保存
@@ -119,7 +161,7 @@
                 </button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 
@@ -135,6 +177,13 @@
 <script type="text/javascript" src="../lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript" src="../lib/webuploader/0.1.5/webuploader.min.js"></script>
 
+<script src="../../js/common-util.js"></script>
 <script type="text/javascript" src="./js/line-detail.js"></script>
+
+<script>
+    $(function() {
+        selectLineDetail();
+    })
+</script>
 </body>
 </html>

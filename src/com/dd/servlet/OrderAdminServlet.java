@@ -69,7 +69,7 @@ public class OrderAdminServlet extends HttpServlet {
 			}
 
 			jsonData = new JsonData(JsonData.FAILED, "为空", list);
-			System.out.println(jsonData);
+			//System.out.println(jsonData);
 			
 		} catch (Exception e) {
 			jsonData = new JsonData(JsonData.FAILED, "异常");

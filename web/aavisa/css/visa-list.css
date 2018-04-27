@@ -556,7 +556,7 @@ li {
     color: #666;
     line-height: 42px;
     font-size: 12px;
-    border-bottom: 1px dotted #cecece;
+    border-bottom: 1px dashed #cecece;
 }
 
 .right-box {
@@ -610,3 +610,42 @@ li {
     border-radius: 4px;
     background: #f86b4f;
 }
+.cities-box {
+    margin: 20px 10px;
+    border-top: 1px dashed #dcdcdc;
+}
+
+.cities-box a {
+    height: 23px;
+    line-height: 23px;
+    padding-right: 15px;
+    font-size: 12px;
+}
+a:hover {
+    color: #f86b4f;
+}
+/*右侧栏*/
+.right_sidebar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 42px;
+    height: 100%;
+    background: #333;
+    z-index: 10001;
+}
+.right-icon:hover {
+    color: #fff !important;
+}
+.my_top {
+    border-top: 1px solid #454545;
+    position: absolute;
+    bottom: 39px;
+}
+.active {
+    background-color: #f16a54;
+}
+.active a {
+    color: #fff;
+}
+/*右侧栏end*/

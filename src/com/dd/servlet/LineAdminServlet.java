@@ -10,6 +10,7 @@ import com.dd.util.BeanUtil;
 import com.dd.util.JsonData;
 import com.sun.org.apache.xerces.internal.impl.xs.util.LSInputListImpl;
 import jdk.nashorn.internal.scripts.JD;
+import org.json.JSONArray;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -159,7 +160,9 @@ public class LineAdminServlet extends HttpServlet {
 		}
 	}
 
+	
 	private void selectLinePlan(HttpServletRequest request, HttpServletResponse response) {
+		JSONArray jsonArray = new JSONArray("asd");
 		JsonData jsonData = null;
 		Integer id;
 		Integer seq;
@@ -190,7 +193,7 @@ public class LineAdminServlet extends HttpServlet {
 			if (list != null) {
 				jsonData = new JsonData(JsonData.SUCCESS, "获取成功", list);
 			} else {
-				jsonData = new JsonData(JsonData.FAILED, "结果为空");
+				jsonData = new JsonData(JsonData.FAILED, "结果为空", list);
 			}
 		} catch (Exception e) {
 			jsonData = new JsonData(JsonData.FAILED, "发生错误");

@@ -360,6 +360,13 @@
     height: 90%;
 }
 
+.pic_fir img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*右侧导航栏*/
 .right_sidebar {
     position: fixed;
     bottom: 0;

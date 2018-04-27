@@ -23,23 +23,23 @@ function initOrderPage() {
         data: {
             method: 'orderPageInit',
             id: 1,
-            seq: 1
+            seq: getUrlParam('plan_seq')
         },
         dataType: 'json',
         success: function (json) {
+            console.log(json);
             // console.log("success");
             var data = json.data;
             console.log(data);
             
             //初始化线路相关的几个值
-            seq = data.linePlan.travel_id;
+            seq = data.linePlan.seq;
             travelId = data.linePlan.travel_id;
             travelNo = data.lineInf.travel_no;
             childPrice = data.linePlan.plan_child_price;
             adultPrice = data.linePlan.plan_price;
             //更新面板
             updatePricePanel();
-
             
             $('#travel_name').text(data.lineInf.travel_name);
             $('#fromName').text(data.lineInf.fromName);
@@ -66,6 +66,7 @@ function updatePricePanel() {
     var adultNum = getValById('adult');
     
     var total = adultNum * adultPrice +  childNum * childPrice;
+    
 
     var ins = '';
     ins +=
@@ -88,7 +89,8 @@ function insertOrder() {
             travelId: travelId,
             seq: seq,
             adult: getValById('adult'),
-            child: getValById('child')
+            child: getValById('child'),
+            planSeq:getUrlParam('seq_plan')
         },
         dataType: 'json',
         success: function (json) {
@@ -101,7 +103,6 @@ function insertOrder() {
                 alert(json.msg);
                 console.log('生成订单失败');
             }
-            
 
         },
         error: function (data) {
@@ -143,6 +144,7 @@ function insertOrderDetail(id) {
         },
         dataType: 'json',
         success: function (json) {
+            alert('暗色调');
             console.log("insert order detail success");
             window.location.href='../order-list/dingDanSearch.html'
 
