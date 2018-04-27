@@ -91,7 +91,7 @@ function getCurrentMonthFirst(m) {
 <!--获取某月最后一天-->
 function getCurrentMonthLast(m) {
     var now = new Date();
-    // var currentMonth=date.getMonth();
+    // var currentMonth=date.getMonth();};
     var nextMonth = ++m;
     var nextMonthFirstDay = new Date(now.getFullYear(), nextMonth, 1);
     var oneDay = 1000 * 60 * 60 * 24;
@@ -100,5 +100,5 @@ function getCurrentMonthLast(m) {
 
 //返回顶部
 function toUp() {
-    $("html,body").animate({scrollTop:0}, 500);
-};
+    $("html,body").animate({scrollTop: 0}, 500);
+}
