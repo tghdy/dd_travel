@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/visa")
@@ -26,6 +27,28 @@ public class VisaServlet extends HttpServlet {
         String method = request.getParameter("method");
         if ("visaAllInf".equals(method)) {
             visaAllInf(request, response);
+        }
+        if ("getAllInf".equals(method)) {
+            getAllInf(request, response);
+        }
+    }
+
+    private void getAllInf(HttpServletRequest request, HttpServletResponse response) {
+        JsonData jsonData = null;
+        try {
+            String inf = request.getParameter("inf");
+            List<Map<String, Object>> list = visaService.selectVisa(inf);
+
+            if (list != null) {
+                jsonData = new JsonData(JsonData.SUCCESS, "获取成功", list);
+            } else {
+                jsonData = new JsonData(JsonData.FAILED, "无结果");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonData = new JsonData(JsonData.FAILED, "异常");
+        } finally {
+            output(response, jsonData);
         }
     }
 
