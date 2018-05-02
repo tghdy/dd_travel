@@ -3,14 +3,592 @@
 <head>
     <meta charset="UTF-8">
     <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
-    <script src="js/testLine.js"></script>
-    <!--<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
     <script type="text/javascript">
-        // alert("asd");
-        console.log(location.host);
     </script>
+    <link rel="stylesheet" type="text/css" href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        * {
+            outline: none;
+        }
+        
+        h1 {
+            height: 52px;
+            margin: 0;
+            float: left;
+        }
+
+        ul {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+        }
+
+        .f-l {
+            float: left;
+        }
+
+        .f-r {
+            float: right;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .ml-20 {
+            margin-left: 20px;
+        }
+
+        .ml-10 {
+            margin-left: 10px;
+        }
+
+        .head-cnt {
+            /*background-color: #fff;*/
+            width: 1000px;
+            height: 52px;
+            line-height: 52px;
+            margin: 0 auto;
+            /*transform: translateX(50%);*/
+            z-index: 100;
+        }
+        .is-fixed {
+            position: fixed;
+            margin:0 auto;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            z-index: 100;
+        }
+
+        .head-cnt h1 {
+            color: #0084ff;
+        }
+
+        .head-cnt li {
+            font-size: 15px;
+            color: #8590a6;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .search-area input {
+            height: 25px;
+            width: 200px;
+        }
+
+        .search-area button, .btn-blue {
+            height: 30px;
+            cursor: pointer;
+            background-color: #148cf1 !important;
+            color: #fff;
+            border-radius: 3px;
+        }
+
+        i {
+            color: #878fa6;
+        }
+
+        .user-area, .ycenter {
+            display: flex; /*Flex布局*/
+            display: -webkit-flex; /* Safari */
+            align-items: center; /*指定垂直居中*/
+        }
+
+        .container {
+            width: 100%;
+            padding-top: 20px;
+            background-color: #f6f6f6;
+        }
+
+        .main-cnt {
+            width: 1000px;
+            margin: 0 auto;
+            background-color: #f6f6f6;
+
+        }
+
+        .main-cnt * {
+            background-color: #fff;
+
+        }
+
+        .active-nav {
+            padding: 10px 20px;
+            border-radius: 2px;
+            border: 1px solid #6a6a6a;
+        }
+
+        .article-wrap {
+            background-color: #f6f6f6;
+        }
+
+        .article-item {
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            border: 1px solid #6a6a6a;
+            border-radius: 2px;
+        }
+
+        .article-title {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #8590a6;
+        }
+
+        .author-box {
+            display: flex; /*Flex布局*/
+            display: -webkit-flex; /* Safari */
+            align-items: center; /*指定垂直居中*/
+        }
+
+        .author-box img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .author-name {
+            margin-left: 10px;
+            font-weight: 600;
+            color: #000;
+        }
+        
+        .hide-text {
+            width: 100%;
+            /*height: 50px;*/
+            overflow:hidden;
+            text-overflow:ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+        
+
+        .publish-time span {
+            font-size: 14px;
+            color: #8590a6;
+        }
+
+        .comment-box {
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .comment-box * {
+            cursor: pointer;
+        }
+
+        .comment-box button {
+            font-size: 17px;
+            border: 0;
+            color: #0084ff;
+            border-radius: 3px;
+            background-color: #ebf2fa !important;
+        }
+
+        .btn i {
+            background-color: #ebf2fa;
+        }
+        .comment-area {
+            font-size: 14px;
+            color: #3d3d3d;
+            margin-left: 700px;
+        }
+        .comments-box {
+            width: 960px;
+            margin: 0 auto;
+            border: 1px solid #ebebeb;
+        }
+        .comments-title {
+            margin: 0;
+            padding: 10px 10px;
+            font-size: 15px;
+            border-bottom: 1px solid #ebebeb;
+        }
+        /*comment-cnt*/
+        .comments-cnt {
+        }
+        .comment-item {
+            padding: 15px;
+            border-bottom: 1px solid #ebebeb;
+        }
+        .comment-man img {
+            width: 24px;
+            height: 24px;
+        }
+        .comment-man span {
+            font-size: 15px;
+        }
+        .comment-text {
+            margin-top: 10px;
+        }
+        .comment-footer span{
+            color: #8590a6;
+            cursor: pointer;
+        }
+        .reply-box textarea {
+            width: 100%;
+            height: 50px;
+        }
+    </style>
     <title>测试</title>
 </head>
 <body>
+<div class="container-wrap">
+    <div style="width: 100%;background-color: #fff;height: 52px;" class="head-wrap">
+        <div class="head-cnt">
+            <h1>懂乎</h1>
+            <ul class="ml-20 f-l">
+                <li>博客广场</li>
+                <li>我的博客</li>
+            </ul>
+            <div class="search-area f-l ml-20">
+                <input type="text">
+                <button>搜索</button>
+            </div>
+            <div class="f-r user-area">
+                <a href="${root}/"><i class="Hui-iconfont Hui-iconfont-system" style="font-size: 25px;"></i></a>
+                <img src="head.jpg" alt="" style="width: 30px;height: 30px;margin-left: 30px;">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main-cnt">
+            <div class="active-nav">
+                <span>
+                    <i class="Hui-iconfont Hui-iconfont-system" style="font-size: 25px;"></i>
+                    写文章
+                </span>
+                <span>
+                    <i class="Hui-iconfont Hui-iconfont-system" style="font-size: 25px;"></i>
+                    写文章
+                </span>
+            </div>
+            <div class="article-wrap mt-10">
+                <div class="article-item">
+                    <div class="article-title">道儿直接</div>
+                    <div class="author-box">
+                        <a href=""><img src="head.jpg" alt=""></a>
+                        <span class="author-name">老道，</span>
+                    </div>
+                    <div class="article-box hide-text">
+                        <div style="position:relative;">
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                        </div>
+                    </div>
+                    <div class="f-r">
+                        <button class="btn-blue mt-10" onclick="showFullArticle(this);">阅读全文</button>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="comment-box ycenter">
+                        <div class="f-l">
+                            <button class="btn dianzan">
+                                <i class="Hui-iconfont Hui-iconfont-arrow2-top" style="font-size: 25px;"></i>
+                                赞
+                            </button>
+                            <button class="btn ml-10 diancai">
+                                <i class="Hui-iconfont Hui-iconfont-arrow2-bottom" style="font-size: 25px;"></i>
+                                踩
+                            </button>
+                        </div>
+                        <div class="ml-20 comment-area" onclick="hideCommentsBox(this)">
+                            <i class="Hui-iconfont Hui-iconfont-comment"></i>
+                            288条评论
+                        </div>
+                    </div>
+                    <div class="publish-time">
+                        <span data-tooltip="发布于 2018-04-06 12:15">编辑于 2018-04-06</span>
+                    </div>
+                    <div class="comments-box">
+                        <h2 class="comments-title">79条评论</h2>
+                        <div class="comments-cnt">
+                            <div class="comment-item">
+                                <div class="comment-man ycenter">
+                                    <img src="head.jpg" alt="">
+                                    <span class="ml-20">
+                                        阿桑
+                                    </span>
+                                </div>
+                                <div class="comment-text">
+                                    立培……
+                                </div>
+                                <div class="comment-footer">
+                                    <span>
+                                        <i class="Hui-iconfont Hui-iconfont-canshu" style="font-size: 14px;"></i>
+                                        查看对话
+                                    </span>
+                                    <span class="ml-10" onclick="showReply(this)">
+                                        <i class="Hui-iconfont Hui-iconfont-comment" style="font-size: 14px;"></i>
+                                        回复
+                                    </span>
+                                    <div class="reply-box">
+                                        <textarea type="text" value="内容就是这个"></textarea>
+                                        <input type="button" value="取消" class="f-r btn-blue" onclick="hideReply(this)">
+                                        <input type="button" value="评论" class="f-r btn-blue">
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <div class="comment-man ycenter">
+                                    <img src="head.jpg" alt="">
+                                    <span class="ml-20">
+                                        阿桑
+                                    </span>
+                                </div>
+                                <div class="comment-text">
+                                    立培……
+                                </div>
+                                <div class="comment-footer">
+                                    <span>
+                                        <i class="Hui-iconfont Hui-iconfont-canshu" style="font-size: 14px;"></i>
+                                        查看对话
+                                    </span>
+                                    <span class="ml-10" onclick="showReply(this)">
+                                        <i class="Hui-iconfont Hui-iconfont-comment" style="font-size: 14px;"></i>
+                                        回复
+                                    </span>
+                                    <div class="reply-box">
+                                        <textarea type="text" value="内容就是这个"></textarea>
+                                        <input type="button" value="取消" class="f-r btn-blue" onclick="hideReply(this)">
+                                        <input type="button" value="评论" class="f-r btn-blue">
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <div class="comment-man ycenter">
+                                    <img src="head.jpg" alt="">
+                                    <span class="ml-20">
+                                        阿桑
+                                    </span>
+                                </div>
+                                <div class="comment-text">
+                                    立培……
+                                </div>
+                                <div class="comment-footer">
+                                    <span>
+                                        <i class="Hui-iconfont Hui-iconfont-comment" style="font-size: 14px;"></i>
+                                        查看对话
+                                    </span>
+                                    <span class="ml-10" onclick="showReply(this)">
+                                        <i class="Hui-iconfont Hui-iconfont-daipingjia" style="font-size: 14px;"></i>
+                                        回复
+                                    </span>
+                                    <div class="reply-box">
+                                        <textarea type="text" value="内容就是这个"></textarea>
+                                        <input type="button" value="取消" class="f-r btn-blue" onclick="hideReply(this)">
+                                        <input type="button" value="评论" class="f-r btn-blue">
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <div class="article-title">道儿直接</div>
+                    <div class="author-box">
+                        <a href=""><img src="head.jpg" alt=""></a>
+                        <span class="author-name">老道，</span>
+                    </div>
+                    <div class="article-box">
+                        <span class="RichText CopyrightRichText-richText" itemprop="text">
+                            <p>学校门口，有个老爷爷，卖水，一瓶一块钱的水卖两块，但是同学们都很有爱心，也会经常买水。但是后来发现，那个老爷爷根本就是逼你买水，强买强卖。还有给钱不找。</p><p>还有一个老奶奶，就在学校门口找学生要钱，有天一个180多的男生，买了个烤面筋，还没吃，那个老奶奶，就直接拉住那个男的，说，让我咬一口，给我吧，男生挺纠结，但是还是给了她，她连句谢谢都没说，直接咬着就走。</p>
+                            <p>反正让人觉得很不舒服</p>
+                        </span>
+                    </div>
+                    <div class="comment-box ycenter">
+                        <div class="f-l">
+                            <button class="btn">
+                                <i class="Hui-iconfont Hui-iconfont-arrow2-top" style="font-size: 25px;"></i>
+                                赞
+                            </button>
+                            <button class="btn ml-10">
+                                <i class="Hui-iconfont Hui-iconfont-arrow2-bottom" style="font-size: 25px;"></i>
+                                踩
+                            </button>
+                        </div>
+                        <div class="ml-20 comment-area" onclick="hideCommentsBox(this)">
+                            <i class="Hui-iconfont Hui-iconfont-comment"></i>
+                            288条评论
+                        </div>
+                    </div>
+                    <div class="publish-time">
+                        <span data-tooltip="发布于 2018-04-06 12:15">编辑于 2018-04-06</span>
+                    </div>
+                    <div class="comments-box">
+                        <h2 class="comments-title">79条评论</h2>
+                        <div class="comments-cnt">
+                            <div class="comment-item">
+                                <div class="comment-man ycenter">
+                                    <img src="head.jpg" alt="">
+                                    <span class="ml-20">
+                                        阿桑
+                                    </span>
+                                </div>
+                                <div class="comment-text">
+                                    立培……
+                                </div>
+                                <div class="comment-footer">
+                                    <span>
+                                        <i class="Hui-iconfont Hui-iconfont-canshu" style="font-size: 14px;"></i>
+                                        查看对话
+                                    </span>
+                                    <span class="ml-10" onclick="showReply(this)">
+                                        <i class="Hui-iconfont Hui-iconfont-comment" style="font-size: 14px;"></i>
+                                        回复
+                                    </span>
+                                    <div class="reply-box">
+                                        <textarea type="text" value="内容就是这个"></textarea>
+                                        <input type="button" value="取消" class="f-r btn-blue" onclick="hideReply(this)">
+                                        <input type="button" value="评论" class="f-r btn-blue">
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <div class="comment-man ycenter">
+                                    <img src="head.jpg" alt="">
+                                    <span class="ml-20">
+                                        阿桑
+                                    </span>
+                                </div>
+                                <div class="comment-text">
+                                    立培……
+                                </div>
+                                <div class="comment-footer">
+                                    <span>
+                                        <i class="Hui-iconfont Hui-iconfont-canshu" style="font-size: 14px;"></i>
+                                        查看对话
+                                    </span>
+                                    <span class="ml-10" onclick="showReply(this)">
+                                        <i class="Hui-iconfont Hui-iconfont-comment" style="font-size: 14px;"></i>
+                                        回复
+                                    </span>
+                                    <div class="reply-box">
+                                        <textarea type="text" value="内容就是这个"></textarea>
+                                        <input type="button" value="取消" class="f-r btn-blue" onclick="hideReply(this)">
+                                        <input type="button" value="评论" class="f-r btn-blue">
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <div class="comment-man ycenter">
+                                    <img src="head.jpg" alt="">
+                                    <span class="ml-20">
+                                        阿桑
+                                    </span>
+                                </div>
+                                <div class="comment-text">
+                                    立培……
+                                </div>
+                                <div class="comment-footer">
+                                    <span>
+                                        <i class="Hui-iconfont Hui-iconfont-comment" style="font-size: 14px;"></i>
+                                        查看对话
+                                    </span>
+                                    <span class="ml-10" onclick="showReply(this)">
+                                        <i class="Hui-iconfont Hui-iconfont-daipingjia" style="font-size: 14px;"></i>
+                                        回复
+                                    </span>
+                                    <div class="reply-box">
+                                        <textarea type="text" value="内容就是这个"></textarea>
+                                        <input type="button" value="取消" class="f-r btn-blue" onclick="hideReply(this)">
+                                        <input type="button" value="评论" class="f-r btn-blue">
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script !src="">
+    var commentNum = 239;
+    
+    function showReply(o) {
+        $(o).siblings('.reply-box').show();
+    }
+    function hideReply(o) {
+        $(o).parent().hide();
+    }
+    function hideCommentsBox(o) {
+        $(o).html('<i class="Hui-iconfont Hui-iconfont-comment"></i>'+commentNum+'条评论');
+        $(o).attr('onclick', 'showCommentsBox(this)');
+        $(o).parent().siblings('.comments-box').hide();
+    }
+    function showCommentsBox(o) {
+        $(o).html('<i class="Hui-iconfont Hui-iconfont-comment"></i>收起评论');
+        $(o).attr('onclick', 'hideCommentsBox(this)');
+        $(o).parent().siblings('.comments-box').show();
+    }
+    function showFullArticle(o) {
+        $(o).text('收起');
+        $(o).parent().siblings('.article-box').removeClass('hide-text');
+        $(o).attr('onclick', 'hideFullArticle(this)');
+    }
+    function hideFullArticle(o) {
+        $(o).text('阅读全文');
+        $(o).parent().siblings('.article-box').addClass('hide-text');
+        $(o).attr('onclick', 'showFullArticle(this)');
+    }
+
+    $(function () {
+        $(window).scroll(function () {
+            console.log()
+            var topPos = $('.head-wrap')[0].offsetTop - $(window).scrollTop();
+            console.log(topPos);
+            if (topPos >= -52) {
+                $('.head-wrap').removeClass('is-fixed');
+                console.log("大于执行")
+            }
+            if (topPos < -52) {
+                $('.head-wrap').addClass('is-fixed');
+            }
+            
+            
+    
+        });
+    })
+
+</script>
 </body>
 </html>

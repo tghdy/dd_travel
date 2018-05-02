@@ -6,26 +6,27 @@
     <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
     <script !src="">
         $(function () {
+            $('#one').prepend(''+'<h2>as大所大所嗲多</h2>');
             alert($('#one').offset().top);
             alert($('#one').offset().left);
-            $.ajax({
-                type: 'get',
-                url: 'demo.json',
-                dataType: 'json',
-                success: function (json) {
-                    // console.log(json);
-                },
-                error: function (data) {
-                    console.log("asda")
-                    console.log(data.msg);
-                }
-            });
+            // $.ajax({
+            //     type: 'get',
+            //     url: 'demo.json',
+            //     dataType: 'json',
+            //     success: function (json) {
+            //         // console.log(json);
+            //     },
+            //     error: function (data) {
+            //         console.log("asda")
+            //         console.log(data.msg);
+            //     }
+            // });
         })
     </script>
 </head>
 <body>
 <div id="one" style="margin-left: 30px;margin-top: 30px;">
-    asdasd
+    
 </div>
 </body>    
 </body>

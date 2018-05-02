@@ -1,5 +1,7 @@
 package com.dd.entity;
 
+import org.omg.CORBA.SetOverrideType;
+
 public class LineDetail {
 	private Long travelId;//线路id
 
@@ -18,6 +20,12 @@ public class LineDetail {
 	private String lineLabels;//线路标签
 
 	private String travelInfo;//线路信息
+
+	private String reserveInfo;//预定信息
+
+	private String warmPrompt;//温馨提示
+	
+	private String toInfo;//目的地信息
 	
 	private String travelPicture;//线路首图
 	
@@ -28,7 +36,13 @@ public class LineDetail {
 	private String travelPicture4;//线路图4
 
 	private String schedulesPdf;//日程pdf地址
+
+	private String seoTitle;
+
+	private String seoKey;
 	
+	private String seoDesc;
+
 	public Long getTravelId() {
 		return travelId;
 	}
@@ -101,6 +115,30 @@ public class LineDetail {
 		this.travelInfo = travelInfo;
 	}
 
+	public String getReserveInfo() {
+		return reserveInfo;
+	}
+
+	public void setReserveInfo(String reserveInfo) {
+		this.reserveInfo = reserveInfo;
+	}
+
+	public String getWarmPrompt() {
+		return warmPrompt;
+	}
+
+	public void setWarmPrompt(String warmPrompt) {
+		this.warmPrompt = warmPrompt;
+	}
+
+	public String getToInfo() {
+		return toInfo;
+	}
+
+	public void setToInfo(String toInfo) {
+		this.toInfo = toInfo;
+	}
+
 	public String getTravelPicture() {
 		return travelPicture;
 	}
@@ -141,6 +179,30 @@ public class LineDetail {
 		this.schedulesPdf = schedulesPdf;
 	}
 
+	public String getSeoTitle() {
+		return seoTitle;
+	}
+
+	public void setSeoTitle(String seoTitle) {
+		this.seoTitle = seoTitle;
+	}
+
+	public String getSeoKey() {
+		return seoKey;
+	}
+
+	public void setSeoKey(String seoKey) {
+		this.seoKey = seoKey;
+	}
+
+	public String getSeoDesc() {
+		return seoDesc;
+	}
+
+	public void setSeoDesc(String seoDesc) {
+		this.seoDesc = seoDesc;
+	}
+
 	@Override
 	public String toString() {
 		return "LineDetail{" +
@@ -153,16 +215,23 @@ public class LineDetail {
 				", travelViews=" + travelViews +
 				", lineLabels='" + lineLabels + '\'' +
 				", travelInfo='" + travelInfo + '\'' +
+				", reserveInfo='" + reserveInfo + '\'' +
+				", warmPrompt='" + warmPrompt + '\'' +
+				", toInfo='" + toInfo + '\'' +
 				", travelPicture='" + travelPicture + '\'' +
 				", travelPicture2='" + travelPicture2 + '\'' +
 				", travelPicture3='" + travelPicture3 + '\'' +
 				", travelPicture4='" + travelPicture4 + '\'' +
+				", schedulesPdf='" + schedulesPdf + '\'' +
+				", seoTitle='" + seoTitle + '\'' +
+				", seoKey='" + seoKey + '\'' +
+				", seoDesc='" + seoDesc + '\'' +
 				'}';
 	}
 
 	public Object[] updateParams() {
 		return new Object[]{travelSubtitle, travelFeature, travelTips, travelFrom, travelTo, travelViews, lineLabels, 
-				travelInfo, travelPicture,  travelPicture2,  travelPicture3,  travelPicture4, schedulesPdf, travelId};
+				travelInfo, reserveInfo, warmPrompt, toInfo, travelPicture, travelPicture2,  travelPicture3,  travelPicture4, schedulesPdf, seoTitle, seoKey, seoDesc, travelId};
 	}
 	
 }

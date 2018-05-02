@@ -1,3 +1,34 @@
+function initAreaInfo() {
+    $.ajax({
+        type: 'get',
+        url: '/dd_travel_war/place',
+        data: {
+            method: 'selectAres',
+            pid:0
+        },
+        dataType: 'json',
+        success: function (json) {
+            if (json.flag == 1) {
+                var data = json.data;
+                var fromAreaInf = '';
+                var toAreaInf = '';
+                var ins = '';
+                
+                $(data).each(function (index, item) {
+                    ins +=
+                        '<option value="'+item.id+'">'+item.place_name+'</option>';
+                })
+                $('#fromAreas').html(ins);
+                $('#toAreas').html(ins);
+                
+            }
+        },
+        error: function (data) {
+            console.log(data.msg);
+        }
+    });
+}
+
 function selectLineDetail() {
     var id = getUrlParam("id");
     $.ajax({
@@ -19,15 +50,20 @@ function selectLineDetail() {
                 $('#travel_subtitle').val(data.travel_subtitle);
                 $('#travel_feature').val(data.travel_feature);
                 $('#travel_tips').val(data.travel_tips);
-                // $('#travel_from').val(data.travel_from);
-                // $('#travel_to').val(data.travel_to);
                 $('#travel_views').val(data.travel_views);
                 $('#line_labels').val(data.line_labels);
                 $('#travel_info').val(data.travel_info);
+                $('#reserve_info').val(data.reserve_info);
+                $('#warm_prompt').val(data.warm_prompt);
+                $('#to_info').val(data.to_info);
                 $('#travel_picture').attr("src",data.travel_picture);
                 $('#travel_picture2').attr("src",data.travel_picture2);
                 $('#travel_picture3').attr("src",data.travel_picture3);
                 $('#travel_picture4').attr("src",data.travel_picture4);
+                $('#seo_title').val(data.seo_title);
+                $('#seo_key').val(data.seo_key);
+                $('#seo_desc').val(data.seo_desc);
+                
             }
         },
         error: function (data) {
@@ -43,16 +79,19 @@ function updateLineDetail() {
         travelSubtitle:getValById('travel_subtitle'),
         travelFeature:getValById('travel_feature'),
         travelTips:getValById('travel_tips'),
-        travelFrom:getValById('travel_from'),
-        travelTo:getValById('travel_to'),
+        travelFrom:getValById('fromAreas'),
+        travelTo:getValById('toAreas'),
         travelViews:getValById('travel_views'),
         // lineLabels:getValById('line_labels'),
         travelInfo:getValById('travel_info'),
+        reserveInfo:getValById('reserve_info'),
+        warmPrompt:getValById('warm_prompt'),
+        toInfo:getValById('to_info'),
         travelPicture:getValById('travel_picture'),
         travelPicture2:getValById('travel_picture2'),
         travelPicture3:getValById('travel_picture3'),
         travelPicture4:getValById('travel_picture4'),
-        uploadPdf:getValById()
+        schedulesPdf:getValById('schedules_pdf')
     })
     $.ajax({
         type: "post",
@@ -64,15 +103,23 @@ function updateLineDetail() {
                 travelSubtitle:getValById('travel_subtitle'),
                 travelFeature:getValById('travel_feature'),
                 travelTips:getValById('travel_tips'),
-                travelFrom:getValById('travel_from'),
-                travelTo:getValById('travel_to'),
+                travelFrom:getValById('fromAreas'),
+                travelTo:getValById('toAreas'),
                 travelViews:getValById('travel_views'),
                 // lineLabels:getValById('line_labels'),
                 travelInfo:getValById('travel_info'),
+                reserveInfo:getValById('reserve_info'),
+                warmPrompt:getValById('warm_prompt'),
+                toInfo:getValById('to_info'),
                 travelPicture:getValById('travel_picture'),
                 travelPicture2:getValById('travel_picture2'),
                 travelPicture3:getValById('travel_picture3'),
                 travelPicture4:getValById('travel_picture4'),
+                schedulesPdf:getValById('schedules_pdf'),
+                seoTitle:getValById('seo_title'),
+                seoKey:getValById('seo_key'),
+                seoDesc:getValById('seo_desc'),
+                
             })
         },
         dataType: 'json',
@@ -106,8 +153,9 @@ function uploadPicture() {
         contentType: false,
         success: function (json) {
             console.log(json);
-            $('#line_photos').find('img').each(function (index, item) {
+                $('#line_photos').find('img').each(function (index, item) {
                 if (index < json.data.length) {
+                    //回显上传完成的图片
                     $(this).attr("src", '/upload/' + json.data[index]);
                 }
             })

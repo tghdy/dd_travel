@@ -1,4 +1,4 @@
-package com.dd.daoImpl;
+	package com.dd.daoImpl;
 
 import com.dd.dao.ILineDao;
 import com.dd.dto.LineSearchItem;
@@ -10,7 +10,6 @@ import com.dd.util.JdbcUtils_DBCP;
 import com.dd.util.TransactionUtil;
 
 import java.math.BigInteger;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -123,7 +122,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public Map<String, Object> selectLineDetail(int travelId) throws Exception{
-		String sql = "SELECT * FROM line_detail ld, travel_place tp WHERE  travel_id = ? ld.";
+		String sql = "SELECT * FROM line_detail WHERE  travel_id = ?";
 		return JdbcUtils_DBCP.selectMap(sql, new Object[]{travelId});
 	}
 
@@ -195,7 +194,9 @@ public class LineDaoImpl implements ILineDao {
 	@Override
 	public int updateLineDetail(LineDetail detail) throws Exception {
 		String sql = "update line_detail set travel_subtitle=?, travel_feature=?, travel_tips=?, travel_from=?, " +
-				"travel_to=?, travel_views=?,line_labels=?, travel_info=?, travel_picture=?, travel_picture2=?, travel_picture3=?, travel_picture4=?, schedules_pdf=?  where travel_id =?";
+				"travel_to=?, travel_views=?,line_labels=?, travel_info=?, reserve_info=?, warm_prompt=?, to_info=?, " +
+				"travel_picture=?, travel_picture2=?, travel_picture3=?, travel_picture4=?, schedules_pdf=?, seo_title=?, seo_key=?, seo_desc=?" +
+				"  where travel_id =?";
 		return JdbcUtils_DBCP.update(sql, detail.updateParams());
 	}
 	
@@ -205,12 +206,11 @@ public class LineDaoImpl implements ILineDao {
 				"gather_time=?, gather_place=?,dismiss_place=? where travel_id =? and seq=?";
 		return JdbcUtils_DBCP.update(sql, plan.updateParams());
 	}
-
+	
 	@Override
 	public int updateLineSchedule(LineSchedule schedule) throws Exception {
 		String sql = "update line_schedule set sche_detail=?, sche_stay_level=?, stay_hotel=?, " +
 				"sche_meal=?, sche_meal2=?, sche_meal3=?, sche_views=? where travel_id =? and seq=?";
-
 		return JdbcUtils_DBCP.update(sql, schedule.updateParams());
 	}
 

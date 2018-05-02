@@ -38,7 +38,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">副标题：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="travel_subtitle" name="">
+                <input type="text" class="input-text" value="" placeholder="" id="travel_subtitle" name="">
             </div>
         </div>
         <!--副标题 End-->
@@ -61,37 +61,30 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">出发地ID：</label>
-            <div class="formControls col-xs-8 col-sm-9" id="fromArea">
-                <select name="" class="selected areas">
+            <label class="form-label col-xs-4 col-sm-2">出发地：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="" class="selected" id="fromAreas">
                     <option value=""></option>
                 </select>
-                <select name="" class="selected sonAreas">
-                    <option value=""></option>
-                </select>
-                <input type="text" class="input-text" value="0" placeholder="" id="travel_from" name="">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">目的地ID：</label>
-            <div class="formControls col-xs-8 col-sm-9" id="toAreas">
-                <select name="" class="selected areas">
+            <label class="form-label col-xs-4 col-sm-2">目的地：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select name="" class="selected" id="toAreas">
                 </select>
-                <select name="" class="selected sonAreas">
-                </select>
-                <input type="text" class="input-text" value="0" placeholder="" id="travel_to" name="">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">浏览数：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="travel_views" name="">
+                <input type="text" class="input-text" value="" placeholder="" id="travel_views" name="">
             </div>
         </div>
         <!--<div class="row cl">-->
             <!--<label class="form-label col-xs-4 col-sm-2">标签：</label>-->
             <!--<div class="formControls col-xs-8 col-sm-9">-->
-                <!--<input type="text" class="input-text" value="0" placeholder="" id="line_labels" name="">-->
+                <!--<input type="text" class="input-text" value="" placeholder="" id="line_labels" name="">-->
             <!--</div>-->
         <!--</div>-->
         <div class="row cl">
@@ -101,6 +94,30 @@
                           datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
                           onKeyUp="$.Huitextarealength(this,200)"></textarea>
                 <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">预定信息：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="reserve_info" name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
+                          onKeyUp="$.Huitextarealength(this,200)"></textarea>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">温馨提示：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="warm_prompt" name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
+                          onKeyUp="$.Huitextarealength(this,200)"></textarea>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">目的地信息：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="to_info" name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
+                          onKeyUp="$.Huitextarealength(this,200)"></textarea>
             </div>
         </div>
         <form action="/dd_travel_war/fileUpload" enctype="multipart/form-data" id="form1">
@@ -142,16 +159,34 @@
         <form action="/dd_travel_war/fileUpload" enctype="multipart/form-data" id="form2">
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-2">日程pdf文件：</label>
-                <div class="formControls col-xs-8 col-sm-9" id="">
+                <div class="formControls col-xs-8 col-sm-9">
                     <span class="btn-upload form-group">
                         <input type="file" name="pdf" onchange="" style=""/>
                     </span>
                     <br>
-                    <input type="text" style="display: none;" id="schedules_pdfz">
+                    <input type="text" style="display: none;" id="schedules_pdf">
                     <input type="button" class="btn btn-primary radius" onclick="uploadPdf();" style="" value="上传日程pdf"/>
                 </div>
             </div>
         </form>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">SEO标题：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="seo_title" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">SEO关键字：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="seo_key" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">SEO描述：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="seo_desc" name="">
+            </div>
+        </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
                 <button onClick="updateLineDetail();" class="btn btn-secondary radius" type="button"> 保存
@@ -182,6 +217,7 @@
 
 <script>
     $(function() {
+        initAreaInfo();
         selectLineDetail();
     })
 </script>
