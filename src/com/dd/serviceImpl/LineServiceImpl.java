@@ -133,4 +133,9 @@ public class LineServiceImpl implements ILineService {
 		return lineDao.selectLineSchedule(id, seq);
 	}
 
+	@Override
+	public int insertLineSchedules(List<LineSchedule> schedules) throws Exception {
+		return lineDao.insertLineSchedules(schedules);
+	}
+
 }

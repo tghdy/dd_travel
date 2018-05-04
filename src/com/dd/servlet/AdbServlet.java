@@ -32,6 +32,7 @@ public class AdbServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String method = request.getParameter("method");
+		demo(request, response);
 		if ("indexLineAdb".equals(method)) {
 			indexLineAdb(request, response);
 		}
@@ -44,12 +45,19 @@ public class AdbServlet extends HttpServlet {
 		
 	}
 
+	private void demo(HttpServletRequest request, HttpServletResponse response) {
+		String[] a = request.getParameterValues("ids");
+		
+	}
+
 	private void testConsle(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("航航航航航航");
 		JsonData jsonData = null;
 		jsonData = new JsonData(JsonData.SUCCESS, "试试控制台", new TravelUser());
 		output(response, jsonData);
 	}
+	
+	
 
 	private void hotLineAdb(HttpServletRequest request, HttpServletResponse response) {
 		JsonData jsonData = null;

@@ -110,6 +110,7 @@ public interface ILineDao {
 	 **/
 	int insertLinePlan(LinePlan linePlan) throws Exception;
 
+
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/2/28 下午6:45
@@ -172,4 +173,18 @@ public interface ILineDao {
 	 * @Des: 根据目的地id获取相关线路列表
 	 **/
 	List<Map<String, Object>>  selectRelatedLineList(Integer toId) throws Exception;
+
+	/**
+	 * @Author: TusuZer
+	 * @Date: 2018/5/3 下午7:56
+	 * @Des: 插入多条日程记录
+	 **/
+	int insertLineSchedules(List<LineSchedule> schedules) throws Exception;
+
+	/**
+	 * @Author: TusuZer
+	 * @Date: 2018/5/4 上午10:29
+	 * @Des: 插入多条班次记录
+	 **/
+	int insertLinePlans(List<LinePlan> plans) throws Exception;
 }

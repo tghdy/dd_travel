@@ -89,7 +89,7 @@ public class LinePlan {
     }
 
     public Object[] params() {
-        return new Object[]{travelId, seq, startTime, planPrice, planChildPrice, gatherTime, gatherPlace, dismissPlace};
+        return new Object[]{travelId, seq, startTime, planPrice, planChildPrice};
     }
     public Object[] updateParams() {
         return new Object[]{startTime, planPrice, planChildPrice, gatherTime, gatherPlace, dismissPlace, travelId, seq};

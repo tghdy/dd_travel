@@ -89,6 +89,53 @@ function addLineSchedule() {
     });
 
 }
+
+function addLineSchedules() {
+    var scheduleArray = [];
+    var seqs = $('.seq');
+    var sche_details = $('.sche_detail');
+    var sche_stay_levels = $('.sche_stay_level');
+    var stay_hotels = $('.stay_hotel');
+    var sche_meals = $('.sche_meal');
+    var sche_meal2s = $('.sche_meal2');
+    var sche_meal3s = $('.sche_meal3');
+    var sche_views = $('.sche_views');
+    
+    
+    for(var i = 0; i < seqs.length; i++) {
+        scheduleArray[i] = {
+            travelId: getUrlParam('id'),
+            seq: seqs[i].value,
+            scheDetail: sche_details[i].value,
+            scheStayLevel: sche_stay_levels[i].value,
+            stayHotel: stay_hotels[i].value,
+            scheMeal: sche_meals[i].value,
+            scheMeal2: sche_meal2s[i].value,
+            scheMeal3: sche_meal3s[i].value,
+            scheViews: sche_views[i].value
+        };
+    }
+    $.ajax({
+        type: 'get',
+        url: '/dd_travel_war/lineAdmin',
+        data: {
+            method: 'insertLineSchedules',
+            jsonArray:JSON.stringify(scheduleArray)
+        },
+        dataType: 'json',
+        success: function (json) {
+            if (json.flag == 1) {
+                layer.msg(json.msg, {icon: 6, time: 1000}, function () {
+                    layer_close();
+                });
+            }
+            console.log(json);
+        },
+        error: function (data) {
+            console.log(data.msg);
+        }
+    });
+}
 function updateLineSchedule() {
     $.ajax({
         type: "post",
@@ -114,13 +161,13 @@ function updateLineSchedule() {
                     layer_close();
                 })
             }
-            console.log("updattLineSchedule success");
+            console.log("updateLineSchedule success");
             console.log(json);
 
         },
         error: function (data) {
             layer.msg(json.msg,{icon:1,time:1000});
-            console.log("updattLineSchedule failed ");
+            console.log("updateLineSchedule failed ");
             console.log(data);
         }
     });

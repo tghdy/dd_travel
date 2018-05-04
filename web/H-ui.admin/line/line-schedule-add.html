@@ -26,67 +26,7 @@
 <body>
 <div class="page-container">
     <form class="form form-horizontal" id="form-schedule-add">
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">序号：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="seq" name="">
-            </div>
-        </div>
-        <!--详情-->
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">详情：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <textarea id="sche_detail" name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
-                          datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
-                          onKeyUp="$.Huitextarealength(this,200)"></textarea>
-                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">酒店星级：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="sche_stay_level" name="">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">酒店名：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="stay_hotel" name="">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">早餐：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="sche_meal" name="">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">午餐：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="sche_meal2" name="">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">晚餐：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="sche_meal3" name="">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">景点：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="sche_views" name="">
-            </div>
-        </div>
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button onClick="addLineSchedule();" class="btn btn-secondary radius" type="button"> 提交
-                </button>
-                <button onClick="layer_close();" class="btn btn-default radius" type="button">
-                    &nbsp;&nbsp;取消&nbsp;&nbsp;
-                </button>
-            </div>
-        </div>
+        
     </form>
 </div>
 
@@ -106,7 +46,73 @@
 <script type="text/javascript" src="./js/line-schedule.js"></script>
 <script type="text/javascript">
     $(function () {
-        
+        var daysNum = prompt("请输入日程的天数");
+        var ins =
+            '       <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">序号：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <input type="text" class="input-text seq" value="" placeholder="" id="" name="">' +
+            '            </div>' +
+            '        </div>' +
+            '        <!--详情-->' +
+            '        <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">详情：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <textarea id="" name="" cols="" rows="" class="textarea sche_detail" placeholder="说点什么...最少输入10个字符"' +
+            '                          datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"' +
+            '                          onKeyUp="$.Huitextarealength(this,200)"></textarea>' +
+            '                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">酒店星级：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <input type="text" class="input-text sche_stay_level" value="" placeholder="" id="" name="">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">酒店名：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <input type="text" class="input-text stay_hotel" value="" placeholder="" id="" name="">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">早餐：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <input type="text" class="input-text sche_meal" value="" placeholder="" id="" name="">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">午餐：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <input type="text" class="input-text sche_meal2" value="" placeholder="" id="" name="">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">晚餐：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <input type="text" class="input-text sche_meal3" value="" placeholder="" id="" name="">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="row cl">' +
+            '            <label class="form-label col-xs-4 col-sm-2">景点：</label>' +
+            '            <div class="formControls col-xs-8 col-sm-9">' +
+            '                <input type="text" class="input-text sche_views" value="0" placeholder="" id="" name="">' +
+            '            </div>' +
+            '        </div>';
+        for(var i = 0; i < daysNum; i++) {
+            $('form').append('<h2>第' + (i+1) + '天</h2>');
+            $('form').append(ins);            
+        }
+        $('form').append('<div class="row cl">' +
+            '            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">' +
+            '                <button onClick="addLineSchedules();" class="btn btn-secondary radius" type="button"> 提交' +
+            '                </button>' +
+            '                <button onClick="layer_close();" class="btn btn-default radius" type="button">' +
+            '                    &nbsp;&nbsp;取消&nbsp;&nbsp;' +
+            '                </button>' +
+            '            </div>' +
+            '        </div>')
     })
 </script>
 </body>

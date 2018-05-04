@@ -1,4 +1,4 @@
-	package com.dd.daoImpl;
+package com.dd.daoImpl;
 
 import com.dd.dao.ILineDao;
 import com.dd.dto.LineSearchItem;
@@ -9,7 +9,11 @@ import com.dd.entity.TravelLine;
 import com.dd.util.JdbcUtils_DBCP;
 import com.dd.util.TransactionUtil;
 
+import javax.swing.plaf.synth.SynthCheckBoxUI;
+import java.io.BufferedInputStream;
 import java.math.BigInteger;
+import java.nio.channels.ShutdownChannelGroupException;
+import java.sql.SQLClientInfoException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -164,7 +168,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public int insertLinePlan(LinePlan linePlan) throws Exception {
-		String sql = "insert into line_plan values (?,?,?,?,?,?,?,?)";
+		String sql = "insert into line_plan values (?,?,?,?,?)";
 		Object[] params = linePlan.params();
 		return JdbcUtils_DBCP.update(sql, params);
 	}
@@ -231,5 +235,68 @@ public class LineDaoImpl implements ILineDao {
 		String sql = "SELECT tl.*, ld.travel_picture FROM travel_line tl, line_detail ld WHERE travel_to = ? LIMIT 4";
 		return JdbcUtils_DBCP.selectMapList(sql, new Object[]{toId});
 	}
+
+	@Override
+	public int insertLineSchedules(List<LineSchedule> schedules) throws Exception {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("insert into line_schedule values ");
+		LineSchedule schedule;
+		Object[] params;
+		for (int i = 0; i < schedules.size(); i++) {
+			schedule = schedules.get(i);
+			params = schedule.params();
+			stringBuilder.append("(");
+			for (int j = 0; j < params.length; j++) {
+				if (params[j] != null) {
+					stringBuilder.append('\'').append(params[j]).append('\'');
+				} else {
+					stringBuilder.append(params[j]);
+				}
+				//组成员之间的逗号分隔
+				if (j < params.length - 1) {
+					stringBuilder.append(',');
+				}
+				
+			}
+			stringBuilder.append(")");
+			if (i < schedules.size() - 1) {
+				//一项完结之后的逗号分隔
+				stringBuilder.append(',');
+			}
+		}
+		System.out.println(stringBuilder.toString());
+		return JdbcUtils_DBCP.update(stringBuilder.toString(), null);
+	}
+
+	@Override
+	public int insertLinePlans(List<LinePlan> plans) throws Exception {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("insert into line_schedule values ");
+		LinePlan plan;
+		Object[] params;
+		for (int i = 0; i < plans.size(); i++) {
+			plan = plans.get(i);
+			params = plan.params();
+			for (int j = 0; j < params.length; j++) {
+				if (params[j] != null) {
+					stringBuilder.append('\'').append(params[j]).append('\'');
+				} else {
+					stringBuilder.append(params[j]);
+				}
+				if (j < params.length - 1) {
+					stringBuilder.append(',');
+				}
+			}
+			stringBuilder.append(")");
+			if (i < plans.size() - 1) {
+				//一项完结之后的逗号分隔
+				stringBuilder.append(',');
+			}
+			
+		}
+		return 0;
+		//return JdbcUtils_DBCP.update(sql, params);
+	}
 	
+
 }

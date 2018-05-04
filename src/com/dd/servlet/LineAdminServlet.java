@@ -8,10 +8,13 @@ import com.dd.service.ILineService;
 import com.dd.serviceImpl.LineServiceImpl;
 import com.dd.util.BeanUtil;
 import com.dd.util.JsonData;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.apache.xerces.internal.impl.xs.util.LSInputListImpl;
 import jdk.nashorn.internal.scripts.JD;
 import org.json.JSONArray;
 
+import javax.jws.Oneway;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +69,9 @@ public class LineAdminServlet extends HttpServlet {
 		if ("insertLineSchedule".equals(method)) {
 			insertLineSchedule(request, response);
 		}
+		if ("insertLineSchedules".equals(method)) {
+			insertLineSchedules(request, response);
+		}
 		if ("updateTravelLineState".equals(method)) {
 			updateTravelLineState(request, response);
 		}
@@ -78,6 +86,33 @@ public class LineAdminServlet extends HttpServlet {
 		}
 		if ("updateLineSchedule".equals(method)) {
 			updateLineSchedule(request, response);
+		}
+
+	}
+
+	private void insertLineSchedules(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			List<LineSchedule> schedules = mapper.readValue(request.getParameter("jsonArray"),new TypeReference<List<LineSchedule>>() {});
+			Map<String, Object> map = new HashMap<>();
+			int flag = iLineService.insertLineSchedules(schedules);
+			
+			if (flag == 0) {
+				jsonData = new JsonData(JsonData.FAILED, "插入失败") ;
+				return;
+			}
+			if (flag == 1)
+				jsonData = new JsonData(JsonData.SUCCESS, "插入成功") ;
+			
+		} catch (Exception e) {
+			jsonData = new JsonData(JsonData.FAILED, "异常");
+			e.printStackTrace();
+
+		} finally {
+			output(response, jsonData);
+			
 		}
 
 	}

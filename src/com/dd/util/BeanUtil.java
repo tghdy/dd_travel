@@ -1,9 +1,12 @@
 package com.dd.util;
 
+import com.dd.entity.TravelLine;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -11,12 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 public class BeanUtil {
-	
+
 	@Test
 	public void testMethod() {
 		Object object = new String("asdasd");
 		System.out.println(object.getClass());
-		
+
 	}
 
 	public static <T> T createBeanByParameter(HttpServletRequest request, Class<T> clazz) {
@@ -144,7 +147,16 @@ public class BeanUtil {
 		return obj;
 	}
 	
-	public static String  dealParameter(HttpServletRequest request, String paramName) {
+	
+	
+	public static <T> List<T> jsonArrayFormatInject(HttpServletRequest request, Class<T> clazz) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<T> list = objectMapper.readValue(request.getParameter("jsonArray"),new TypeReference<List<T>>() {});
+		return list;
+
+	}
+	
+	public static String dealParameter(HttpServletRequest request, String paramName) {
 		String paramValue = request.getParameter(paramName);
 		if (paramValue != null && paramValue != "") {
 			return paramValue;
@@ -152,4 +164,6 @@ public class BeanUtil {
 		return null;
 	}
 	
+	
+
 }

@@ -6,6 +6,7 @@ function initAreaInfo() {
             method: 'selectAres',
             pid:0
         },
+        async:false,
         dataType: 'json',
         success: function (json) {
             if (json.flag == 1) {
@@ -13,11 +14,12 @@ function initAreaInfo() {
                 var fromAreaInf = '';
                 var toAreaInf = '';
                 var ins = '';
-                
+
                 $(data).each(function (index, item) {
                     ins +=
-                        '<option value="'+item.id+'">'+item.place_name+'</option>';
-                })
+                        '<option value="' + item.id + '">' + item.place_name + '</option>';
+                });
+                
                 $('#fromAreas').html(ins);
                 $('#toAreas').html(ins);
                 
@@ -38,10 +40,20 @@ function selectLineDetail() {
             method: "selectLineDetail",
             id:id
         },
+        async:false,
         dataType: 'json',
         success: function (json) {
-            console.log("JSON:::::");
-            console.log(json);
+            initAreaInfo();
+            $('#fromAreas>option').each(function (index, item) {
+                if ($(item).val()==json.data.travel_from) {
+                    $(item).attr('selected', 'selected');
+                }
+            });
+            $('#toAreas>option').each(function (index, item) {
+                if ($(item).val() == json.data.travel_to) {
+                    $(item).attr('selected', 'selected');
+                }
+            });
             // console.log("selectLineDetail Ok");
             if (json.flag == 1) {
                 var data=json.data;

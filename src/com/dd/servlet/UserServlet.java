@@ -5,6 +5,7 @@ import com.dd.serviceImpl.UserServiceImpl;
 import com.dd.util.BeanUtil;
 import com.dd.util.JsonData;
 import com.dd.util.UserUtil;
+import com.sun.javafx.collections.MappingChange;
 import jdk.nashorn.internal.scripts.JD;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
 @WebServlet("/user")
 public class UserServlet extends HttpServlet {
 
@@ -83,6 +87,8 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void userInf(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> map = new HashMap<>();
+
 		JsonData jsonData = null;
 		try {
 			TravelUser user = UserUtil.getUser(request);
@@ -95,10 +101,10 @@ public class UserServlet extends HttpServlet {
 		} catch (Exception e) {
 			jsonData = new JsonData(JsonData.FAILED, "异常");
 			e.printStackTrace();
-			
+
 		} finally {
 			output(response, jsonData);
-			
+
 		}
 
 
