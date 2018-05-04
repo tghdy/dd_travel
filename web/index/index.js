@@ -206,4 +206,28 @@ $(function () {
     $(".tra_01,.tra_02,.tra_03,.tra_04").mouseleave(function(){
         $(".tra_0"+$(this).attr("class")[5]).children(".title").css("height","50px");
     });
-})
+})//旅游攻略动画
+
+$(function () {
+    $(".choose_d").mouseenter(function(){
+        $(".choose").css("display","block");
+    });
+    $(".search_first").mouseleave(function(){
+        $(".choose").css("display","none");
+    });
+    $(".choose_1,.choose_2,.choose_3,.choose_4,.choose_5").click(function(){
+        var n = $(this).attr("class")[7];
+        switch (n){
+            case '1':$('#cho').text("全部产品");
+                break;
+            case '2':$('#cho').text("跟团游");
+                break;
+            case '3':$('#cho').text("定制游");
+                break;
+            case '4':$('#cho').text("签证");
+                break;
+            case '5':$('#cho').text("邮轮");
+                break;
+        }
+    });
+})//查询框选择

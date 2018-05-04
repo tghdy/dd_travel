@@ -61,10 +61,14 @@ li a.bb:hover {
 }
 
 .logo {
-    width: 512px;
-    height: 79px;
+    width: auto;
+    height: auto;
     float: left;
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+.logo img{
+    width: 350px;
 }
 
 .sidebar {
@@ -97,14 +101,42 @@ li a.bb:hover {
     background-color: #F6F6F6;
 }
 
+.choose{
+    list-style-type: none;
+    position: absolute;
+    z-index:100;
+    margin-top: 4px;
+}
+
+.choose li{
+    height: 30px;
+    width: 73px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border: 1px solid #e2e2e2;
+    font-size: 13px;
+    color: #888;
+}
+
+.choose li:hover{
+    background: #f6f6f6;
+    color: black;
+}
+
 .search_last {
     width: 96px;
     height: 40px;
     margin-top: 40px;
     background-color: #CB1425;
     float: left;
-    margin-left: 858px;
+    margin-left: 674px;
     position: absolute;
+}
+
+.tab_logo p{
+    margin-left: 331px;
 }
 
 .dargon {
@@ -316,6 +348,101 @@ li a.bb:hover {
     height: 34px;
     background-color: #FDA52A;
     opacity: 0.8;
+}
+
+.ship_title{
+    display: flex;
+    justify-content: center;
+}
+
+.ship_title .tab_last_left_top {
+    width: 1300px;
+}
+
+.ship_body{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hx_con{
+    width: 1260px;
+    height: auto;
+    padding: 20px;
+    background: #f8f8f8;
+}
+
+.con_left{
+    width: 25%;
+    float: left;
+}
+
+.con_left p{
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333;
+}
+
+.con_left span{
+    font-size: 14px;
+    color: #999;
+}
+
+.con_right{
+    width: 73%;
+    height: 100%;
+    float: left;
+    padding-left: 2%;
+}
+
+.lin_list{
+    list-style-type: none;
+}
+
+.lin_list li{
+    height: 59px;
+    width: 100%;
+    background: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.ship_class{
+    height: 25px;
+    width: 25px;
+    background: #f8b24f;
+    color: white;
+    text-align:center;
+    float: left;
+}
+
+.list_s{
+    padding-left: 25px;
+    float: left;
+}
+
+.list_s a{
+    color: #436fba;
+}
+
+.list_s a:hover{
+    color: #f86b4f;
+}
+
+.lin_list li:hover{
+    box-shadow: 5px 5px 2px #e6e2e2;
+}
+
+.price_s{
+    position: relative;
+    top: 40px;
+    left: 400px;
+    font-size: 20px;
+    color: #f86b4f;
 }
 
 .tab_last {
