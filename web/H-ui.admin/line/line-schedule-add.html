@@ -25,9 +25,9 @@
 </head>
 <body>
 <div class="page-container">
-    <form class="form form-horizontal" id="form-schedule-add">
+    <div class="form form-horizontal" id="form-schedule-add">
         
-    </form>
+    </div>
 </div>
 
 
@@ -97,12 +97,39 @@
             '        <div class="row cl">' +
             '            <label class="form-label col-xs-4 col-sm-2">景点：</label>' +
             '            <div class="formControls col-xs-8 col-sm-9">' +
-            '                <input type="text" class="input-text sche_views" value="0" placeholder="" id="" name="">' +
+            '                <input type="text" class="input-text sche_views" value="" placeholder="" id="" name="">' +
             '            </div>' +
-            '        </div>';
+            '        </div>' +
+            '        <form class="row cl schedule_pic" id="">' +
+            '            <label class="form-label col-xs-4 col-sm-2">行程图片：</label>' +
+            '            <div class="col-sm-3">' +
+            '                <img style="width: 200px;height: 200px;display: block;"' +
+            '                     src="" alt="未上传图片" class="sche_pic">' +
+            '                <span class="btn-upload form-group mt-20"> ' +
+            '                <input type="file" name="p1" onchange="" style=""/> ' +
+            '                </span>' +
+            '            </div>' +
+            '            <div class="col-sm-3">' +
+            '                <img style="width: 200px;height: 200px;display: block;"' +
+            '                     src="" alt="未上传图片" class="sche_pic2">' +
+            '                <span class="btn-upload form-group mt-20"> ' +
+            '                <input type="file" name="p1" onchange="" style=""/> ' +
+            '                </span>' +
+            '            </div>' +
+            '            <div class="col-sm-3">' +
+            '                <img style="width: 200px;height: 200px;display: block;"' +
+            '                     src="" alt="未上传图片" class="sche_pic3">' +
+            '                <span class="btn-upload form-group mt-20"> ' +
+            '                <input type="file" name="p1" onchange="" style=""/> ' +
+            '                </span>' +
+            '            </div>' +
+            '            <div style="clear: both;"></div>' +
+            '            <input type="button" class="btn btn-primary radius col-sm-offset-2 pic-btn" onclick="addSchedulePic(this)" style=""' +
+            '                   value="上传图片"/>' +
+            '        </form>';
         for(var i = 0; i < daysNum; i++) {
-            $('form').append('<h2>第' + (i+1) + '天</h2>');
-            $('form').append(ins);            
+            $('#form-schedule-add').append('<h2>第' + (i+1) + '天</h2>');
+            $('#form-schedule-add').append(ins);
         }
         $('form').append('<div class="row cl">' +
             '            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">' +

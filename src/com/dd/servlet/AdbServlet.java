@@ -63,15 +63,15 @@ public class AdbServlet extends HttpServlet {
 		JsonData jsonData = null;
 		try {
 			List<Map<String, Object>> list = adbService.selectHotLineAdb();
-			System.out.println(list);
+			//System.out.println(list);
 			if (list != null) {
-				System.out.println(jsonData);
+				//System.out.println(jsonData);
 				jsonData = new JsonData(JsonData.SUCCESS, "成功", list);
-				System.out.println(jsonData);
+				//System.out.println(jsonData);
 				return;
 			}
 			jsonData = new JsonData(JsonData.FAILED, "为空");
-			System.out.println(jsonData);
+			//System.out.println(jsonData);
 			
 		} catch (Exception e) {
 			jsonData = new JsonData(JsonData.FAILED, "异常");

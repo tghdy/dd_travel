@@ -1,6 +1,8 @@
+var globalPlans = [];
+var nowDate;
+
 $(function () {
     initLineDetail();
-
 });
 $(function () {
     $(function () {
@@ -60,34 +62,6 @@ $(function () {
             $("#eqqq").css({"position": "relative", "left": "0"});
         }
     });
-    $("#a_1").click(function () {
-        var a = document.getElementById("b_1").offsetTop;
-        $('html,body').animate({scrollTop: a - 54}, 'slow');
-    });
-    $("#a_2").click(function () {
-        var a = document.getElementById("b_2").offsetTop;
-        $('html,body').animate({scrollTop: a - 54}, 'slow');
-    });
-    $("#a_3").click(function () {
-        var a = document.getElementById("b_3").offsetTop;
-        $('html,body').animate({scrollTop: a - 54}, 'slow');
-    });
-    $("#a_4").click(function () {
-        var a = document.getElementById("b_4").offsetTop;
-        $('html,body').animate({scrollTop: a - 54}, 'slow');
-    });
-    $("#a_5").click(function () {
-        var a = document.getElementById("b_5").offsetTop;
-        $('html,body').animate({scrollTop: a - 54}, 'slow');
-    });
-    $("#a_6").click(function () {
-        var a = document.getElementById("b_6").offsetTop;
-        $('html,body').animate({scrollTop: a - 54}, 'slow');
-    });
-    $("#a_7").click(function () {
-        var a = document.getElementById("b_7").offsetTop;
-        $('html,body').animate({scrollTop: a - 54}, 'slow');
-    });
 });
 
 //初始化详情界面
@@ -114,10 +88,14 @@ function initLineDetail(type) {
                 redNavItem(data.line_type);
                 //处理详情信息
                 dealDetail(data);
+                //存入全局变量，以供下次换显示日历的时候使用
+                globalPlans = plans;
                 //处理班次内容
                 dealPlans(plans);
+                //保存当前日历所在月的一个date实例，在切换月份时改变此实例即可
+                nowDate = new Date();
                 //生成日历
-                createCalendar(plans);
+                createCalendar(plans, new Date());
                 //处理日程信息
                 dealSchedules(schedules);
                 //处理关联线路信息
@@ -135,9 +113,10 @@ function initLineDetail(type) {
 
 //插入详情数据
 function dealDetail(data) {
-    // console.log("asdasd")
-    // console.log("qweqwe")
-    // ???
+    $('title').text(data.seo_title);
+    $('meta[name="keywords"]').attr('content',data.seo_key);
+    $('meta[name="description"]').attr('content',data.seo_desc);
+    
     $('#travel_name').text(data.travel_name);
     $('#travel_price').text(data.travel_price);
     $('#travel_count').text(data.travel_count);
@@ -171,11 +150,20 @@ function dealDetail(data) {
     $('#traffic_type').text('往返交通：' + trafficCn);
 
     // 团费信息
-    $('#travel_info').html(data.travel_info);
+    $('#travel_info').html(data.travel_info.replace(/\n/g,"<br>"));
+    //预定说明
+    $('#reserve_info').html(data.reserve_info.replace(/\n/g,"<br>"));
+    //温馨提示
+    $('#warm_prompt').html(data.warm_prompt.replace(/\n/g,"<br>"));
+    //全透明提示
+    $('#open_info').html(data.open_info.replace(/\n/g,"<br>"));
+    //目的地信息
+    $('#to_info').html(data.to_info.replace(/\n/g,"<br>"));
+    
     // 提示信息
-    $('#travel_tips').html(data.travel_tips);
+    // $('#travel_tips').html(data.travel_tips.replace(/\n/g,"<br>"););
     // 线路特色
-    $('#travel_feature').text(data.travel_feature);
+    $('#travel_feature').html(data.travel_feature.replace(/\n/g,"<br>"));
     //图片开始
     $('#p0').html('<img src="'+data.travel_picture+'"/>');
     $('#p1').html('<img src="'+data.travel_picture2+'"/>');
@@ -210,8 +198,7 @@ function dealPlans(plans) {
     // console.log(plans)
     var ins = '';
     $(plans).each(function (index, item) {
-        // console.log(item);
-        ins += '<option value="' + item.seq + '">' 
+        ins += '<option value="' + item.id + '">' 
             + item.start_time
             + '&nbsp;&nbsp;&nbsp;成人价¥' 
             + item.plan_price + '起' +
@@ -221,28 +208,45 @@ function dealPlans(plans) {
     });
 }
 
-//生成日历
-function createCalendar(plans) {
+function reloadCalender(offset) {
+    nowDate=new Date(nowDate.getFullYear(),nowDate.getMonth()+offset,1);
+    console.log(nowDate.getMonth()+1);
+    createCalendar(globalPlans, nowDate);
+    $('#calender-header').text(nowDate.getFullYear()%100+"年"+(nowDate.getMonth()+1)+"月班次");
+    
+}
+
+//生成日历,入参为所有日程的开始时间数组以及一个要生成的月份的date实例
+function createCalendar(plans,date) {
     //实现思路为：将本月的班次从plans取出加入数组，然后用代表当前号数的nowIndex和数组中的值进行比对若能匹配则特殊处理
-    console.log(plans);
-    var planArray = new Array(100);
-    var currentMonth = new Date().getMonth()+1;
-    var c=0;//用来添加本月的班次信息
+    var planArray = [];
+    var priceArray = [];
+    var currentMonth = date.getMonth()+1;
+    var currentCurrentYear = date.getFullYear();
+    
+    var c=0;//
     $.each(plans, function (index, item) {
-        if(currentMonth==item.start_time.substring(5,7))//判断是否是本月班次
-            planArray[c++] = parseInt(item.start_time.substring(item.start_time.length-2,item.start_time.length));
+        //判断是否是date所在年月的日程
+        if(currentMonth==item.start_time.substring(5,7) && currentCurrentYear== item.start_time.substring(0,4)) {
+            planArray[c] = parseInt(item.start_time.substring(item.start_time.length-2,item.start_time.length));
+            priceArray[c++] = item.plan_price;
+        }
     });
-    console.log("asd");
+    console.log("planArray");
     console.log(planArray);
-    var lastDate = getCurrentMonthLast(new Date().getMonth());//本月最后一天
-    var firstDate = new Date();//本月第一天
+    console.log("priceArray");
+    console.log(priceArray);
+    
+    var firstDate = date;
     firstDate.setDate(1);
     
-    var dayNum = lastDate.getDate();//当前月天数
+    var dayNum = new Date(date.getFullYear(),date.getMonth()+1,0).getDate();//date所在月的最后一天
     var firstDayWeekIndex = firstDate.getDay();//月第一天的星期下标 0对应星期日1到6则对应正常周一到周六
 
+    //date月供需要几行显示
     var rowNum = Math.ceil((firstDayWeekIndex + dayNum) / 7);
     
+    //初始化，拼接日历头
     var ins = '' +
         '<tr>' +
         '<th><span style="color:#f86b4f;">日</span></th>' +
@@ -258,14 +262,14 @@ function createCalendar(plans) {
     var flag = 0;//开始标记
     var nowIndex = 1;//当前待插入号数
 
-    // var planArryString = ['01, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 22];
+    // demo var planArryString = ['01, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 22];
     // console.log(planArray);
     for (var i = 0; i <= rowNum; i++) {
         ins +=
             '<tr>';
-        
         for (var j = 0; j < 7; j++) {
             if ((j >= firstDayWeekIndex || flag == 1) && nowIndex <= dayNum) {
+                // 插入条件是已经开始插入了而且当前插入打号数不超过本月最后一天的号数
                 if (flag == 0) {
                     flag = 1;
                 }
@@ -274,8 +278,9 @@ function createCalendar(plans) {
                     //有计划
                     ins +=
                         '<td bgcolor="#fefedd">' +
-                        (nowIndex++) + '<br>' + '<i>¥29</i>' +
+                        (nowIndex) + '<br>' + '<i>¥'+priceArray[planArray.indexOf(nowIndex)]+'</i>' +
                         '</td>';
+                    nowIndex++;
                     continue;
                 }
                 //无计划
@@ -330,6 +335,11 @@ function dealSchedules(schedules) {
             '<div class="day_miaoshu">' +
             item.sche_detail.replace(/\n/g,'<br>') +
             '</div>' +
+            '<div class="day_miaoshu">' +
+            '<img src="'+item.sche_pic+'" alt="不存在此图片">' +
+            '<img src="'+item.sche_pic2+'" alt="不存在此图片">' +
+            '<img src="'+item.sche_pic3+'" alt="不存在此图片">' +
+            '</div>' +
             '<div class="day_body_col">' +
             '<p style="font-weight: 600;">酒店信息：</p>' +
             '<p>'+item.stay_hotel+'</p>' +
@@ -361,7 +371,7 @@ function dealRelatedLine(relatedLine) {
             '<div class="bm_right_pic1">' +
             '<div class="bm_right_pic1_top">' +
             '<a href="/dd_travel_war/line-detail/line-detail.html?id='+item.id+'">' +
-            '<img src="img/5.jpg" height="100%" width="100%"/>' +
+            '<img src="'+item.travel_picture+'" height="100%" width="100%"/>' +
             '<p style="color: black;font-size: 10px;">' +
             item.travel_name +
             '</p>' +
@@ -385,8 +395,6 @@ function showBigPic(o) {
 
 //位置跳转函数
 function toIdPos(idValue) {
-    // console.log("asdasd");
-    // console.log($("#" + idValue).offset().top);    
     $('html, body').animate({
         scrollTop: $("#"+idValue).offset().top-60
     }, 500);
@@ -396,8 +404,9 @@ function toIdPos(idValue) {
 function toReservePage() {
     var adultNum = $('#adultNum').val();
     var childNum = $('#childNum').val();
-    var plan_seq = $('#line_plans').find('option:selected').val();
-    var url = '../order/addOrder.html?adult=' + adultNum + '&child=' + childNum + '&plan_seq=' + plan_seq;
+    var planId = $('#line_plans').find('option:selected').val();
+    var traveId = getUrlParam('id');
+    var url = '../order/addOrder.html?id='+traveId+'&adult=' + adultNum + '&child=' + childNum + '&plan_id=' + planId;
     
     window.location.href = url;
     

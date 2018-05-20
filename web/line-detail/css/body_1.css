@@ -1,18 +1,17 @@
 .head_1 {
-    height: 4rem;
+    height: 40px;
+    line-height: 40px;
     width: 100%;
     border-bottom: 2px solid #cb1425;
 }
 
 .head_1_1 {
-    height: 4rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
 .head_1 ul {
-    height: 4rem;
     width: 100%;
     list-style-type: none;
     margin: 0;
@@ -23,7 +22,8 @@
 
 .head_1 li {
     float: left;
-    height: 4rem;
+    height: 40px;
+    /*line-height: 40px;*/
     width: 9%;
 }
 
@@ -31,7 +31,7 @@
     display: block;
     color: black;
     text-align: center;
-    padding: 10px 5px;
+    
     text-decoration: none;
     font-size: 150%;
 }
@@ -156,6 +156,7 @@
     width: 50%;
     float: left;
 }
+
 
 .pic_wall {
     height: 495px;
@@ -326,7 +327,7 @@
 }
 
 .buy_for {
-    padding-top: 30px;
+    padding-top: 15px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -389,4 +390,15 @@
 }
 .active a {
     color: #fff;
+}
+.day_miaoshu img {
+    width: 30%;
+    height: 150px;
+}
+.day_miaoshu img:not(:first-child) {
+    margin-left: 5%;
+}
+.hand:hover {
+    cursor: pointer;
+    color: orangered;
 }

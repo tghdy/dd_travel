@@ -156,9 +156,9 @@ public interface ILineDao {
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/3/2 下午1:40
-	 * @Des: 根据线路id以及次序获取一条班次
+	 * @Des: 根据班次id获取一条班次信息
 	 **/
-	Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception;
+	Map<String, Object> selectLinePlan(Integer id) throws Exception;
 	
 	/**
 	 * @Author: TusuZer

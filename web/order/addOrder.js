@@ -22,8 +22,8 @@ function initOrderPage() {
         url: '/dd_travel_war/order',
         data: {
             method: 'orderPageInit',
-            id: 1,
-            seq: getUrlParam('plan_seq')
+            id: getUrlParam('id'),
+            planId: getUrlParam('plan_id')
         },
         dataType: 'json',
         success: function (json) {
@@ -90,7 +90,7 @@ function insertOrder() {
             seq: seq,
             adult: getValById('adult'),
             child: getValById('child'),
-            planSeq:getUrlParam('seq_plan')
+            planId:getUrlParam('plan_id')
         },
         dataType: 'json',
         success: function (json) {

@@ -22,6 +22,8 @@ function initAreaInfo() {
                 
                 $('#fromAreas').html(ins);
                 $('#toAreas').html(ins);
+                changeSonAresById($('#toAreas option:first-child'),'fromSonAreas');
+                changeSonAresById($('#fromAreas option:first-child'),'toSonAreas');
                 
             }
         },
@@ -32,7 +34,7 @@ function initAreaInfo() {
 }
 
 function selectLineDetail() {
-    var id = getUrlParam("id");
+    var id = getUrlParam('id');
     $.ajax({
         type: "get",
         url: "/dd_travel_war/lineAdmin",
@@ -44,19 +46,16 @@ function selectLineDetail() {
         dataType: 'json',
         success: function (json) {
             initAreaInfo();
-            $('#fromAreas>option').each(function (index, item) {
-                if ($(item).val()==json.data.travel_from) {
-                    $(item).attr('selected', 'selected');
-                }
-            });
-            $('#toAreas>option').each(function (index, item) {
-                if ($(item).val() == json.data.travel_to) {
-                    $(item).attr('selected', 'selected');
-                }
-            });
-            // console.log("selectLineDetail Ok");
+         
             if (json.flag == 1) {
                 var data=json.data;
+                //显示当前出发地信息
+                if(data.travel_from != null && data.travel_from != "") {
+                    $('#oldFromPlace').val(selectPlaceById(data.travel_from).data.place_name);
+                }
+                if(data.travel_to != null && data.travel_to != "") {
+                    $('#oldToPlace').val(selectPlaceById(data.travel_to).data.place_name);
+                }
                 console.log(data);
                 $('#travel_id').val(data.travel_id);
                 $('#travel_subtitle').val(data.travel_subtitle);
@@ -67,11 +66,13 @@ function selectLineDetail() {
                 $('#travel_info').val(data.travel_info);
                 $('#reserve_info').val(data.reserve_info);
                 $('#warm_prompt').val(data.warm_prompt);
+                $('#open_info').val(data.open_info);
                 $('#to_info').val(data.to_info);
                 $('#travel_picture').attr("src",data.travel_picture);
                 $('#travel_picture2').attr("src",data.travel_picture2);
                 $('#travel_picture3').attr("src",data.travel_picture3);
                 $('#travel_picture4').attr("src",data.travel_picture4);
+                $('#schedules_pdf').val(data.schedules_pdf);
                 $('#seo_title').val(data.seo_title);
                 $('#seo_key').val(data.seo_key);
                 $('#seo_desc').val(data.seo_desc);
@@ -85,26 +86,12 @@ function selectLineDetail() {
     });
 
 }
+//详情创建于线路基本信息插入时候，所以只有更新而没有插入
 function updateLineDetail() {
-    console.log({
-        travelId:getValById('travel_id'),
-        travelSubtitle:getValById('travel_subtitle'),
-        travelFeature:getValById('travel_feature'),
-        travelTips:getValById('travel_tips'),
-        travelFrom:getValById('fromAreas'),
-        travelTo:getValById('toAreas'),
-        travelViews:getValById('travel_views'),
-        // lineLabels:getValById('line_labels'),
-        travelInfo:getValById('travel_info'),
-        reserveInfo:getValById('reserve_info'),
-        warmPrompt:getValById('warm_prompt'),
-        toInfo:getValById('to_info'),
-        travelPicture:getValById('travel_picture'),
-        travelPicture2:getValById('travel_picture2'),
-        travelPicture3:getValById('travel_picture3'),
-        travelPicture4:getValById('travel_picture4'),
-        schedulesPdf:getValById('schedules_pdf')
-    })
+    if(getValById('travel_id')==null || getValById('travel_id')==0) {
+        alert('未添加或添加基本信息失败');
+        return;
+    }
     $.ajax({
         type: "post",
         url: "/dd_travel_war/lineAdmin",
@@ -115,13 +102,14 @@ function updateLineDetail() {
                 travelSubtitle:getValById('travel_subtitle'),
                 travelFeature:getValById('travel_feature'),
                 travelTips:getValById('travel_tips'),
-                travelFrom:getValById('fromAreas'),
-                travelTo:getValById('toAreas'),
+                travelFrom:getValById('fromSonAreas'),
+                travelTo:getValById('toSonAreas'),
                 travelViews:getValById('travel_views'),
                 // lineLabels:getValById('line_labels'),
                 travelInfo:getValById('travel_info'),
                 reserveInfo:getValById('reserve_info'),
                 warmPrompt:getValById('warm_prompt'),
+                openInfo:getValById('open_info'),
                 toInfo:getValById('to_info'),
                 travelPicture:getValById('travel_picture'),
                 travelPicture2:getValById('travel_picture2'),
@@ -131,17 +119,13 @@ function updateLineDetail() {
                 seoTitle:getValById('seo_title'),
                 seoKey:getValById('seo_key'),
                 seoDesc:getValById('seo_desc'),
-                
             })
         },
         dataType: 'json',
         success: function (json) {
             console.log(json);
-            console.log("insertLine success");
             if (json.flag == 1) {
-                layer.msg(json.msg,{icon:1,time:1000},function () {
-                    layer_close();
-                })
+                layer.msg(json.msg, {icon: 1, time: 1000});
             }
         },
         error: function (data) {
@@ -153,7 +137,8 @@ function updateLineDetail() {
 
 }
 
-function uploadPicture() {
+function uploadPicture(o) {
+    alert(1123);
     var data = new FormData($('#form1')[0]);
     $.ajax({
         url: "/dd_travel_war/fileUpload",
@@ -164,14 +149,18 @@ function uploadPicture() {
         processData: false,
         contentType: false,
         success: function (json) {
-            console.log(json);
-                $('#line_photos').find('img').each(function (index, item) {
-                if (index < json.data.length) {
-                    //回显上传完成的图片
-                    $(this).attr("src", '/upload/' + json.data[index]);
+            var files = $(o).parent().find('input[type="file"]');
+            var notNullFiles=[];
+            //找到有文件的input标签加入notNullFiles
+            $(files).each(function (index, item) {
+                if(item.value != "" && item.value!=null) {
+                    //当前的长度的值等价于新成员的下标，譬如长度3，发现新元素需要加入，那么其加入的位置下标就是第四个，即下标3
+                    notNullFiles[notNullFiles.length] = item;
                 }
             })
-
+            $(notNullFiles).each(function (index, item) {
+                $(item).parent().prev().attr("src", '/upload/' + json.data[index]);
+            })
         }
     });
 }
@@ -188,6 +177,7 @@ function uploadPdf() {
         success: function (json) {
             if (json.flag==1) {
                 layer.msg('上传成功!', {icon: 6, time: 1000});
+                $('#schedules_pdf').val(json.data);
             } else {
                 layer.msg('上传失败!', {icon: 5, time: 1000});
                 
@@ -195,4 +185,51 @@ function uploadPdf() {
 
         }
     });
+}
+
+function changeSonAresById(o,id) {
+    $.ajax({
+        type: 'post',
+        url: '/dd_travel_war/place',
+        data: {
+            method: 'selectAres',
+            pid: $(o).val()
+        },
+        async: false,
+        dataType: 'json',
+        success: function (json) {
+            var ins = '';
+            $(json.data).each(function (index, item) {
+                ins +=
+                    '<option value="' + item.id + '">' + item.place_name + '</option>';
+            });
+            $('#' + id).html(ins);
+        },
+        error: function (data) {
+            console.log(data.msg);
+        }
+    });
+    $('#'+id)
+}
+
+function selectPlaceById(id) {
+    var result;
+    $.ajax({
+        type: 'post',
+        url: '/dd_travel_war/place',
+        data: {
+            method: 'selectPlace',
+            id: id
+        },
+        async:false,
+        dataType: 'json',
+        success: function (json) {
+            result = json;
+        },
+        error: function (data) {
+            console.log(data.msg);
+        }
+    });
+    return result;
+
 }

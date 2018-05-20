@@ -24,13 +24,8 @@ li a.bb:hover {
     border-bottom: 2px solid #F86B4F;
 }
 
-.line_nav:hover {
-    border: 1px solid #F86B4F;
-}
 
 .line_nav:hover {
-    width: 238px;
-    height: 248px;
     border: 1px solid #F86B4F;
 }
 
@@ -235,10 +230,11 @@ li a.bb:hover {
 
 .left {
     width: 212px;
-    height: 54px;
+    height: 64px;
     z-index: 999;
     opacity: 0.8;
     background-color: #FFF;
+    
 }
 
 .right {
@@ -339,7 +335,9 @@ li a.bb:hover {
 
 .line_nav {
     width: 240px;
-    height: 250px;
+    height: 248px;
+    border: 1px solid #fff;
+    padding: 4px;
     float: left;
 }
 

@@ -138,7 +138,7 @@ public interface ILineService {
 	 * @Date: 2018/3/2 下午1:40
 	 * @Des: 根据线路id以及次序获取一条班次
 	 **/
-	Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception;
+	Map<String, Object> selectLinePlan(Integer planId) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -153,4 +153,11 @@ public interface ILineService {
 	 * @Des: 插入多条日程记录
 	 **/
 	int insertLineSchedules(List<LineSchedule> schedules) throws Exception;
+
+	/**
+	 * @Author: TusuZer
+	 * @Date: 2018/5/4 下午12:25
+	 * @Des: 插入多条班次记录
+	 **/
+	int insertLinePlans(List<LinePlan> linePlans) throws Exception;
 }

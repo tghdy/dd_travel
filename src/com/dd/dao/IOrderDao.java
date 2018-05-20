@@ -49,8 +49,8 @@ public interface IOrderDao {
 	 * @Date: 2018/4/19 下午1:27
 	 * @Des: 获取订单详情
 	 **/
-	Map<String,Object> selectOrderDetail(int id, int seq) throws Exception;
-
+	Map<String,Object> selectOrderDetail(int id, int planId) throws Exception;
+	
 	/**
 	 * @Author: TusuZer
 	 * @Date: 2018/4/20 上午8:45

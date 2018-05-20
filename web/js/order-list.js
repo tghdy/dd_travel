@@ -79,7 +79,7 @@ function searOrder(orderState, lineType) {
                     '<p><span class="pricelab">总金额：</span><span class="price">' + item.order_price + '</span>元</p>' +
                     '</td>' +
                     '<td class="status" width="15%">' + state + '</td>' +
-                    '<td class="operate" width="15%"><div class="button"><a target="_blank" onclick="watchOrderDetail(' + item.id + ',' + item.plan_seq + ');"' +
+                    '<td class="operate" width="15%"><div class="button"><a target="_blank" onclick="watchOrderDetail('+ item.id + ',' + item.plan_id+');"' +
                     ' href="javascript:;">订单详情</a></div></td>' +
                     '</tr>' +
                     '</tbody>' +
@@ -181,14 +181,14 @@ function toSearchLinePage() {
 
 }
 
-function watchOrderDetail(id, seq) {
+function watchOrderDetail(id,planId) {
     $.ajax({
         type: 'get',
         url: '/dd_travel_war/order',
         data: {
             method: 'orderDetail',
             id: id,
-            seq: seq
+            planId: planId,
         },
         dataType: 'json',
         success: function (json) {

@@ -48,7 +48,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public List<Map<String, Object>> selectLinePlanListByLineId(int lineId) throws Exception {
-		String sql = "SELECT * FROM line_plan WHERE travel_id=?";
+		String sql = "SELECT * FROM line_plan WHERE travel_id=? AND UNIX_TIMESTAMP(start_time) > UNIX_TIMESTAMP(now())";
 		return JdbcUtils_DBCP.selectMapList(sql, new Object[]{lineId});
 	}
 
@@ -62,18 +62,18 @@ public class LineDaoImpl implements ILineDao {
 	public List<Map<String, Object>> searchLineByItem(LineSearchItem searchItem) throws Exception {
 		StringBuilder sql = new StringBuilder();
 		List<Object> paramList = new ArrayList<>();
-		 
+		//还可以吧
 		sql.append("SELECT tl.*, ld.*, tp.place_name son_area, tp2.place_name area FROM travel_line tl, line_detail ld, ")
 				.append("travel_place tp, travel_place tp2 ")
 				.append("WHERE tl.id=ld.travel_id AND ld.travel_to=tp.id AND tp.parent_id=tp2.id ");
-		if (searchItem.getToName() != null && searchItem.getToName() != "") {
-			sql.append(" AND tp.place_name='")
-					.append(searchItem.getToName())
-					.append("'");
-		}
 		if (searchItem.getToPname() != null && searchItem.getToPname() != "") {
 			sql.append(" AND tp2.place_name='")
 					.append(searchItem.getToPname())
+					.append("'");
+		}
+		if (searchItem.getToName() != null && searchItem.getToName() != "") {
+			sql.append(" AND tp.place_name='")
+					.append(searchItem.getToName())
 					.append("'");
 		}
 		if (searchItem.getTitle() != null && searchItem.getTitle() != "") {
@@ -99,7 +99,11 @@ public class LineDaoImpl implements ILineDao {
 				sql.append(" ORDER BY travel_price DESC ");
 			}
 		}
-		//System.out.println(sql.toString());
+		
+		if (searchItem.getLineType() == null || searchItem.getLineType() == -1) {
+			sql.append(" LIMIT 20");
+		}
+		
 		
 		return JdbcUtils_DBCP.selectMapList(sql.toString(), null);
 	}
@@ -132,7 +136,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public List<Map<String, Object>> selectLinePlanList(int travelId) throws Exception {
-		String sql = "SELECT * FROM line_plan WHERE  travel_id = ?";
+		String sql = "SELECT * FROM line_plan WHERE  travel_id = ? AND UNIX_TIMESTAMP(start_time)>UNIX_TIMESTAMP(now())";
 		return JdbcUtils_DBCP.selectMapList(sql, new Object[]{travelId});
 	}
 
@@ -175,7 +179,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public int insertLineSchedule(LineSchedule lineSchedule) throws Exception {
-		String sql = "insert into line_schedule values (?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into line_schedule values (?,?,?,?,?,?,?,?,?,?,?,?)";
 		Object[] params = lineSchedule.params();
 		int flag = 0;
 		flag = JdbcUtils_DBCP.update(sql, params);
@@ -198,7 +202,7 @@ public class LineDaoImpl implements ILineDao {
 	@Override
 	public int updateLineDetail(LineDetail detail) throws Exception {
 		String sql = "update line_detail set travel_subtitle=?, travel_feature=?, travel_tips=?, travel_from=?, " +
-				"travel_to=?, travel_views=?,line_labels=?, travel_info=?, reserve_info=?, warm_prompt=?, to_info=?, " +
+				"travel_to=?, travel_views=?,line_labels=?, travel_info=?, reserve_info=?, warm_prompt=?, open_info=?, to_info=?, " +
 				"travel_picture=?, travel_picture2=?, travel_picture3=?, travel_picture4=?, schedules_pdf=?, seo_title=?, seo_key=?, seo_desc=?" +
 				"  where travel_id =?";
 		return JdbcUtils_DBCP.update(sql, detail.updateParams());
@@ -207,21 +211,21 @@ public class LineDaoImpl implements ILineDao {
 	@Override
 	public int updateLinePlan(LinePlan plan) throws Exception {
 		String sql = "update line_plan set start_time=?, plan_price=?, plan_child_price=?, " +
-				"gather_time=?, gather_place=?,dismiss_place=? where travel_id =? and seq=?";
+				"gather_time=?, gather_place=?,dismiss_place=? where id=?";
 		return JdbcUtils_DBCP.update(sql, plan.updateParams());
 	}
 	
 	@Override
 	public int updateLineSchedule(LineSchedule schedule) throws Exception {
 		String sql = "update line_schedule set sche_detail=?, sche_stay_level=?, stay_hotel=?, " +
-				"sche_meal=?, sche_meal2=?, sche_meal3=?, sche_views=? where travel_id =? and seq=?";
+				"sche_meal=?, sche_meal2=?, sche_meal3=?, sche_views=?, sche_pic=?, sche_pic2=?, sche_pic3=? where travel_id =? and seq=?";
 		return JdbcUtils_DBCP.update(sql, schedule.updateParams());
 	}
 
 	@Override
-	public Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception{
-		String sql = "SELECT * FROM line_plan WHERE  travel_id = ? AND seq = ?";
-		return JdbcUtils_DBCP.selectMap(sql, new Object[]{id, seq});
+	public Map<String, Object> selectLinePlan(Integer id) throws Exception{
+		String sql = "SELECT * FROM line_plan WHERE  id = ?";
+		return JdbcUtils_DBCP.selectMap(sql, new Object[]{id});
 	}
 
 	@Override
@@ -232,7 +236,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public List<Map<String, Object>>  selectRelatedLineList(Integer toId) throws Exception {
-		String sql = "SELECT tl.*, ld.travel_picture FROM travel_line tl, line_detail ld WHERE travel_to = ? LIMIT 4";
+		String sql = "SELECT tl.*, ld.travel_picture FROM travel_line tl, line_detail ld WHERE travel_to = ?  AND tl.id=ld.travel_id LIMIT 4";
 		return JdbcUtils_DBCP.selectMapList(sql, new Object[]{toId});
 	}
 
@@ -271,12 +275,13 @@ public class LineDaoImpl implements ILineDao {
 	@Override
 	public int insertLinePlans(List<LinePlan> plans) throws Exception {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("insert into line_schedule values ");
+		stringBuilder.append("insert into line_plan(id,travel_id,start_time,plan_price,plan_child_price) values ");
 		LinePlan plan;
 		Object[] params;
 		for (int i = 0; i < plans.size(); i++) {
 			plan = plans.get(i);
 			params = plan.params();
+			stringBuilder.append("(");
 			for (int j = 0; j < params.length; j++) {
 				if (params[j] != null) {
 					stringBuilder.append('\'').append(params[j]).append('\'');
@@ -294,8 +299,7 @@ public class LineDaoImpl implements ILineDao {
 			}
 			
 		}
-		return 0;
-		//return JdbcUtils_DBCP.update(sql, params);
+		return JdbcUtils_DBCP.update(stringBuilder.toString(), null);
 	}
 	
 

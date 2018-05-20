@@ -2,10 +2,10 @@
   "周边游": {
     "emphasis": [{
       "name": "厦门",
-      "url": "../line-list/line-list.html?toName=厦门"
+      "url": "../line-list/line-list.html?toName=厦门&lineType=0"
     }, {
       "name": "宁波",
-      "url": "../line-list/line-list.html?toName=宁波"
+      "url": "../line-list/line-list.html?toName=宁波&lineType=0"
     }],
     "other": [{
       "name": "海边旅游",
@@ -22,16 +22,62 @@
     }]
   }
 }, {
-  "周边游": {
+  "国内游": {
     "emphasis": [{
-      "name": "厦门",
+      "name": "北京",
       "url": "/baidu.com"
     }, {
-      "name": "香山",
+      "name": "上海",
       "url": "/baidu.com"
     }],
     "other": [{
       "name": "海边旅游",
+      "items": [{
+        "name": "舟山",
+        "url": "/baidu.com"
+      }, {
+        "name": "舟山",
+        "url": "/baidu.com"
+      }, {
+        "name": "行",
+        "url": "/baidu.com"
+      }]
+    }]
+  }
+}, {
+  "国际游": {
+    "emphasis": [{
+      "name": "欧洲",
+      "url": "/baidu.com"
+    }, {
+      "name": "南非",
+      "url": "/baidu.com"
+    }],
+    "other": [{
+      "name": "海边旅游",
+      "items": [{
+        "name": "舟山",
+        "url": "/baidu.com"
+      }, {
+        "name": "舟山",
+        "url": "/baidu.com"
+      }, {
+        "name": "行",
+        "url": "/baidu.com"
+      }]
+    }]
+  }
+}, {
+  "自驾游": {
+    "emphasis": [{
+      "name": "地点1",
+      "url": "/baidu.com"
+    }, {
+      "name": "还可以",
+      "url": "/baidu.com"
+    }],
+    "other": [{
+      "name": "自驾游还可以",
       "items": [{
         "name": "舟山",
         "url": "/baidu.com"

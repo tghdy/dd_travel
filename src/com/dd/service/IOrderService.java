@@ -14,7 +14,7 @@ public interface IOrderService {
 	 * @Date: 2018/3/10 下午1:23
 	 * @Des: 订单添加页面信息获取，主要是线路信息以及
 	 **/
-	Map<String, Object> orderPageInit(int travelId, int seq) throws Exception;
+	Map<String, Object> orderPageInit(int travelId, int planId) throws Exception;
 
 	/**
 	 * @Author: TusuZer
@@ -37,7 +37,7 @@ public interface IOrderService {
 	 * @Date: 2018/4/19 下午1:26
 	 * @Des: 获取订单详情
 	 **/
-	Map<String, Object> selectOrderDetail(int id, int seq) throws Exception;
+	Map<String, Object> selectOrderDetail(int id, int plan_id) throws Exception;
 
 	/**
 	 * @Author: TusuZer

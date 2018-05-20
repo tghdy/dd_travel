@@ -6,7 +6,7 @@ public class TravelOrder {
 	private Integer orderState;//订单状态
 	private Long userId;//订单用户id
 	private Integer travelId;//线路id
-	private Integer planSeq;//班次序号
+	private Integer planId;//班次序号
 	private int orderPrice;//订单价格
 	private String orderTime;//订单生成时间
 	private Integer invalidEmp;//作废人员
@@ -31,12 +31,12 @@ public class TravelOrder {
 	public TravelOrder() {
 	}
 
-	public Integer getPlanSeq() {
-		return planSeq;
+	public Integer getPlanId() {
+		return planId;
 	}
 
-	public void setPlanSeq(Integer planSeq) {
-		this.planSeq = planSeq;
+	public void setPlanId(Integer planId) {
+		this.planId = planId;
 	}
 
 	@Override

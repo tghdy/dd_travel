@@ -29,7 +29,10 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">父id：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="parent_id" name="">
+				<span class="select-box">
+					<select name="" class="select" id="parent_id">
+					</select>
+				</span>
             </div>
         </div>
         <div class="row cl">
@@ -72,21 +75,26 @@
 
 <script>
     function addPlace() {
+        console.log({
+            id: getValById('parent_id'),
+            place_name: getValById('place_name'),
+            place_desc: getValById('place_desc'),
+        });
         $.ajax({
             type: 'get',
             url: '/dd_travel_war/place',
             data: {
                 method: 'addPlace',
-                jsonData: {
-                    id:getValById('parent_id'),
-                    place_name:getValById('place_name'),
-                    place_desc:getValById('place_desc'),
-                }
+                jsonData: JSON.stringify({
+                    parentId:getValById('parent_id'),
+                    placeName:getValById('place_name'),
+                    placeDesc:getValById('place_desc'),
+                })
             },
             dataType: 'json',
             success: function (json) {
                 if (json.flag == 1) {
-                    layer.msg('插入成功!', {icon: 5, time: 1000});
+                    layer.msg(json.msg, {icon: 6, time: 1000});
                 } else {
                     layer.msg(json.msg, {icon: 6, time: 1000});
                 }
@@ -97,6 +105,37 @@
         });
         
     }
+    $(function() {
+        $.ajax({
+            type: 'get',
+            url: '/dd_travel_war/place',
+            data: {
+                method: 'selectAres',
+                pid:0,
+            },
+            async:false,
+            dataType: 'json',
+            success: function (json) {
+                if (json.flag == 1) {
+                    var data = json.data;
+                    var fromAreaInf = '';
+                    var toAreaInf = '';
+                    var ins = '<option value="0" >父级地区</option>';
+
+                    $(data).each(function (index, item) {
+                        ins +=
+                            '<option value="' + item.id + '">' + item.place_name + '</option>';
+                    });
+
+                    $('#parent_id').html(ins);
+
+                }
+            },
+            error: function (data) {
+                console.log(data.msg);
+            }
+        });
+    })
 </script>
 
 </body>

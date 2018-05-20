@@ -25,7 +25,6 @@ function selectLinePlan() {
         data: {
             method: "selectLinePlan",
             id:getUrlParam("id"),
-            seq:getUrlParam("seq")
         },
         dataType: 'json',
         success: function (json) {
@@ -33,8 +32,9 @@ function selectLinePlan() {
             console.log(json);
             if (json.flag == 1) {
                 var data=json.data;
+                console.log(data);
+                $('#id').val(data.id);
                 $('#travel_id').val(data.travel_id);
-                $('#seq').val(data.seq);
                 $('#start_time').val(data.start_time);
                 $('#plan_price').val(data.plan_price);
                 $('#plan_child_price').val(data.plan_child_price);
@@ -63,7 +63,6 @@ function addLinePlan() {
             method: "insertLinePlan",
             jsonData:JSON.stringify({
                 travelId:getUrlParam('id'),
-                seq:getValById('seq'),
                 startTime:getValById('start_time'),
                 planPrice:getValById('plan_price'),
                 planChildPrice:getValById('plan_child_price'),
@@ -98,8 +97,8 @@ function updateLinePlan() {
         data: {
             method: "updateLinePlan",
             jsonData:JSON.stringify({
+                id:getValById('id'),
                 travelId:getValById('travel_id'),
-                seq:getValById('seq'),
                 startTime:getValById('start_time'),
                 planPrice:getValById('plan_price'),
                 planChildPrice:getValById('plan_child_price'),

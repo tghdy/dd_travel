@@ -7,7 +7,17 @@ var area =
         广东: {
             sonArea: ["潮汕", "闽南"],
                 days: [1, 2, 3]
+        },
+        安徽: {
+            sonArea: ["黄山", "泰山"],
+            days: [1,2,3,4]
+        },
+        北京: {
+            sonArea: ["北戴河","北京"],
+            days: [1,2,3,4]
         }
+        
+        
     };
 
 
@@ -54,70 +64,6 @@ var area =
 
 }
 
-//处理导航栏，废弃
-function dealNavInf(json) {
-    //如果为空，隐藏导航栏，否则显示导航栏
-    if (json.data.length == 0) {
-        $('.son-nav').hide();
-        return;
-    }
-    $('#son-nav').show();
-    var son_area = json.data[0].son_area;
-    var area = json.data[0].area;
-    var flag = 1;
-
-    $(json.data).each(function (index, item) {
-        if (index > 0) {
-            if (item.area !== area || item.son_area !== son_area) {
-                flag = 0;
-            }
-        }
-        console.log(item);
-    });
-    if (flag === 1) {
-        //更新导航栏信息
-        updateAreaNav(area, son_area);
-    } else {
-        alert("fuck");
-    }
-
-}
-
-//给op加红色，并更新线路信息
-function updateAreaNav(areaa, son_area) {
-//更新导航栏信息，废弃
-    $('.son-nav').show();
-    console.log(areaa, son_area)
-    $('#area > .inf > span').each(function (index, item) {
-        if ($(item).text() === areaa) {
-            $(item).siblings('.c-red').removeClass('c-red');
-            $(item).addClass('c-red');
-        }
-    })
-    var ins = '<span class="col-sm-1" onclick="changeColor(this);">不限</span>';
-    var insDays = '<span class="col-sm-1 c-red" onclick="changeColor(this);">不限</span>';
-
-    for (var p in area) {
-        if (p === areaa) {
-            for (var i = 0; i < area[p].sonArea.length; i++) {
-                if (area[p].sonArea[i] === son_area) {
-                    // alert('asdasd');
-                    ins += '<span class="col-sm-1 c-red" onclick="changeColor(this);">' + son_area + '</span>';
-                    continue;
-                }
-                ins += '<span class="col-sm-1" onclick="changeColor(this);">' + area[p].sonArea[i] + '</span>';
-
-            }
-            console.log(ins);
-            $('#sonArea').find('.inf').html(ins);
-            for (var i = 0; i < area[p].days.length; i++)
-                insDays += '<span class="col-sm-1" onclick="changeColor(this);">' + area[p].days[i] + '</span>';
-            $('#days').find('.inf').html(insDays);
-            break;
-        }
-    }
-
-}
 
 //更新右侧广告栏
 function updateRightAdbInf() {
@@ -163,7 +109,7 @@ function updateRightAdbInf() {
 }
 
 
-//传入排序方式，动态更新线路信息  
+//传入排序方式，综合目的地等多个条件动态更新线路信息,当按价格排序被触发时使用  
 function updateLineInf(sortWay) {
     var title = getValById('search-value');
     var area = dealNavItemValue($('#area').find('.c-red').text());
@@ -231,9 +177,12 @@ function changeColor(op) {
     updateLineInf();
 };
 
-//初始化界面，更新线路信息和导航栏目信息，在用
-// function initPage(area, key, toName, lineType) {
+//初始化界面，更新线路信息和导航栏目信息，根据关键字，目的地名，线路类型初始化线路信息，在用
 function initPage(key, toName, lineType) {
+    console.log(key);
+    console.log(toName);
+    console.log(lineType);
+    
     $.ajax({
         type: 'get',
         url: '/dd_travel_war/line',
@@ -244,31 +193,35 @@ function initPage(key, toName, lineType) {
                 title: key,
                 day: 0,
                 toName: toName,
-                lineType: -1
+                lineType: lineType
             })
-
         },
         dataType: 'json',
         success: function (json) {
+            //无线路信息时候不显示导航栏
             if (json.data == null || json.data.length == 0) {
-                // alert('暂无线路信息');
                 $('#inf-num').html('共找到0条信息');
                 $('#line-inf-wrap').find('ul').html("无线路信息");
+                $('.son-nav').hide();
+                // alert('暂无线路信息');
                 return;
-            }
-            var areaFlag = 1;//地区相同
-            var areaValue = json.data[0].area;
-
-            var sonAreaFlag = 1;//区域相同
-            var sonAreaValue = json.data[0].son_area;
-
+            } else if(getUrlParam('lineType')==1){
+                $('.son-nav').show();
+            } 
+                
             //处理拿到的线路数据
             dealListJson(json);
-            //更新面板
+            
+            //国内线路，展示导航栏信息
+            var areaFlag = 1;//地区相同：如都是浙江
+            var areaValue = json.data[0].area;
+
+            var sonAreaFlag = 1;//区域相同：如都是杭州
+            var sonAreaValue = json.data[0].son_area;
+
+            //更新搜索条件栏
             $(json.data).each(function (index, item) {
-                // console.log(item);
                 if (item.area != areaValue) {
-                    console.log(item.area + areaValue);
                     areaFlag = 0;
                 }
                 if (item.son_area != sonAreaValue) {
@@ -289,7 +242,7 @@ function initPage(key, toName, lineType) {
             var insAreaSon = '<span class="col-sm-1 c-red" onclick="sonAreaClicked(this);">不限</span>';
             var insDay = '<span class="col-sm-1 c-red" onclick="dayClicked(this);">不限</span>';
 
-            //来自同一地区例如：浙江
+            //来自同一父地区
             if (areaFlag == 1) {
 
                 for (var i = 0; i < area[areaValue].sonArea.length; i++) {
@@ -302,11 +255,13 @@ function initPage(key, toName, lineType) {
                         '<span class="col-sm-1" onclick="dayClicked(this);">' + area[areaValue].days[i] + '</span>';
                 }
                 $('#days').find('.inf').html(insDay);
-                var areaObj = $('#area').find('.inf').find('span:contains(' + areaValue + ')');
+                var areaObj = $('#area').find('.inf').find('span:contains("' + areaValue + '")');
+                // console.log('span:contains("' + areaValue + '")');
                 if (areaObj != null) {
                     $(areaObj).siblings('span').removeClass('c-red');
                     $(areaObj).addClass('c-red');
                 }
+                //如果线路来一同一个子地区，且该子地区在该父地区能找到，则将改地区加红显示
                 if (sonAreaFlag != 0) {
                     var sonAreaObj = $('#sonArea').find('.inf').find('span:contains(' + sonAreaValue + ')');
                     if (sonAreaObj != null) {
@@ -341,7 +296,7 @@ function areaClicked(o) {
     if (clickedAreaValue == '不限') {
         $('#sonArea').find('.inf').html(ins);
         $('#days').find('.inf').html(ins);
-    } else {
+    } else {//未选择不限制父地区
         for (var i = 0; i < area[clickedAreaValue].sonArea.length; i++) {
             ins +=
                 '<span class="col-sm-1" onclick="sonAreaClicked(this);">' + area[clickedAreaValue].sonArea[i] + '</span>';
@@ -354,11 +309,9 @@ function areaClicked(o) {
         $('#days').find('.inf').html(insDay);
     }
 
-    //将不限转化为""
+    //将"不限"转化为""
     clickedAreaValue = dealNavItemValue(clickedAreaValue);
     updateAllInf(clickedAreaValue, "", "", "", "");
-    //初始化右侧广告信息
-    // updateRightAdbInf();
 
 }
 
@@ -416,6 +369,7 @@ function updateAllInf(area, sonArea, day, sort, title) {
                 title: title,
                 toPname: area,
                 toName: sonArea,
+                lineType:getUrlParam('lineType'),
                 day: day,
                 sort: sort
             })
@@ -433,14 +387,15 @@ function updateAllInf(area, sonArea, day, sort, title) {
 }
 
 
-//将不限转化为空值
+//将不限转化为空值,在用中
 function dealNavItemValue(value) {
     return value === '不限' ? '' : value;
 }
 
-//渲染红色导航栏
+//渲染红色导航栏，在用中
 function redNavItem(lineType) {
     $('#nav-ul').find('li').each(function (index, item) {
+        //
         if (item.id.substring(2) == lineType) {
             $(this).addClass('red-item');
         }

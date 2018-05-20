@@ -53,8 +53,8 @@ public class LineServiceImpl implements ILineService {
 		return lineDao.searchLineByItem(searchItem);
 	}
 
-	@Override	
-	public Map<String, Object> selectAllOrderInfByOrderId(int orderId) throws Exception{
+	@Override
+	public Map<String, Object> selectAllOrderInfByOrderId(int orderId) throws Exception {
 		return lineDao.selectOrderDetailByOrderId(orderId);
 	}
 
@@ -64,12 +64,12 @@ public class LineServiceImpl implements ILineService {
 	}
 
 	@Override
-	public Map<String, Object> selectTravelLine(int travelId) throws Exception{
+	public Map<String, Object> selectTravelLine(int travelId) throws Exception {
 		return lineDao.selectTravelLine(travelId);
 	}
-	
+
 	@Override
-	public Map<String, Object> selectLineDetail(int travelId) throws Exception{
+	public Map<String, Object> selectLineDetail(int travelId) throws Exception {
 		return lineDao.selectLineDetail(travelId);
 	}
 
@@ -82,7 +82,7 @@ public class LineServiceImpl implements ILineService {
 	public List<Map<String, Object>> selectLineScheduleList(int travelId) throws Exception {
 		return lineDao.selectLineScheduleList(travelId);
 	}
-	
+
 	@Override
 	public int insertTravelLine(TravelLine travelLine) throws Exception {
 		return lineDao.insertTravelLine(travelLine);
@@ -92,12 +92,12 @@ public class LineServiceImpl implements ILineService {
 	public int insertLinePlan(LinePlan linePlan) throws Exception {
 		return lineDao.insertLinePlan(linePlan);
 	}
-	
+
 	@Override
 	public int insertLineSchedule(LineSchedule lineSchedule) throws Exception {
 		return lineDao.insertLineSchedule(lineSchedule);
 	}
-	
+
 	@Override
 	public int updateTravelLineState(int id, int state) throws Exception {
 		return lineDao.updateTravelLineState(id, state);
@@ -107,35 +107,40 @@ public class LineServiceImpl implements ILineService {
 	public int updateTravelLine(TravelLine line) throws Exception {
 		return lineDao.updateTravelLine(line);
 	}
-	
+
 	@Override
 	public int updateLineDetail(LineDetail detail) throws Exception {
 		return lineDao.updateLineDetail(detail);
 	}
-	
+
 	@Override
 	public int updateLinePlan(LinePlan plan) throws Exception {
 		return lineDao.updateLinePlan(plan);
 	}
-	
+
 	@Override
 	public int updateLineSchedule(LineSchedule schedule) throws Exception {
 		return lineDao.updateLineSchedule(schedule);
 	}
-
+      
 	@Override
-	public Map<String, Object> selectLinePlan(Integer id, Integer seq) throws Exception{
-		return lineDao.selectLinePlan(id, seq);
+	public Map<String, Object> selectLinePlan(Integer planId) throws Exception {
+		return lineDao.selectLinePlan(planId);
 	}
 
 	@Override
-	public Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws Exception{
+	public Map<String, Object> selectLineSchedule(Integer id, Integer seq) throws Exception {
 		return lineDao.selectLineSchedule(id, seq);
 	}
 
 	@Override
 	public int insertLineSchedules(List<LineSchedule> schedules) throws Exception {
 		return lineDao.insertLineSchedules(schedules);
+	}
+
+	@Override
+	public int insertLinePlans(List<LinePlan> linePlans) throws Exception {
+		return lineDao.insertLinePlans(linePlans);
 	}
 
 }

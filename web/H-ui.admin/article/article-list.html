@@ -53,14 +53,14 @@
             <tr>
                 <th width="25"><input type="checkbox" name="" value=""></th>
                 <th>id</th>
-                <th>类别</th>catagory
-                <th>标题</th>title
-                <!--<th>内容</th>-->news_content
-                <th>创建时间</th>create_time
-                <th>最后编辑时间</th>last_edit
-                <th>作者</th>news_author
-                <th>浏览量</th>news_view
-                <!--<th>优先级</th>-->news_priority
+                <th>类别</th>
+                <th>标题</th>
+                <!--<th>内容</th>-->
+                <!--<th>创建时间</th>-->
+                <!--<th>最后编辑时间</th>-->
+                <!--<th>作者</th>-->
+                <th>浏览量</th>
+                <!--<th>优先级</th>-->
                 <th>状态</th>state
                 <th>管理</th>
             </tr>
@@ -110,9 +110,6 @@
                 {"data": "id"},
                 {"data": "category"},
                 {"data": "title"},
-                {"data": "create_time"},
-                {"data": "last_edit"},
-                {"data": "news_author"},
                 {"data": "news_view"},
                 {
                     "data": "state",
@@ -161,7 +158,7 @@
         layer.confirm('确认要下线吗？', function (index) {
             $.ajax({
                 type: 'get',
-                url: '/articleAdmin',
+                url: '/dd_travel_war/articleAdmin',
                 dataType: 'json',
                 data:{
                     method:'updateArticleState',
@@ -187,7 +184,7 @@
         layer.confirm('确认要发布吗？', function (index) {
             $.ajax({
                 type: 'POST',
-                url: '/articleAdmin',
+                url: '/dd_travel_war/articleAdmin',
                 data:{
                     method:'updateArticleState',
                     id:id,

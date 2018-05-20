@@ -55,6 +55,7 @@
 				<input type="text" class="input-text" value="" placeholder="" id="create_time" name="">
 			</div>
 		</div>
+					<!--
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>最后编辑时间：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -79,6 +80,13 @@
 				<input type="text" class="input-text" value="" placeholder="" id="news_priority" name="">
 			</div>
 		</div>
+            -->
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>浏览量：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="news_view" name="">
+			</div>
+		</div>		
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>状态：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -175,11 +183,11 @@
                     category:getValById('category'),
                     title:getValById('title'),
                     newsContent:ue.getContent(),
-                    createTime:getValById('create_time'),
-                    lastEdit:getValById('last_edit'),
-                    newsAuthor:getValById('news_author'),
+                    // createTime:getValById('create_time'),
+                    // lastEdit:getValById('last_edit'),
+                    // newsAuthor:getValById('news_author'),
                     newsView:getValById('news_view'),
-                    newsPriority:getValById('news_priority'),
+                    // newsPriority:getValById('news_priority'),
                     state:getValById('state'),
                 })
             },

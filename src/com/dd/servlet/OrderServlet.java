@@ -89,10 +89,12 @@ public class OrderServlet extends HttpServlet {
 		Map<String, Object> map = null;
 		try {
 			Integer id = Integer.valueOf(request.getParameter("id"));
-			Integer seq = Integer.valueOf(request.getParameter("seq"));
-			map = orderService.selectOrderDetail(id, seq);
+			Integer planId = Integer.valueOf(request.getParameter("planId"));
+			map = orderService.selectOrderDetail(id, planId);
 			if (map != null) {
 				jsonData = new JsonData(JsonData.SUCCESS, "获取成功", map);
+				System.out.println("map");
+				System.out.println(map);
 				return;
 			}
 			jsonData = new JsonData(JsonData.FAILED, "为空");
@@ -165,7 +167,7 @@ public class OrderServlet extends HttpServlet {
 		try {
 			//获取前端参数
 			int travelId = Integer.parseInt(request.getParameter("travelId"));
-			int seq = Integer.parseInt(request.getParameter("seq"));
+			int planId = Integer.parseInt(request.getParameter("planId"));
 			int childNum = Integer.parseInt(request.getParameter("child"));
 			int adultNum = Integer.parseInt(request.getParameter("adult"));
 
@@ -180,7 +182,7 @@ public class OrderServlet extends HttpServlet {
 			TravelOrder order = new TravelOrder();
 
 			//计算订单价格
-			Map<String, Object> map = lineService.selectLinePlan(travelId, seq);
+			Map<String, Object> map = lineService.selectLinePlan(planId);
 			Integer childPrice = (Integer) map.get("plan_child_price");
 			Integer adultPrice = (Integer) map.get("plan_price");
 			int totalPrice = childPrice * childNum + adultPrice * adultNum;
@@ -193,7 +195,7 @@ public class OrderServlet extends HttpServlet {
 			order.setTravelId(travelId);
 			order.setOrderPrice(totalPrice);
 			order.setOrderTime(DateUtil.getNowDateTime());
-			order.setPlanSeq(seq);
+			order.setPlanId(planId);
 			
 			int orderId = orderService.insertOrder(order);
 			if (orderId > 0) {
@@ -214,13 +216,14 @@ public class OrderServlet extends HttpServlet {
 
 	}
 
+	//订单界面初始化
 	private void orderPageInit(HttpServletRequest request, HttpServletResponse response) {
 		JsonData jsonData = null;
 		Map<String, Object> map = null;
 		try {
 			int travelId = Integer.parseInt(request.getParameter("id"));
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			map = orderService.orderPageInit(travelId, seq);
+			int planId = Integer.parseInt(request.getParameter("planId"));
+			map = orderService.orderPageInit(travelId, planId);
 			jsonData = new JsonData(JsonData.SUCCESS, "获取成功", map);
 
 		} catch (Exception e) {

@@ -38,12 +38,14 @@ public class PlaceServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String method = request.getParameter("method");
+		//根据pid获取地区集合
 		if ("selectAres".equals(method)) {
 			selectAres(request, response);
 		}
 		if ("uploadPlace".equals(method)) {
 			uploadPlace(request, response);
 		}
+		//根据id获取单条地区信息
 		if ("selectPlace".equals(method)) {
 			selectPlace(request, response);
 		}

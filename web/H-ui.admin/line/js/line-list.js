@@ -32,7 +32,8 @@ function lineList() {
         }
     });
     
-}function showLineBase(travelId) {
+}
+function showLineBase(travelId) {
     var url = './line-base-show.html?id=' + travelId;
     layer_show("基本信息", url, '800', '500');
 }

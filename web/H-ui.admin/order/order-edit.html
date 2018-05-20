@@ -129,6 +129,16 @@
 <script src="../../js/common-util.js"></script>
 <script type="text/javascript">
     function submitUpdate() {
+        console.log({
+            method: 'adminUpdateOrderInf',
+            id: $('#order_id').text(),
+            order_price: $('#order_price').val(),
+            order_user: $('#order_user').val(),
+            order_mobile: $('#order_mobile').val(),
+            order_email: $('#order_email').val(),
+            order_remarks: $('#order_remarks').val(),
+            order_state: getValById('order_state')
+        });
         $.ajax({
             type: 'get',
             url: '/dd_travel_war/order',
@@ -165,13 +175,13 @@
             data: {
                 method: 'orderDetail',
                 id: getUrlParam('id'),
-                seq:getUrlParam('seq')
+                planId:getUrlParam('plan_id')
             },
             dataType: 'json',
             success: function (json) {
                 console.log(json);
                 var data = json.data;
-                $('#order_id').text(data.id),
+                $('#order_id').text(data.order_id),
                 $('#travel_name').text(data.travel_name);
                 $('#order_no').text(data.order_no);
                 $('#order_time').text(data.order_time);

@@ -10,17 +10,15 @@ function addArticle() {
                 category:getValById('category'),                
                 title:getValById('title'),
                 newsContent:ue.getContent(),
-                createTime:getValById('create_time'),
-                lastEdit:getValById('last_edit'),
-                newsAuthor:getValById('news_author'),
                 newsView:getValById('news_view'),
-                newsPriority:getValById('news_priority'),
+                // newsPriority:getValById('news_priority'),
                 state:getValById('state'),
             })
         },
         dataType: 'json',
         success: function (json) {
             console.log("success");
+            alert("添加成功");
             console.log(json);
         },
         error: function (data) {

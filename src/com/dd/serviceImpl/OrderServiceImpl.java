@@ -24,10 +24,10 @@ public class OrderServiceImpl implements IOrderService {
 	private ILineDao lineDao = LineDaoImpl.getInstance();
 
 	@Override
-	public Map<String, Object> orderPageInit(int travelId, int seq) throws Exception{
+	public Map<String, Object> orderPageInit(int travelId, int planId) throws Exception{
 		Map<String, Object> map = new HashMap<>();
 		map.put("lineInf", lineDao.selectLineInf(travelId));
-		map.put("linePlan", lineDao.selectLinePlan(travelId, seq));
+		map.put("linePlan", lineDao.selectLinePlan(planId));
 		return map;
 	}
 
@@ -42,8 +42,8 @@ public class OrderServiceImpl implements IOrderService {
 	}
 
 	@Override
-	public Map<String, Object> selectOrderDetail(int id, int seq) throws Exception {
-		return orderDao.selectOrderDetail(id,seq);
+	public Map<String, Object> selectOrderDetail(int id, int planId) throws Exception {
+		return orderDao.selectOrderDetail(id, planId);
 	}
 
 	@Override

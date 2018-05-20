@@ -1,14 +1,14 @@
 package com.dd.entity;
 
 public class LinePlan {
+    private Integer id; 
     private Integer travelId;//线路id
-    private Integer seq;//计划序列
     private String startTime;//计划时间
     private Integer planPrice;//计划价格
     private Integer planChildPrice;//计划儿童价格
     private String gatherTime;//集合时间
-    private Integer gatherPlace;//集合地点
-    private Integer dismissPlace;//解散地点
+    private String gatherPlace;//集合地点
+    private String dismissPlace;//解散地点
 
     public String getGatherTime() {
         return gatherTime;
@@ -18,19 +18,19 @@ public class LinePlan {
         this.gatherTime = gatherTime;
     }
 
-    public Integer getGatherPlace() {
+    public String getGatherPlace() {
         return gatherPlace;
     }
 
-    public void setGatherPlace(Integer gatherPlace) {
+    public void setGatherPlace(String gatherPlace) {
         this.gatherPlace = gatherPlace;
     }
 
-    public Integer getDismissPlace() {
+    public String getDismissPlace() {
         return dismissPlace;
     }
 
-    public void setDismissPlace(Integer dismissPlace) {
+    public void setDismissPlace(String dismissPlace) {
         this.dismissPlace = dismissPlace;
     }
 
@@ -40,14 +40,6 @@ public class LinePlan {
 
     public void setTravelId(Integer travelId) {
         this.travelId = travelId;
-    }
-
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
     }
 
     public String getStartTime() {
@@ -74,25 +66,20 @@ public class LinePlan {
         this.planChildPrice = planChildPrice;
     }
 
-    @Override
-    public String toString() {
-        return "LinePlan{" +
-                "travelId=" + travelId +
-                ", seq=" + seq +
-                ", startTime='" + startTime + '\'' +
-                ", planPrice=" + planPrice +
-                ", planChildPrice=" + planChildPrice +
-                ", gatherTime='" + gatherTime + '\'' +
-                ", gatherPlace=" + gatherPlace +
-                ", dismissPlace=" + dismissPlace +
-                '}';
+    public Integer getId() {
+        return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
     public Object[] params() {
-        return new Object[]{travelId, seq, startTime, planPrice, planChildPrice};
+        return new Object[]{id, travelId, startTime, planPrice, planChildPrice};
     }
+
     public Object[] updateParams() {
-        return new Object[]{startTime, planPrice, planChildPrice, gatherTime, gatherPlace, dismissPlace, travelId, seq};
+        return new Object[]{startTime, planPrice, planChildPrice, gatherTime, gatherPlace, dismissPlace, id};
     }
-    
 }   

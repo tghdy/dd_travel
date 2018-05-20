@@ -61,15 +61,35 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">出发地：</label>
+            <label class="form-label col-xs-4 col-sm-2">原出发区：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <select name="" class="selected" id="fromAreas"><option value="1">浙江</option><option value="2">西藏</option></select>
+                <input type="text" class="input-text" value="" placeholder="" id="oldFromPlace" name="" disabled="disabled">
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">目的地：</label>
+            <label class="form-label col-xs-4 col-sm-2" >新出发地：</label>
+            <div class="formControls col-xs-8 col-sm-2">
+                <select name="" class="selected" id="fromAreas" onchange="changeSonAresById(this, 'fromSonAreas')"></select>
+            </div>
+            <label class="form-label col-xs-4 col-sm-2" >新出发区：</label>
+            <div class="formControls col-xs-8 col-sm-2">
+                <select name="" class="selected" id="fromSonAreas" ></select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">原目的区：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <select name="" class="selected" id="toAreas"><option value="1">浙江</option><option value="2">西藏</option></select>
+                <input type="text" class="input-text" value="" placeholder="" id="oldToPlace" name="" disabled="disabled">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">新目的地：</label>
+            <div class="formControls col-xs-8 col-sm-2">
+                <select name="" class="selected" id="toAreas" onchange="changeSonAresById(this, 'toSonAreas')"><option value="1">浙江</option><option value="2">西藏</option></select>
+            </div>
+            <label class="form-label col-xs-4 col-sm-2">新目的区：</label>
+            <div class="formControls col-xs-8 col-sm-2">
+                <select name="" class="selected" id="toSonAreas"></select>
             </div>
         </div>
         <div class="row cl">
@@ -85,7 +105,7 @@
             <!--</div>-->
         <!--</div>-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">其他信息：</label>
+            <label class="form-label col-xs-4 col-sm-2">费用信息：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <textarea id="travel_info" name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
                           datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
@@ -105,6 +125,14 @@
             <label class="form-label col-xs-4 col-sm-2">温馨提示：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <textarea id="warm_prompt" name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
+                          onKeyUp="$.Huitextarealength(this,200)"></textarea>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">全透明提示：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea id="open_info" name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
                           datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
                           onKeyUp="$.Huitextarealength(this,200)"></textarea>
             </div>
@@ -149,7 +177,7 @@
                             <input type="file" name="p4" onchange="" style=""/>
                         </span>
                     </div>
-                    <input type="button" class="btn btn-primary radius" onclick="uploadPicture();" style="" value="上传图片"/>
+                    <input type="button" class="btn btn-primary radius" onclick="uploadPicture(this);" style="" value="上传图片"/>
                 </div>
             </div>
         </form>
@@ -213,8 +241,11 @@
 <script type="text/javascript" src="./js/line-detail.js"></script>
 
 <script>
+    function toLinePlanAdd() {
+        var travelId = getUrlParam('id');
+        window.location.href = './line-plan-add.html?id=' + travelId;
+    }
     $(function() {
-        initAreaInfo();
         selectLineDetail();
     })
 </script>

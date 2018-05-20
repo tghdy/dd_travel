@@ -40,9 +40,9 @@
         <span class="l">
             <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
                 <i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-            <a href="javascript:;" onclick="article_add('添加文章','article-add.html','','')"
+            <a href="javascript:;" onclick="place_add('添加地点','./place-add.html','','')"
                class="btn btn-primary radius">
-                <i class="Hui-iconfont">&#xe600;</i> 添加文章</a>
+                <i class="Hui-iconfont">&#xe600;</i> 添加地点</a>
         </span>
     </div>
     <div class="mt-20">
@@ -166,6 +166,10 @@
 
         function updatePage(o) {
             window.location.href = '/dd_travel_war/H-ui.admin/place/place-list.html?pid=' + $(o).val();
+        }
+        
+        function place_add(title,url,w,h) {
+            layer_show(title, url, w, h);
         }
     </script>
 </div>

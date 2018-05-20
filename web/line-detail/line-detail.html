@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>线路详情</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
     <link href="lib/Hui-iconfont_v1.0.8/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
     <link href="css/head.css" type="text/css" rel="stylesheet"/>
     <link href="css/body_1.css" type="text/css" rel="stylesheet"/>
@@ -137,39 +139,41 @@
                         <div class="pic_wall">
                             <div class="pic_fir">
                                 <div style="display: none;" class="p0 on">
-                                    <img src="img/1.jpg"/>
+                                    <img src=""/>
                                 </div>
                                 <div style="display: none;" class="p1">
-                                    <img src="img/1.jpg"/>
+                                    <img src=""/>
                                 </div>
                                 <div style="display: none;" class="p2">
-                                    <img src="img/1.jpg"/>
+                                    <img src=""/>
                                 </div>
                                 <div style="display: none;" class="p3">
-                                    <img src="img/1.jpg"/>
+                                    <img src=""/>
                                 </div>
                             </div>
                             <div class="pic_sec">
                                 <div class="pic_1 pic" id="p0" onmouseover="showBigPic(this);">
-                                    <img src="img/1.jpg"/>
+                                    <img src=""/>
                                 </div>
                                 <div class="pic_2 pic" id="p1" onmouseover="showBigPic(this);">
-                                    <img src="img/2.jpg"/>
+                                    <img src=""/>
                                 </div>
                                 <div class="pic_3 pic" id="p2" onmouseover="showBigPic(this);">
-                                    <img src="img/3.jpg"/>
+                                    <img src=""/>
                                 </div>
                                 <div class="pic_4 pic" id="p3" onmouseover="showBigPic(this);">
-                                    <img src="img/4.jpg"/>
+                                    <img src=""/>
                                 </div>
                             </div>
                         </div>
                         <div style="margin-left: 10px;width: 580px;height: 400px;border: 1px solid #ff4a00" id="rili">
-                            <table border="0" cellspacing="0" cellpadding="0" class="calendar" style="width: 580px;"
+                            <table border="0" cellspacing="0" cellpadding="0" class="calendar" style="width: 579px;"
                                    id="calendar">
                                 <caption
                                         style="height: 41px;background-color:#d9d9d9;line-height: 41px;text-align:left;color: #f16a54;">
-                                    <span style="margin-left: 15px;font-size:15px;">本月班次</span>
+                                    <span style="margin-left: 15px;font-size:15px;" class="Hui-iconfont Hui-iconfont-arrow2-left hand" onclick="reloadCalender(-1)"></span>
+                                    <span style="margin-left: 15px;font-size:15px;" id="calender-header">本月班次</span>
+                                    <span style="margin-left: 15px;font-size:15px;" class="Hui-iconfont Hui-iconfont-arrow2-right hand" onclick="reloadCalender(1)"></span>
                                 </caption>
                                 <tbody>
 
@@ -263,11 +267,13 @@
                 <div class="bm_left">
                     <div class="bm_left_top" id="eqqq">
                         <ul id="nav">
-                            <li><a href="javascript:;" id="a_1" onclick="toIdPos('schedules-detail');">线路行程</a></li>
-                            <li><a href="javascript:;" id="a_2" onclick="toIdPos('price_title');">费用说明</a></li>
-                            <!--<li><a href="#" id="a_3">预定说明</a></li>-->
-                            <li><a href="javascript:;" id="a_5" onclick="toIdPos('tips_title');">温馨提示</a></li>
-                            <li><a href="javascript:;" id="a_6">用户点评</a></li>
+                            <li><a href="javascript:;" onclick="toIdPos('schedules-detail');">线路行程</a></li>
+                            <li><a href="javascript:;" onclick="toIdPos('price_title');">费用说明</a></li>
+                            <li><a href="javascript:;" onclick="toIdPos('reserve_title');">预定说明</a></li>
+                            <li><a href="javascript:;" onclick="toIdPos('agreement_title');">文明公约</a></li>
+                            <li><a href="javascript:;" onclick="toIdPos('prompt_title');">温馨提示</a></li>
+                            <li><a href="javascript:;" onclick="toIdPos('open_title');">全透明提示</a></li>
+                            <li><a href="javascript:;" >用户点评</a></li>
                         </ul>
                         <div>
                             <input type="button" value="立即预定" class="button_1" style="border-radius: 5px 5px 5px 5px;"
@@ -368,20 +374,75 @@
                                 <div class="bm_5_body" id="travel_info"></div>
                             </div>
                             <!--费用说明结束-->
-                            <!--提示开始-->
-                            <div class="bm_left_fir_5" id="tips_title">
+                            <!--预定说明开始-->
+                            <div class="bm_left_fir_5" id="reserve_title">
+                                <div class="bm_5_head">
+                                    <div class="bm_5_head_left">
+                                        预定说明
+                                    </div>
+                                    <div class="bm_5_head_right">
+                                    </div>
+                                </div>
+                                <div class="bm_5_body" id="reserve_info"></div>
+                            </div>
+                            <!--预定说明结束-->
+                            <!--文明公约开始-->
+                            <div class="bm_left_fir_5" id="agreement_title">
+                                <div class="bm_5_head">
+                                    <div class="bm_5_head_left">
+                                        文明公约
+                                    </div>
+                                    <div class="bm_5_head_right">
+                                    </div>
+                                </div>
+                                <div class="bm_5_body" id="agreement_info">
+                                    维护环境卫生：不随地吐痰和口香糖，不乱扔废弃物，不在禁烟场所吸烟。<br>
+                                        遵守公共秩序：不喧哗吵闹，排队遵守秩序，不并行挡道，不在公众场所高声交谈。<br>
+                                        保护生态环境：不踩踏绿地，不摘折花木和果实，不追捉、投打、乱喂动物。<br>
+                                        保护文物古迹：不在文物古迹上涂刻，不攀爬触摸文物，拍照摄像遵守规定。<br>
+                                        爱惜公共设施：不污损客房用品，不损坏公用设施，不贪占小便宜，节约用水用电，用餐不浪费。<br>
+                                        尊重别人权利：不强行和外宾合影，不对着别人打喷嚏，不长期占用公共设施，尊重服务人员的劳动，尊重各民族宗教习俗。<br>
+                                        讲究以礼待人：衣着整洁得体，不在公共场所袒胸赤膊；礼让老幼病残，礼让女士；不讲粗话。<br>
+                                        提倡健康娱乐：抵制封建迷信活动，拒绝黄、赌、毒。
+                                </div>
+                            </div>
+                            <!--文明公约结束-->
+                            <!--温馨提示开始-->
+                            <div class="bm_left_fir_5" id="prompt_title">
                                 <div class="bm_5_head">
                                     <div class="bm_5_head_left">
                                         温馨提示
                                     </div>
                                     <div class="bm_5_head_right">
-
                                     </div>
                                 </div>
-                                <div class="bm_5_body" id="travel_tips"></div>
+                                <div class="bm_5_body" id="warm_prompt"></div>
                             </div>
-                            <!--提示结束-->
-                            评论开始
+                            <!--温馨提示结束-->
+                            <!--全透明提示开始-->
+                            <div class="bm_left_fir_5" id="open_title">
+                                <div class="bm_5_head">
+                                    <div class="bm_5_head_left">
+                                        全透明提示
+                                    </div>
+                                    <div class="bm_5_head_right">
+                                    </div>
+                                </div>
+                                <div class="bm_5_body" id="open_info"></div>
+                            </div>
+                            <!--全透明提示结束-->
+                            <!--目的地信息开始-->
+                            <div class="bm_left_fir_5" id="to_title">
+                                <div class="bm_5_head">
+                                    <div class="bm_5_head_left">
+                                        目的地信息
+                                    </div>
+                                    <div class="bm_5_head_right">
+                                    </div>
+                                </div>
+                                <div class="bm_5_body" id="to_info"></div>
+                            </div>
+                            <!--目的地信息结束-->
                             <div class="bm_left_fir_5" id="b_6">
                                 <div class="bm_5_head">
                                     <div class="bm_5_head_left">
@@ -396,7 +457,6 @@
                                     <div style="width:100%;height:120px; overflow:scroll; border:1px solid #f86b4f;"></div>
                                 </div>
                             </div>
-                            评论结束
                         </div>
                     </div>
                 </div>
@@ -448,7 +508,7 @@
     //渲染红色导航栏
     function redNavItem(lineType) {
         $('#nav-ul').find('li').each(function (index, item) {
-            if (item.id.substring(2) == lineType) {
+            if (item.id != '' && item.id.substring(2) == lineType) {
                 $(this).addClass('red-item');
             }
         });
@@ -458,8 +518,6 @@
         var value = $('#searchValue').val();
         window.location.href = '/dd_travel_war/line-list/line-list.html?key=' + value;
     }
-
-
 </script>
 </body>
 </html>

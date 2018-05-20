@@ -78,14 +78,6 @@ public class LineServlet extends HttpServlet {
 		JsonData jsonData = null;
 		try {
 			LineSearchItem searchItem = BeanUtil.jsonFormatInject(request, LineSearchItem.class);
-			//LineSearchItem searchItem = new LineSearchItem();
-			//searchItem.setToName("宁波");
-			//searchItem.setToPname("浙江");
-			//searchItem.setTitle("宁波");
-			//searchItem.setDay(0);
-			//searchItem.setSort(1);
-			
-			//System.out.println(searchItem.getDay()); 
 			
 			List<Map<String, Object>> list = lineService.searchLineByItem(searchItem);
 			if (list != null) {

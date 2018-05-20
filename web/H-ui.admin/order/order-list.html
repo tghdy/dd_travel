@@ -177,7 +177,7 @@
                     "className": "order-manage",
                     "render": function (data, type, row, meta) {
                         var ins = '';
-                        ins += '<a class="btn btn-primary" style="text-decoration:none" onClick="editOrder(' + data + ',' + row.plan_seq + ')" href="javascript:;" title="编辑线路基本信息">编辑</a>';
+                        ins += '<a class="btn btn-primary" style="text-decoration:none" onClick="editOrder(' + data + ',' + row.plan_id + ')" href="javascript:;" title="编辑线路基本信息">编辑</a>';
                         return ins;
                     }
                 }
@@ -191,8 +191,8 @@
     }
 
     /*用户-查看*/
-    function editOrder(id, seq) {
-        layer_show('编辑订单', 'order-edit.html?id=' + id + '&seq=' + seq, '', '');
+    function editOrder(id, plan_id) {
+        layer_show('编辑订单', 'order-edit.html?id=' + id + '&plan_id=' + plan_id, '', '');
     }
 
     /*用户-停用*/

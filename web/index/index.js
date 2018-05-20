@@ -13,7 +13,7 @@ $(function() {
                     
                     ins +=
                         '<div class="main">' +  //第一个div
-                        '<div class="left" style="position: absolute;margin-top: '+54*obj+'px">' +//第二个div
+                        '<div class="left" style="position: absolute;margin-top: '+64*obj+'px">' +//第二个div
                         '<i class="Hui-iconfont" style="color: #CB1425;font-size: 25px;position: absolute;margin-left: 15px;margin-top: 5px;opacity: 0.5">&#xe67a;</i>' +
                         '<a class="tt" href="#" style="font-size: 15px;margin-top: 8px;margin-left: 50px;text-decoration: none;display: block;">' +
                         title+//周边游

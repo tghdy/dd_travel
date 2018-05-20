@@ -54,6 +54,7 @@
                 <th>线路天数</th>
                 <th>成人价格</th>
                 <th>儿童价格</th>
+                <th>线路类型</th>
                 <th>状态</th>
                 <th>管理</th>
             </tr>
@@ -102,6 +103,34 @@
                 {"data": "travel_day"},
                 {"data": "travel_price"},
                 {"data": "travel_child_price"},
+                {
+                    "data": "line_type",
+                    "render": function (data, type, row, meta) {
+                        var ins = '';
+                        switch (data) {
+                            case 0:
+                                ins += '周边游';
+                                break;
+                            case 1:
+                                ins += '国内游';
+                                break;
+                            case 2:
+                                ins += '国际游';
+                                break;
+                            case 3:
+                                ins += '自驾游';
+                                break;
+                            case 4:
+                                ins += '游轮';
+                                break;
+                        }
+                        return ins;
+                        
+                        
+                            
+                        
+                    }
+                },
                 {"data": "state"},
                 {
                     "data": "id",

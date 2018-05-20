@@ -24,6 +24,8 @@ public class LineDetail {
 	private String reserveInfo;//预定信息
 
 	private String warmPrompt;//温馨提示
+
+	private String openInfo;//全透明提示
 	
 	private String toInfo;//目的地信息
 	
@@ -36,7 +38,7 @@ public class LineDetail {
 	private String travelPicture4;//线路图4
 
 	private String schedulesPdf;//日程pdf地址
-
+	
 	private String seoTitle;
 
 	private String seoKey;
@@ -131,6 +133,14 @@ public class LineDetail {
 		this.warmPrompt = warmPrompt;
 	}
 
+	public String getOpenInfo() {
+		return openInfo;
+	}
+
+	public void setOpenInfo(String openInfo) {
+		this.openInfo = openInfo;
+	}
+
 	public String getToInfo() {
 		return toInfo;
 	}
@@ -217,6 +227,7 @@ public class LineDetail {
 				", travelInfo='" + travelInfo + '\'' +
 				", reserveInfo='" + reserveInfo + '\'' +
 				", warmPrompt='" + warmPrompt + '\'' +
+				", openInfo='" + openInfo + '\'' +
 				", toInfo='" + toInfo + '\'' +
 				", travelPicture='" + travelPicture + '\'' +
 				", travelPicture2='" + travelPicture2 + '\'' +
@@ -231,7 +242,7 @@ public class LineDetail {
 
 	public Object[] updateParams() {
 		return new Object[]{travelSubtitle, travelFeature, travelTips, travelFrom, travelTo, travelViews, lineLabels, 
-				travelInfo, reserveInfo, warmPrompt, toInfo, travelPicture, travelPicture2,  travelPicture3,  travelPicture4, schedulesPdf, seoTitle, seoKey, seoDesc, travelId};
+				travelInfo, reserveInfo, warmPrompt, openInfo, toInfo, travelPicture, travelPicture2,  travelPicture3,  travelPicture4, schedulesPdf, seoTitle, seoKey, seoDesc, travelId};
 	}
 	
 }

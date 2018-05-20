@@ -43,7 +43,7 @@
             <tr>
                 <th width="25"><input type="checkbox" name="" value=""></th>
                 <th>ID</th>travel_id
-                <th>序号</th>seq
+                <th>线路id</th>线路id
                 <th>出发时间</th>start_time
                 <th>班次价格</th>plan_price
                 <th>班次儿童价格</th>plan_child_price
@@ -94,19 +94,19 @@
             },
             "columns": [
                 {"defaultContent": '<input type="checkbox" value="" name="">'},
+                { "data": "id" },
                 { "data": "travel_id" },
-                { "data": "seq" },
                 { "data": "start_time" },
                 { "data": "plan_price" },
                 { "data": "plan_child_price" },
                 { "data": "gather_time" },
                 { "data": "gather_place" },
                 { "data": "dismiss_place" },
-                { "data": "travel_id",//管理 
+                { "data": "id",//管理 
                   "className": "plan_manage",
                   "render": function (data,type,row,meta) {
                         var ins = '';
-                        ins += '<a class="btn btn-primary" style="text-decoration:none" onClick="showPlan('+data+','+row.seq+')" href="javascript:;" title="编辑本班次">编辑</a>' +
+                        ins += '<a class="btn btn-primary" style="text-decoration:none" onClick="showPlan('+data+')" href="javascript:;" title="编辑本班次">编辑</a>' +
                             '<a class="btn btn-danger ml-10" style="text-decoration:none" onClick="deletePlan(this,'+data+')" href="javascript:;" title="删除本班次">删除</a>';
                         
                         return ins;
@@ -139,14 +139,14 @@
         });
     };
     /*查看班次*/
-    function showPlan(id, seq) {
-        layer_show('班次编辑', './line-plan-show.html?id='+id+'&seq='+seq);
+    function showPlan(id) {
+        layer_show('班次编辑', './line-plan-show.html?id='+id);
     }
 
     /*转到添加班次*/
     function goAddPlan() {
         var id = getUrlParam("id");
-        layer_show('添加班次', './line-plan-add.html?id=' + id);
+        layer_show('添加班次', './line-plans-add.html?id=' + id);
     }
 
 

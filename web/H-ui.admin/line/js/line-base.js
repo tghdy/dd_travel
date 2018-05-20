@@ -6,7 +6,6 @@ function insertLineBase() {
         data: {
             method: "insertLine",
             jsonData:JSON.stringify({
-                travelNo:getValById("tNo"),
                 travelName:getValById("tName"),
                 trafficType:getValById("tTraffic"),
                 travelCount:getValById("tCount"),
@@ -20,18 +19,18 @@ function insertLineBase() {
         },
         dataType: 'json',
         success: function (json) {
-            console.log("insertLine success");
             console.log(json);
             if (json.flag == 1) {
-                layer.msg(json.msg,{icon:1,time:1000},function () {
-                    layer_close();
-                })
+                alert(json.msg);
+                travelId = json.data;
+                //将tarvelId写入一个隐藏的input供详情添加时使用
+                $('#travel_id').val(travelId);
             } else {
                 layer.msg(json.msg,{icon:1,time:1000},function () {
                     layer_close();
                 })
             }
-
+            
         },
         error: function (data) {
             console.log("insertLine failed ");

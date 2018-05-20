@@ -21,6 +21,12 @@ public class LineSchedule {
 
     private String scheViews;
 
+    private String schePic;
+    
+    private String schePic2;
+    
+    private String schePic3;
+
     public Integer getTravelId() {
         return travelId;
     }
@@ -93,6 +99,30 @@ public class LineSchedule {
         this.scheViews = scheViews;
     }
 
+    public String getSchePic() {
+        return schePic;
+    }
+
+    public void setSchePic(String schePic) {
+        this.schePic = schePic;
+    }
+
+    public String getSchePic2() {
+        return schePic2;
+    }
+
+    public void setSchePic2(String schePic2) {
+        this.schePic2 = schePic2;
+    }
+
+    public String getSchePic3() {
+        return schePic3;
+    }
+
+    public void setSchePic3(String schePic3) {
+        this.schePic3 = schePic3;
+    }
+
     @Override
     public String toString() {
         return "LineSchedule{" +
@@ -105,17 +135,22 @@ public class LineSchedule {
                 ", scheMeal2=" + scheMeal2 +
                 ", scheMeal3=" + scheMeal3 +
                 ", scheViews='" + scheViews + '\'' +
+                ", schePic='" + schePic + '\'' +
+                ", schePic2='" + schePic2 + '\'' +
+                ", schePic3='" + schePic3 + '\'' +
                 '}';
     }
 
     public Object[] params() {
         return new Object[]{
-                travelId, seq, scheDetail, scheStayLevel,
-                stayHotel, scheMeal, scheMeal2, scheMeal3, scheViews};
+            travelId, seq, scheDetail, scheStayLevel,
+            stayHotel, scheMeal, scheMeal2, scheMeal3, scheViews, schePic, schePic2, schePic3
+        };
     }
 
     public Object[] updateParams() {
         return new Object[]{scheDetail, scheStayLevel,
-                stayHotel, scheMeal, scheMeal2, scheMeal3, scheViews, travelId, seq};
+                stayHotel, scheMeal, scheMeal2, scheMeal3, scheViews, schePic, schePic2, schePic3,
+                travelId, seq};
     }
 }

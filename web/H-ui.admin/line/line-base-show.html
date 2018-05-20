@@ -36,15 +36,15 @@
         <!--Id End-->
         <!--线路编号 Head-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">线路编号：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>线路编号：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="tNo" name="">
+                <input type="text" class="input-text" value="" placeholder="" id="tNo" name="" disabled="disabled">
             </div>
         </div>
         <!--线路编号 End-->
         <!--订单类型Head-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">线路名：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>线路名：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="0" placeholder="" id="tName" name="">
             </div>
@@ -52,7 +52,7 @@
         <!--订单类型End-->
         <!--交通方式预留 Head-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>交通方式：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span><span class="c-red">*</span>交通方式：</label>
             <div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 					<select name="" class="select" id="tTraffic">
@@ -69,7 +69,7 @@
         <!--交通方式预留 End-->
         <!--旅游人数 Head-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">旅游人数：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>旅游人数：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="0" placeholder="" id="tCount" name="">
             </div>
@@ -94,9 +94,11 @@
             <div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 					<select name="" class="select" id="tType">
-						<option value="0">周边游戏</option>
+						<option value="0">周边游</option>
 						<option value="1">国内游</option>
 						<option value="2">国际游</option>
+						<option value="3">自驾游</option>
+						<option value="4">游轮游</option>
 					</select>
 				</span>
             </div>
@@ -104,7 +106,7 @@
         <!--线路类型 End-->
         <!--旅游天数 Head-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">旅游天数：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>旅游天数：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="0" placeholder="" id="tDay" name="">
             </div>
@@ -112,7 +114,7 @@
         <!--旅游天数 End-->
         <!--成人价格 Head-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">成人价格：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>成人价格：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="0" placeholder="" id="tPrice" name="">
             </div>
@@ -120,7 +122,7 @@
         <!--成人价格 End-->
         <!--儿童价格 Head-->
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">儿童价格：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>儿童价格：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="0" placeholder="" id="tChildPrice" name="">
             </div>

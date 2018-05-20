@@ -121,7 +121,7 @@ public class UserServlet extends HttpServlet {
 			TravelUser user = BeanUtil.jsonFormatInject(request, TravelUser.class);
 			//设置类型为普通用户
 			user.setType(0);
-			System.out.println(user);
+			//System.out.println(user);
 			int flag = userService.insert(user);
 			if (flag == 1) {
 				jsonData = new JsonData(1, "注册成功");
