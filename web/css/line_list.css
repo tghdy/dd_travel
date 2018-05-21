@@ -32,9 +32,17 @@ a:hover {
     line-height: 36px;
 }
 .nav-wrap {
+    width: 1270px;
     height: 40px;
     line-height: 40px;
-    border-bottom: 2px solid #cb1425;
+    margin: 0 auto;
+}
+.category {
+    width: 210px;
+    height: 40px;
+    background-color: #f4f4f4;
+    float: left;
+    
 }
 .nav-items li:hover {
     color: #cb1425;

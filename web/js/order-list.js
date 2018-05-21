@@ -80,7 +80,7 @@ function searOrder(orderState, lineType) {
                     '</td>' +
                     '<td class="status" width="15%">' + state + '</td>' +
                     '<td class="operate" width="15%"><div class="button"><a target="_blank" onclick="watchOrderDetail('+ item.id + ',' + item.plan_id+');"' +
-                    ' href="javascript:;">订单详情</a></div></td>' +
+                    ' href="javascript:;">详情</a></div></td>' +
                     '</tr>' +
                     '</tbody>' +
                     '</table>' +

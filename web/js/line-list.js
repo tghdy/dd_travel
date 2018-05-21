@@ -154,7 +154,7 @@ function dealListJson(json) {
             '<div class="line-pic-wrap col-sm-3 pd-0"><img src="' + item.travel_picture + '" alt="显示失败"></div>' +
             '<div class="line-mid-wrap col-sm-6 ml-15 pd-0">' +
             '<h2 class="f-16 pd-0"><a href="../line-detail/line-detail.html?id=' + item.id + '" class="c-blue">' + item.travel_name + '</a></h2>' +
-            '<p class="c-aaa mt-10">线路特色：' + item.travel_feature + '</p>' +
+            '<p class="c-aaa mt-10" style="height:50px;overflow: hidden;">线路特色：' + item.travel_feature + '</p>' +
             '<p class="mt-30">线路编号：' + item.travel_no + '</p>' +
             '</div>' +
             '<div class="line-mid-wrap f-r">' +
