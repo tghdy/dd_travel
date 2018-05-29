@@ -6,6 +6,7 @@ import com.dd.service.ILineService;
 import com.dd.serviceImpl.AdbServiceImpl;
 import com.dd.serviceImpl.LineServiceImpl;
 import com.dd.util.JsonData;
+import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +43,154 @@ public class AdbServlet extends HttpServlet {
 		if ("hotLineAdb".equals(method)) {
 			hotLineAdb(request, response);
 		}
-		
+		if ("addPic".equals(method)) {
+			addPic(request, response);
+		}
+		if ("showAllAdb".equals(method)) {
+			showAllAdb(request, response);
+		}
+		if ("showOneAdv".equals(method)) {
+			showOneAdv(request, response);
+		}
+		if ("submitAdb".equals(method)) {
+			submitAdb(request, response);
+		}
+		if ("addAdb".equals(method)) {
+			addAdb(request, response);
+		}
+		if ("delete".equals(method)) {
+			delete(request, response);
+		}
+	}
+
+	private void delete(HttpServletRequest request, HttpServletResponse response) {
+		/*String a= request.getParameter("list");
+		String [] strArray = new String [20];
+		for(int i=0;i<20;i++){
+			strArray[i] = "";
+		}
+		int j=0;
+		for(int i=0;i<a.length();i++){
+			if(a.charAt(i)>='0'&&a.charAt(i)<='9'){
+				strArray[j]+=a.charAt(i);
+			}
+			else if(a.charAt(i)==','){
+				j++;
+			}
+		}
+		j++;
+		int len=j;
+		/*for(int i=0;i<j;i++){
+			System.out.println(strArray[i]);
+		}*/
+		String[] strArray= request.getParameterValues("list[]");
+		int len=strArray.length;
+		JsonData jsonData = null;
+		jsonData = new JsonData(JsonData.SUCCESS,"成功");
+		try{
+			int flag = adbService.delete(len,strArray);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			output(response, jsonData);
+
+		}
+
+	}
+
+	private void addAdb(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		jsonData = new JsonData(JsonData.SUCCESS,"成功");
+		try{
+			String a = request.getParameter("travel_id");
+			String b = request.getParameter("line_type");
+			String c = request.getParameter("is_aside");
+			int travel_id=Integer.parseInt(a);
+			int line_type=Integer.parseInt(b);
+			int is_aside=Integer.parseInt(c);
+			String url = request.getParameter("url");
+			int flag = adbService.addAdb(travel_id,line_type,is_aside,url);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			output(response, jsonData);
+
+		}
+	}
+
+	private void submitAdb(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		jsonData = new JsonData(JsonData.SUCCESS,"成功");
+		try{
+			String a = request.getParameter("id");
+			int id = Integer.parseInt(a);
+			String travel_id = request.getParameter("travel_id");
+			String line_type = request.getParameter("line_type");
+			String url = request.getParameter("url");
+			int flag = adbService.submitAdb(id,travel_id,line_type,url);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			output(response, jsonData);
+
+		}
+
+	}
+
+	private void showOneAdv(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		try {
+            String a = request.getParameter("id");
+            int id = Integer.parseInt(a);
+			Map<String, Object> map = adbService.showOneAdv(id);
+			if (map != null) {
+				jsonData = new JsonData(JsonData.SUCCESS, "成功", map);
+				return;
+			}
+			jsonData = new JsonData(JsonData.FAILED, "为空");
+		} catch (Exception e) {
+			jsonData = new JsonData(JsonData.FAILED, "异常");
+			e.printStackTrace();
+		} finally {
+			output(response, jsonData);
+		}
+	}
+
+	private void showAllAdb(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		try {
+			List<Map<String, Object>> list = adbService.selectAllAdb();
+			//System.out.println(list);
+			if (list != null) {
+				jsonData = new JsonData(JsonData.SUCCESS, "成功", list);
+				return;
+			}
+			jsonData = new JsonData(JsonData.FAILED, "为空");
+		} catch (Exception e) {
+			jsonData = new JsonData(JsonData.FAILED, "异常");
+			e.printStackTrace();
+
+		} finally {
+			output(response, jsonData);
+
+		}
+	}
+
+	private void addPic(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		jsonData = new JsonData(JsonData.SUCCESS,"成功");
+		try{
+			String a = request.getParameter("id");
+			int id = Integer.parseInt(a);
+			String url = request.getParameter("url");
+			int flag = adbService.updatepic(id,url);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			output(response, jsonData);
+
+		}
+
 	}
 
 	private void demo(HttpServletRequest request, HttpServletResponse response) {

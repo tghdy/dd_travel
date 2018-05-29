@@ -1,5 +1,5 @@
 $(function() {
-    console.log("asd")
+    console.log("asd");
     $.ajax({
         type: 'get',
         url: 'adress-tab.json',
@@ -76,7 +76,7 @@ function getAdbLine(type) {
             lineType:type
         },
         dataType: 'json',
-        success: function (json) {9
+        success: function (json) {
             console.log("indexSixAdbListLine Ok");
             console.log(json);
             if (json.flag == 1) {
@@ -89,9 +89,9 @@ function getAdbLine(type) {
                         if (index == 0 || index == 3)
                             ins += '<div class="line_nav">';
                         else
-                            ins += '<div class="line_nav" style="margin-left: 6px">';
+                            ins += '<div class="line_nav" style="margin-left: 6px;">';
                         ins +=
-                            '<img src="'+item.aside_picture+'" style="margin-top: 5px;margin-left: 5px;">' +
+                            '<img src="'+item.aside_picture+'" style="margin-top: 5px;margin-left: 5px;width: 230px;height: 136px">' +
                             '<a href="/dd_travel_war/line-detail/line-detail.html?id='+item.travel_id+'" class="tt" style="text-decoration:none;">' +
                             '<span style="display: block;margin-top: 5px;font-size: 15px;height: 40px;">'+item.travel_name+'</span>' +
                             '</a>' +
@@ -160,6 +160,12 @@ window.onload = function bannerSlide() {
     }
 }
 
+$(function () {
+
+    selectSlidePicture();
+
+});
+
 //获取轮播图片
 function selectSlidePicture() {
     $.ajax({
@@ -171,6 +177,18 @@ function selectSlidePicture() {
         dataType: 'json',
         success: function (json) {
             console.log(json);
+            var data = json.data;
+            var ins = '';
+            ins += '<div class="banner_slide_'+1+
+                '" id="banner'+1+'" onclick="alert(1);" style="background: url('
+                +data[0].travel_picture+') no-repeat;background-position: center 0;"></div>';
+            for(var i=1;i<6;i++){
+                ins += '<div class="banner_slide_2" id="banner2" onclick="alert(1);" ' +
+                    'style="background: url('
+                    +data[i].travel_picture+') no-repeat;background-position: center 0;"></div>';
+            }
+            $("#bannerBox").html(ins);
+            console.log(ins);
         },
         error: function (data) {
             console.log(data);

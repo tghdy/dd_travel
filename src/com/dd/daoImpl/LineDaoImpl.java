@@ -34,7 +34,7 @@ public class LineDaoImpl implements ILineDao {
 
 	@Override
 	public Map<String, Object> selectAsideByLineType(int lineType) throws Exception{
-		String sql = "SELECT * FROM travel_adb ta, travel_line tl WHERE ta.travel_id=tl.id AND ta.line_type=?";
+		String sql = "SELECT * FROM travel_adb ta, travel_line tl WHERE ta.travel_id=tl.id AND ta.line_type=? and is_aside=1";
 		Map<String, Object> map = JdbcUtils_DBCP.selectMap(sql, new Object[]{lineType});
 		return map;
 	}

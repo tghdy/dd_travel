@@ -75,6 +75,7 @@ function updateRightAdbInf() {
         },
         dataType: 'json',
         success: function (json) {
+            console.log(json);
             var ins = '';
             if (json.data.length == 0) {
                 return;
@@ -84,7 +85,7 @@ function updateRightAdbInf() {
                     '<li>' +
                     '<div style="position:relative;">' +
                     '<div class="cover-box" style="position: absolute; bottom: 0">满意度：91%</div>' +
-                    '<a href="../line-detail/line-detail.html?id=' + item.travel_id + '"><img src="' + item.travel_picture + '" alt="那啥" style="width: 100%;height: 100%;"></a>' +
+                    '<a href="../line-detail/line-detail.html?id=' + item.travel_id + '"><img src="' + item.aside_picture + '" alt="那啥" style="width: 100%;height: 100%;"></a>' +
                     '</div>' +
                     '<div class="text_right_line">' +
                     '<div class="desc_title"><a href="../line-detail/line-detail.html?id=' + item.travel_id + '">' +

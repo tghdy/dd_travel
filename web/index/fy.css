@@ -189,8 +189,6 @@ li a.bb:hover {
     transition: opacity 0.5s;
     opacity: 1;
     z-index: 1;
-    background: url(picture/2.jpg) no-repeat;
-    background-position: center 0;
 }
 
 .banner_slide_2 {
@@ -203,22 +201,6 @@ li a.bb:hover {
     transition: opacity 0.5s;
     opacity: 0;
     z-index: 1;
-    background: url(picture/3.jpg) no-repeat;
-    background-position: center 0;
-}
-
-.banner_slide_3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
-    transition: opacity 0.5s;
-    opacity: 0;
-    z-index: 1;
-    background: url(picture/4.jpg) no-repeat;
-    background-position: center 0;
 }
 
 .max {
