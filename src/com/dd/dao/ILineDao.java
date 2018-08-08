@@ -3,7 +3,6 @@ package com.dd.dao;
 import com.dd.dto.LineSearchItem;
 import com.dd.entity.*;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -187,4 +186,6 @@ public interface ILineDao {
 	 * @Des: 插入多条班次记录
 	 **/
 	int insertLinePlans(List<LinePlan> plans) throws Exception;
+
+    Map<String, Object> getPdf(Integer id) throws Exception;
 }

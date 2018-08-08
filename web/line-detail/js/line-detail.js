@@ -100,6 +100,8 @@ function initLineDetail(type) {
                 dealSchedules(schedules);
                 //处理关联线路信息
                 dealRelatedLine(relatedLine);
+                //获取pdf
+                getPdf();
             }
 
         },
@@ -169,11 +171,19 @@ function dealDetail(data) {
     $('#p1').html('<img src="'+data.travel_picture2+'"/>');
     $('#p2').html('<img src="'+data.travel_picture3+'"/>');
     $('#p3').html('<img src="'+data.travel_picture4+'"/>');
-    
+
     $('.p0').html('<img src="'+data.travel_picture+'"/>');
     $('.p1').html('<img src="'+data.travel_picture2+'"/>');
     $('.p2').html('<img src="'+data.travel_picture3+'"/>');
     $('.p3').html('<img src="'+data.travel_picture4+'"/>');
+
+    //去掉没有的图片
+    $(".pic img").each(function(i){
+        if($(this).attr("src")==""){
+            $(this).css("display","none");
+            $(this).parent().css("display","none");
+        }
+    });
 
 
     var navInf = '';
@@ -335,10 +345,11 @@ function dealSchedules(schedules) {
             '<div class="day_miaoshu">' +
             item.sche_detail.replace(/\n/g,'<br>') +
             '</div>' +
-            '<div class="day_miaoshu">' +
-            '<img src="'+item.sche_pic+'" alt="不存在此图片">' +
-            '<img src="'+item.sche_pic2+'" alt="不存在此图片">' +
-            '<img src="'+item.sche_pic3+'" alt="不存在此图片">' +
+            '<div class="day_miaoshu">' ;
+        if(item.sche_pic!=""){scheduleDetailHtml += '<img src="'+item.sche_pic+'" alt="不存在此图片">'}
+        if(item.sche_pic2!=""){scheduleDetailHtml += '<img src="'+item.sche_pic+'" alt="不存在此图片">'}
+        if(item.sche_pic3!=""){scheduleDetailHtml += '<img src="'+item.sche_pic+'" alt="不存在此图片">'}
+        scheduleDetailHtml +=
             '</div>' +
             '<div class="day_body_col">' +
             '<p style="font-weight: 600;">酒店信息：</p>' +
@@ -410,4 +421,26 @@ function toReservePage() {
     
     window.location.href = url;
     
+}
+
+function getPdf() {
+    $.ajax({
+        type:"get",
+        url:"/dd_travel_war/line",
+        data:{
+            id:getUrlParam('id'),
+            method:"getPdf"
+        },
+        dataType:"json",
+        success:function (json) {
+    		console.log(json);
+    		if(json.data.schedules_pdf!=""){
+                $('#download').attr('href','/upload/'+json.data.schedules_pdf);
+            }
+
+    	},
+        error:function(data){
+            console.log(data.msg);
+        }
+    });
 }

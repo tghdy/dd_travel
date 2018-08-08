@@ -22,6 +22,10 @@
         .red-item a {
             color: #fff !important;
         }
+        .nopic{
+            height: 0px;
+            width: 0px;
+        }
     </style>
     <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
     <script src="../js/common-util.js"></script>
@@ -115,8 +119,10 @@
                     <li><a href="../index/index.html">首页</a></li>
                     <li id="tl0"><a href="../line-list/line-list.html?lineType=0">周边旅游</a></li>
                     <li id="tl1"><a href="../line-list/line-list.html?lineType=1">国内旅游</a></li>
-                    <li id="tl2"><a href="../line-list/line-list.html?lineType=2">出境旅游</a></li>
-                    <li><a href="#">签证</a></li>
+                    <li id="tl2"><a href="../line-list/line-list.html?lineType=2">国际旅游</a></li>
+                    <li id="tl3"><a href="../line-list/line-list.html?lineType=3">自驾游</a></li>
+                    <li id="tl4"><a href="../line-list/line-list.html?lineType=4">邮轮</a></li>
+                    <li><a href="/dd_travel_war/aavisa/index.html">签证</a></li>
                 </ul>
             </div>
         </div>
@@ -286,6 +292,7 @@
                                 <p style="font-size: 14px;font-weight: 600;">适用班期</p>
                                 <p style="font-size: 12px;margin-left: 30px;">2月7日、2月9日、2月16日</p>
                             </div>
+                            <a id="download" style="float: right;font-size: 15px;margin-bottom: 5px" href="">点击下载</a>
                             <div class="bm_left_fir_3">
                                 <table border="1" cellpadding="0" cellspacing="0">
                                     <thead>
@@ -498,7 +505,6 @@
 <script>
     $(function () {
         showUserInf();
-
     })
     $('#nav').find('li').click(function () {
         $(this).siblings('.active').removeClass('active');

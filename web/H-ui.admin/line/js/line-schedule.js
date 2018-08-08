@@ -149,6 +149,7 @@ function addLineSchedules() {
                 });
             }
             console.log(json);
+            alert("插入成功");
         },
         error: function (data) {
             console.log(data.msg);
@@ -201,7 +202,6 @@ function generateScheduleList() {
     $('#schedules-area').html('');
     var daysNum = prompt("请输入日程的天数");
     for (var i = 0; i < daysNum; i++) {
-
         var ins =
             '<div class="form form-horizontal">' +
             '       <div class="row cl">' +
@@ -233,21 +233,36 @@ function generateScheduleList() {
             '            </div>' +
             '        </div>' +
             '        <div class="row cl">' +
-            '            <label class="form-label col-xs-4 col-sm-2">早餐：</label>' +
-            '            <div class="formControls col-xs-8 col-sm-9">' +
-            '                <input type="text" class="input-text sche_meal" value="" placeholder="" id="" name="">' +
+            '             <label class="form-label col-xs-4 col-sm-2">早餐：</label>' +
+            '             <div class="formControls col-xs-8 col-sm-9">' +
+            '               <span class="select-box">' +
+            '                   <select name="" class="select sche_meal" id="is_aside">' +
+            '                       <option value="0">不包含</option>' +
+            '                       <option value="1">包含</option>' +
+            '                   </select>' +
+            '                </span>' +
             '            </div>' +
             '        </div>' +
             '        <div class="row cl">' +
-            '            <label class="form-label col-xs-4 col-sm-2">午餐：</label>' +
-            '            <div class="formControls col-xs-8 col-sm-9">' +
-            '                <input type="text" class="input-text sche_meal2" value="" placeholder="" id="" name="">' +
+            '             <label class="form-label col-xs-4 col-sm-2">午餐：</label>' +
+            '             <div class="formControls col-xs-8 col-sm-9">' +
+            '               <span class="select-box">' +
+            '                   <select name="" class="select sche_meal2" id="is_aside">' +
+            '                       <option value="0">不包含</option>' +
+            '                       <option value="1">包含</option>' +
+            '                   </select>' +
+            '                </span>' +
             '            </div>' +
             '        </div>' +
             '        <div class="row cl">' +
-            '            <label class="form-label col-xs-4 col-sm-2">晚餐：</label>' +
-            '            <div class="formControls col-xs-8 col-sm-9">' +
-            '                <input type="text" class="input-text sche_meal3" value="" placeholder="" id="" name="">' +
+            '             <label class="form-label col-xs-4 col-sm-2">晚餐：</label>' +
+            '             <div class="formControls col-xs-8 col-sm-9">' +
+            '               <span class="select-box">' +
+            '                   <select name="" class="select sche_meal3" id="is_aside">' +
+            '                       <option value="0">不包含</option>' +
+            '                       <option value="1">包含</option>' +
+            '                   </select>' +
+            '                </span>' +
             '            </div>' +
             '        </div>' +
             '        <div class="row cl">' +

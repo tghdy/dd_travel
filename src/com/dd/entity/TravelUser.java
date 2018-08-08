@@ -152,7 +152,7 @@ public class TravelUser {
     }
 
     public Object[] geParams() {
-        Object[] objects = new Object[]{null, userAccount, userName, password, lastLogin, mobilePhone, email, sex, idCard, head, 0, permission, 1};
+        Object[] objects = new Object[]{null, userAccount, userName, password, lastLogin, mobilePhone, email, sex, idCard, head, 0, 1, permission};
         return objects;
     }
     

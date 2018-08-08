@@ -160,4 +160,6 @@ public interface ILineService {
 	 * @Des: 插入多条班次记录
 	 **/
 	int insertLinePlans(List<LinePlan> linePlans) throws Exception;
+
+	Map<String, Object> getPdf(Integer id) throws Exception;
 }

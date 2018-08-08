@@ -138,7 +138,6 @@ function updateLineDetail() {
 }
 
 function uploadPicture(o) {
-    alert(1123);
     var data = new FormData($('#form1')[0]);
     $.ajax({
         url: "/dd_travel_war/fileUpload",

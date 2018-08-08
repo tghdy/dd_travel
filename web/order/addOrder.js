@@ -101,6 +101,8 @@ function insertOrder() {
             } else {
                 // layer.msg(json.msg, {icon: 5, time: 1000});
                 alert(json.msg);
+                var url = '../user/login.html';
+                window.location.href = url;
                 console.log('生成订单失败');
             }
 
@@ -144,7 +146,7 @@ function insertOrderDetail(id) {
         },
         dataType: 'json',
         success: function (json) {
-            alert('暗色调');
+            alert('成功！');
             console.log("insert order detail success");
             window.location.href='../order-list/dingDanSearch.html'
 

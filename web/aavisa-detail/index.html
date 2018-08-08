@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>文章</title>
+    <title></title>
     <link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/visa-list.css">
     <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
@@ -659,17 +659,13 @@
     <div class="menu_main">
         <div class="fl"><i class="Hui-iconfont Hui-iconfont-menu">&nbsp;&nbsp;全部旅游产品分类</i></div>
         <ul>
-            <li style="background: #e62637;color: white;">首页</li>
-            <li><a href="#">&nbsp;&nbsp;出境旅游</a></li>
-            <li><a href="#">&nbsp;&nbsp;国内旅游</a></li>
-            <li><a href="#">&nbsp;&nbsp;周边旅游</a></li>
-            <li><a href="#">&nbsp;&nbsp;欧洲游</a></li>
-            <li><a href="#" style="color: blue;">日本</a></li>
-            <li><a href="#">台湾</a></li>
-            <li><a href="#">邮轮</a></li>
-            <li><a href="#">签证</a></li>
-            <li><a href="#">自驾游</a></li>
-            <li><a href="#" style="color: blue;">特价机票</a></li>
+            <li><a href="/dd_travel_war/index/index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首页</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=0">&nbsp;&nbsp;周边旅游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=1">&nbsp;&nbsp;国内旅游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=2">&nbsp;&nbsp;国际旅游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=3">自驾游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=4">邮轮游</a></li>
+            <li style="background: #e62637;color: white;">签证</li>
         </ul>
     </div>
 </div>
@@ -680,9 +676,9 @@
         <p>当前位置:&nbsp;&nbsp;</p>
         <a href="#">飞扬旅游网</a>
         <p>&nbsp;>>&nbsp;</p>
-        <a href="#">目的地</a>
+        <a href="#">签证</a>
         <p>&nbsp;>>&nbsp;</p>
-        <a href="#">松阳旅游特色景点有哪些_松阳有什么好玩的</a>
+        <a href="#" id="visa_title">松阳旅游特色景点有哪些_松阳有什么好玩的</a>
     </div>
 </div>
 <!--detail start -->
@@ -712,7 +708,7 @@
         <div class="right-box">
             <div class="visa_detail_yuding_left">
                 <ul>
-                    <li><img src="http://img1.vbooking.net/prd/201708/25/20170825093242604.jpg"></li>
+                    <li><img src="" id="pic"></li>
                     <li><p style="color: #cb1464">签证服务承诺</p></li>
                     <li><p>*全程短信订单进度</p></li>
                     <li><p>*全场包邮</p></li>
@@ -802,12 +798,25 @@
                         <div class="visa_detail_title_right"></div>
                     </div>
                     <div class="detail">
-                        <p>请在出发前15天以上办理签证，以保证出行。</p>
+                        <p id="matters"></p><br><br><br>
                     </div>
                 </div>
                 <!--注意end-->
-                <!--提示-->
+                <!--费用说明-->
                 <div class="visa_detail_ziliao detail_3">
+                    <div class="visa_detail_title">
+                        <div class="visa_detail_title_left">
+                            <h3>费用说明</h3>
+                        </div>
+                        <div class="visa_detail_title_right"></div>
+                    </div>
+                    <div class="detail">
+                        <p id="description_fees"></p><br><br><br>
+                    </div>
+                </div>
+                <!--费用说明end-->
+                <!--提示-->
+                <div class="visa_detail_ziliao detail_4">
                     <div class="visa_detail_title">
                         <div class="visa_detail_title_left">
                             <h3>温馨提示</h3>
@@ -815,10 +824,31 @@
                         <div class="visa_detail_title_right"></div>
                     </div>
                     <div class="detail">
-                        <p>包括入台证费和手续费。</p><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <p id="warning"></p><br><br><br>
                     </div>
                 </div>
                 <!--提示end-->
+                <!--免责声明-->
+                <div class="visa_detail_ziliao detail_5">
+                    <div class="visa_detail_title">
+                        <div class="visa_detail_title_left">
+                            <h3>免责声明</h3>
+                        </div>
+                        <div class="visa_detail_title_right"></div>
+                    </div>
+                    <div class="detail">
+                        <p>
+                            1.飞扬网为客户所提供的所有签证服务类别，均属于协助办理性质，您的签证申请是否成功，完全由该国的签证官根据您递交的申请材料独立判断，本公司不 得以任何方式的干预或交涉；并且在任何情况下，本公司都不承担由签证申请结果而导致被追溯任何赔 偿的责任和义务。
+                            <br>2.资料的真实性是使领馆审核的最关键的因素之一，请申请人确保提供真实的申请资料；如因您提供的任何用于签证的材料、信息等不准确或互斥造成的签证问 题，飞扬网不承担责任。如果因飞扬网工作人员的人为失误造成的签证问题，飞扬网承担签证费、 服务费、快递费，及相关签证实际交易金额的一倍赔偿，不 承担除此之外的其他责任。
+                            <br>3.飞扬网在收取申请人资料后，经二次审核发现不符合签证申请资格的，保留作出不受理申请人签证申请决定的权利。
+                            <br>4."工作日"为使馆签发签证时正常情况下的处理时间；若遇特殊原因如政治干涉、假期、使馆内部人员调整、签证打印机故障等，则可能会产生延迟出签的情况； 本网相关的处理时间信息仅供参考，非法定承诺；请您待拿到签证及护照后再出机票或与酒店确 认付款，避免不必要的损失，飞扬网不承担签证以外其它费用。
+                            <br>5.有关签证资料上公布的签证有效期和停留天数，仅供参考而非法定承诺，一切均以签证官签发的签证内容，为唯一依据。
+                            <br>6.使馆保留要求申请人补资料或要求申请人前往使馆面试的权利。
+                            <br>7.特别提示：签证结果返回我公司后，您的护照及其它返回的原件资料，您可选择来我公司自取或委托快递寄送，如您选择快递寄送方式，则表示您授权我公司 委托第三方进行快递服务，第三方公司（快递公司的）所有服务条款、权利与义务，您均已了解和认 可。对于快递有可能带来的丢失、破损、或其他问题，由 第三方公司（快递承运方)对您进行负责，我公司不予承担责任和由此产生的任何赔偿。当您选择我公司的产品或服务时，视同您已认同此条款的内容。
+                        </p><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+                <!--免责声明end-->
             </div>
         </div>
     </div>

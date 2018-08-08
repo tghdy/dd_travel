@@ -2,7 +2,7 @@
 
 function addArticle() {
     $.ajax({
-        type: "get",
+        type: "post",
         url: "/dd_travel_war/articleAdmin",
         data: {
             method: "addArticle",

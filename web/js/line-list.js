@@ -1,4 +1,4 @@
-var area =
+ var area =
     {
         浙江: {
             sonArea: ["杭州", "绍兴", "宁波"],

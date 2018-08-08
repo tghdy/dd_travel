@@ -19,16 +19,30 @@ $(document).ready(function(){
 
         var k_1=$(".detail_1").offset().top-75;
         var k_2=$(".detail_2").offset().top-100;
+        var k_3=$(".detail_3").offset().top-100;
+        var k_4=$(".detail_4").offset().top-100;
+        var k_5=$(".detail_5").offset().top-100;
         $(".nav_1").click(function(){
             window.scrollTo(0,k_1);
         });
         $(".nav_2").click(function(){
             window.scrollTo(0,k_2);
         });
-
+        $(".nav_3").click(function(){
+            window.scrollTo(0,k_3);
+        });
+        $(".nav_4").click(function(){
+            window.scrollTo(0,k_4);
+        });
+        $(".nav_5").click(function(){
+            window.scrollTo(0,k_5);
+        });
 
         var m_1=$(".visa_detail_center_main").offset().top-70;
         var m_2=$(".detail_2").offset().top-150;
+        var m_3=$(".detail_3").offset().top-150;
+        var m_4=$(".detail_4").offset().top-150;
+        var m_5=$(".detail_5").offset().top-150;
         if ($(window).scrollTop()<m_1){
             $(".navbar a").css({"border-bottom":"0","color":"#666666"});
         }
@@ -36,9 +50,21 @@ $(document).ready(function(){
             $(".navbar a").css({"border-bottom":"0","color":"#666666"});
             $(".nav_1 a").css({"border-bottom":"3px solid #f86b4f","color":"#f86b4f"});
         }
-        if ($(window).scrollTop()>m_2){
+        if ($(window).scrollTop()>m_2&&$(window).scrollTop()<m_3){
             $(".navbar a").css({"border-bottom":"0","color":"#666666"});
             $(".nav_2 a").css({"border-bottom":"3px solid #f86b4f","color":"#f86b4f"});
+        }
+        if ($(window).scrollTop()>m_3&&$(window).scrollTop()<m_4){
+            $(".navbar a").css({"border-bottom":"0","color":"#666666"});
+            $(".nav_3 a").css({"border-bottom":"3px solid #f86b4f","color":"#f86b4f"});
+        }
+        if ($(window).scrollTop()>m_4&&$(window).scrollTop()<m_5){
+            $(".navbar a").css({"border-bottom":"0","color":"#666666"});
+            $(".nav_4 a").css({"border-bottom":"3px solid #f86b4f","color":"#f86b4f"});
+        }
+        if ($(window).scrollTop()>m_5){
+            $(".navbar a").css({"border-bottom":"0","color":"#666666"});
+            $(".nav_5 a").css({"border-bottom":"3px solid #f86b4f","color":"#f86b4f"});
         }
     });
 
@@ -87,6 +113,7 @@ function InitVisaDetail() {
         success:function (json) {
             console.log(json);
             var data = json.data;
+            document.title = data.visa_title;
             $('#visa_title').text(data.visa_title);
             $('#deal_place').text('办理地点：'+data.deal_place);
             $('#validity_period').text('有 效 期：'+data.validity_period);
@@ -95,12 +122,16 @@ function InitVisaDetail() {
             $('#interview').text('面试：'+data.interview);
             $('#entry').text('入境次数：'+data.entry);
             $('#custom_range').text('收客范围：'+data.custom_range);
-            $('#price').text('$'+data.price);
+            $('#price').text('¥'+data.price);
             $('#custom_inf1').html(data.custom_inf1);
             $('#custom_inf2').html(data.custom_inf2);
             $('#custom_inf3').html(data.custom_inf3);
             $('#custom_inf4').html(data.custom_inf4);
             $('#custom_inf5').html(data.custom_inf5);
+            $('#matters').html(data.matters);
+            $('#description_fees').html(data.description_fees);
+            $('#warning').html(data.warning);
+            $('#pic').attr("src",data.visa_pic);
     	},
         error:function(data){
             console.log(data.msg);

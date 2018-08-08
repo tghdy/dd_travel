@@ -43,7 +43,23 @@ public class LineServlet extends HttpServlet {
 		if ("lineAllInf".equals(method)) {
 			lineAllInf(request, response);
 		}
-		
+		if ("getPdf".equals(method)) {
+			getPdf(request, response);
+		}
+	}
+
+	private void getPdf(HttpServletRequest request, HttpServletResponse response) {
+		JsonData jsonData = null;
+		try {
+			Integer id = Integer.valueOf(request.getParameter("id"));
+			Map<String, Object> map = lineService.getPdf(id);
+			jsonData = new JsonData(JsonData.SUCCESS, "获取成功", map);
+		}catch(Exception e){
+			e.printStackTrace();
+			jsonData = new JsonData(JsonData.FAILED, "异常");
+		}finally {
+			output(response, jsonData);
+		}
 	}
 
 	@Test

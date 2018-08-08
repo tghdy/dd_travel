@@ -143,4 +143,9 @@ public class LineServiceImpl implements ILineService {
 		return lineDao.insertLinePlans(linePlans);
 	}
 
+	@Override
+	public Map<String, Object> getPdf(Integer id) throws Exception {
+		return lineDao.getPdf(id);
+	}
+
 }

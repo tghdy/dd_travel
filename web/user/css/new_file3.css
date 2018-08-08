@@ -34,7 +34,7 @@ body{
 	width: auto;
 	height: 600px;
 	border-top: 1px solid #E8E7E3;
-	border-bottom: 1px solid #E8E7E3;
+	/*border-bottom: 1px solid #E8E7E3;*/
 }
 .reg_mian{
 	margin: 10px auto;

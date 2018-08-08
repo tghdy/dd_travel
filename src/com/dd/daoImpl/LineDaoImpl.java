@@ -9,11 +9,7 @@ import com.dd.entity.TravelLine;
 import com.dd.util.JdbcUtils_DBCP;
 import com.dd.util.TransactionUtil;
 
-import javax.swing.plaf.synth.SynthCheckBoxUI;
-import java.io.BufferedInputStream;
 import java.math.BigInteger;
-import java.nio.channels.ShutdownChannelGroupException;
-import java.sql.SQLClientInfoException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -301,6 +297,12 @@ public class LineDaoImpl implements ILineDao {
 		}
 		return JdbcUtils_DBCP.update(stringBuilder.toString(), null);
 	}
-	
+
+	@Override
+	public Map<String, Object> getPdf(Integer id) throws Exception {
+		String sql = "SELECT schedules_pdf FROM line_detail WHERE  travel_id = ?";
+		return JdbcUtils_DBCP.selectMap(sql, new Object[]{id});
+	}
+
 
 }

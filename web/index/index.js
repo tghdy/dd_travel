@@ -249,3 +249,12 @@ $(function () {
         }
     });
 })//查询框选择
+
+$(function () {
+    $("#wechat").mouseenter(function () {
+        $(".wechat").addClass("wechatclick");
+    })
+    $("#wechat").mouseleave(function () {
+        $(".wechat").removeClass("wechatclick");
+    })
+});

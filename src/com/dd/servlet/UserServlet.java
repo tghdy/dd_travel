@@ -4,6 +4,7 @@ import com.dd.entity.TravelUser;
 import com.dd.serviceImpl.UserServiceImpl;
 import com.dd.util.BeanUtil;
 import com.dd.util.JsonData;
+import com.dd.util.UUIDUtil;
 import com.dd.util.UserUtil;
 import com.sun.javafx.collections.MappingChange;
 import jdk.nashorn.internal.scripts.JD;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -121,7 +123,15 @@ public class UserServlet extends HttpServlet {
 			TravelUser user = BeanUtil.jsonFormatInject(request, TravelUser.class);
 			//设置类型为普通用户
 			user.setType(0);
-			//System.out.println(user);
+
+//			MD5加密（弃用）
+//			UUIDUtil u=new UUIDUtil();
+//			String acc = u.getUUID();
+//			MessageDigest instance = MessageDigest.getInstance("MD5");// 获取MD5算法对象
+//			byte[] digest = instance.digest(acc.getBytes());// 对字符串加密,返回字节数组
+//			System.out.println(digest);
+//			user.setUserAccount(digest.toString());
+
 			int flag = userService.insert(user);
 			if (flag == 1) {
 				jsonData = new JsonData(1, "注册成功");

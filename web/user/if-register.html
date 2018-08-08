@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link type="text/css" rel="stylesheet" href="css/new_file3.css"/>
+		<script type="text/javascript" src="../H-ui.admin/lib/jquery/1.9.1/jquery.min.js"></script>
+		<script src="../js/common-util.js"></script>
+		<title>大地旅游网-宁波大地旅行社-浙江大地国际旅游集团</title>
+		
+	</head>
+	<body>
+		<div class="main">
+			<div class="reg_mian">
+				<div class="fy_group_b">
+
+					<div class="group_list_all">
+						<div style="font-size: 30px;color: #666666;">用户注册</div><br>
+						<div class="input">账号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input1" type="text" value="" placeholder="账号" id="userAccount"/>*</div>
+						<div class="input">用户名&nbsp;&nbsp;<input class="input1" type="text" value="" placeholder="用户名" id="user_name"/>*</div>
+						<div class="input">密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input1" type="text" value="" placeholder="密码" id="password" />*</div>
+						<div class="input">手机&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input1" type="text" value="" placeholder="手机" id="user_phone"/>*</div>
+						<div class="input">邮箱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input1" type="text" value="" placeholder="邮箱" id="user_email"/></div>
+						<div class="input">性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select style="margin-bottom: 10px;height: 40px;width: 200px;" id="select">
+							<option value="1">男</option>
+							<option value="2">女</option>
+							<option value="0">保密</option>
+						</select></div>
+						<div class="input">
+							<p style="float: left;margin-top: 5px">验证码&nbsp;&nbsp;</p>
+							<input class="input2" type="text" value="" placeholder="验证码" />
+							<div id="yanzhengma">
+								<img src="http://u.iflying.com/ajax/verifycode/loadView?">
+							</div>
+						</div>
+						<div class="input"><input type="checkbox" />我已阅读并同意<a href="#" style="text-decoration: none">《大地旅游服务条款》</a></div>
+						<div class="input"><input class="input3" type="submit" value="完成" onclick="register();"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="height: 100px;"></div>
+	</body>
+<script>
+    function register() {
+	    alert($('#select').val());
+        if (user_name === '' || password === '') {
+            alert('账号和密码不能为空');
+            return;
+        }
+		$.ajax({
+		    type:"post",
+		    url:"/dd_travel_war/user",
+		    data:{
+                jsonData:JSON.stringify({
+                    mobilePhone: getValById('user_phone'),
+                    email: getValById('user_email'),
+                    userAccount: getValById('userAccount'),
+                    userName: getValById('user_name'),
+                    sex: $('#select').val(),
+					password:getValById('password')
+                }),
+		        method:"register"
+		    },
+		    dataType:"json",
+		    success:function (json) {
+		        alert(json.msg+"：账号重复，请更改");
+				console.log(json);
+			},
+		    error:function(data){
+		        console.log(data.msg);
+		    }
+		});
+    }
+</script>
+</html>
