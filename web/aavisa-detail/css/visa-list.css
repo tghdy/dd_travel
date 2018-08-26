@@ -601,3 +601,40 @@ li {
     border-radius: 4px;
     background: #f86b4f;
 }
+
+
+/*右侧栏*/
+.right_sidebar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 42px;
+    height: 100%;
+    background: #333;
+    z-index: 10001;
+}
+.right-icon{
+    height: 47px;
+    border-bottom: 2px #666666 solid;
+}
+
+.right-icon:hover {
+    color: #fff !important;
+}
+.my_top {
+    border-top: 1px solid #454545;
+    position: absolute;
+    bottom: 39px;
+}
+.active {
+    background-color: #f16a54;
+}
+.active a {
+    color: #fff;
+}
+/*右侧栏end*/
+
+
+/*鼠标经过 图片高亮*/
+.right_pic:hover{opacity:1;filter(alpha=100)}
+.right_pic{opacity:0.8;filter(alpha=80)}

@@ -6,6 +6,7 @@ var adultPrice;
 
 $(function () {
     initOrderPage();
+    userIsLogin();
 });
 
 function submit() {
@@ -101,7 +102,7 @@ function insertOrder() {
             } else {
                 // layer.msg(json.msg, {icon: 5, time: 1000});
                 alert(json.msg);
-                var url = '../user/login.html';
+                var url = '../user/login.html?order=1';
                 window.location.href = url;
                 console.log('生成订单失败');
             }

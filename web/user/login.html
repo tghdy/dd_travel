@@ -14,14 +14,13 @@
             <img src="img/4574352A2D453268EB17A4B1EEE7628D.jpg">
         </a>
         <div class="topc_right">
-            <a href="#">首页</a>|
-            <a href="#">出境旅游</a>|
-            <a href="#">国内旅游</a>|
-            <a href="#">周边旅游</a>|
-            <a href="#">自由行</a>|
-            <a href="#">自驾游</a>|
-            <a href="#">定制团队游</a>|
-            <a href="#">签证</a>
+            <a href="../index/index.html">首页</a>|
+            <a href="/dd_travel_war/line-list/line-list.html?lineType=0">周边旅游</a>|
+            <a href="/dd_travel_war/line-list/line-list.html?lineType=1">国内旅游</a>|
+            <a href="/dd_travel_war/line-list/line-list.html?lineType=2">国际旅游</a>|
+            <a href="/dd_travel_war/line-list/line-list.html?lineType=3">自驾游</a>|
+            <a href="/dd_travel_war/line-list/line-list.html?lineType=4">邮轮</a>|
+            <a href="/dd_travel_war/aavisa/index.html">签证</a>
         </div>
     </div>
 </div>
@@ -38,7 +37,7 @@
                         <img src="http://u.iflying.com/ajax/verifycode/loadView?">
                     </div>
                 </div>
-                <div style="margin: 5px"><a href="../user/register.html">还没有账号？点击注冊</a></div>
+                <div style="margin: 5px"><a id="toregister" href="../user/register.html">还没有账号？点击注冊</a></div>
                 <div class="input"><input type="checkbox">我已阅读并同意<a href="#"
                                                                     style="text-decoration: none">《大地旅游服务条款》</a></div>
                 <div class="input"><input class="input3" type="button" value="完成" onclick="login();"></div>
@@ -64,6 +63,17 @@
     <p>大地旅游网呼叫中心位于宁波统一呼出电话为 0574-27666666</p>
 </div>
 <script type="text/javascript">
+
+    var b;//b=1表示是有订单
+    $(document).ready(function(){
+        //判断是否有订单
+        b = GetQueryString("order");
+        if(b==1){
+            alert(1);
+            $("#toregister").attr("href","../user/register.html?order=1");
+        }
+    });
+
     function login() {
         if (account === '' || password === '') {
             alert('账号和密码不能为空');
@@ -86,7 +96,11 @@
                 // alert('success');
                 console.log(json);
                 if (json.flag == 1) {
-                    window.location.href = "../index/index.html";
+                    if(b==1){
+                        window.history.go(-1);
+                    }else{
+                        window.location.href = "../index/index.html";
+                    }
                 } else {
                     alert(json.msg);
                 }
@@ -98,6 +112,13 @@
             }
         });
         
+    }
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
     }
 </script>
 </body>

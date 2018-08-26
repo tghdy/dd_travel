@@ -114,7 +114,7 @@ function InitVisaDetail() {
             console.log(json);
             var data = json.data;
             document.title = data.visa_title;
-            $('#visa_title').text(data.visa_title);
+            $('.visa_title').text(data.visa_title);
             $('#deal_place').text('办理地点：'+data.deal_place);
             $('#validity_period').text('有 效 期：'+data.validity_period);
             $('#most_stay').text('最多停留：'+data.most_stay);

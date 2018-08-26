@@ -257,4 +257,6 @@ $(function () {
     $("#wechat").mouseleave(function () {
         $(".wechat").removeClass("wechatclick");
     })
+
+
 });

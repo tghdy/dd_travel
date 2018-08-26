@@ -152,18 +152,20 @@ a:hover {
 }
 .help-title {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
+    margin-bottom: 5px;
 }
-.help-item {
-    padding-left: 15px;
-    font-size: 14px;
-    color: #666;
-}
-.help-item:hover {
+.help-item a:hover{
     color: #f86b4f;
-    cursor: pointer;
 }
+
+
+.col-sm-2 a{
+    height: 20px;
+    font-size: 15px;
+}
+
 .spanp > span:hover {
     cursor: pointer;
     color: coral;
@@ -189,7 +191,7 @@ a:hover {
     color: #F86B4F;
 }
 
-/*右侧导航栏*/
+/*右侧栏*/
 .right_sidebar {
     position: fixed;
     bottom: 0;
@@ -199,6 +201,11 @@ a:hover {
     background: #333;
     z-index: 10001;
 }
+.right-icon{
+    height: 47px;
+    border-bottom: 2px #666666 solid;
+}
+
 .right-icon:hover {
     color: #fff !important;
 }
@@ -213,7 +220,24 @@ a:hover {
 .active a {
     color: #fff;
 }
+/*右侧栏end*/
 
-.nav-items li {
-    text-align: center;
+
+/*鼠标经过 图片高亮*/
+.right_pic:hover{opacity:1;filter(alpha=100)}
+.right_pic{opacity:0.8;filter(alpha=80)}
+
+.underfoot{
+    height: 200px;
+    padding-top: 20px;
+}
+.uf_fir li{
+    float: left;
+}
+.uf_fir{
+    display: flex;
+    justify-content:center;
+}
+.uf_sec li{
+    margin: 10px;
 }

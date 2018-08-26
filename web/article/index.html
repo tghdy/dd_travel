@@ -4,94 +4,11 @@
 		<meta charset="utf-8" />
 		<title>文章</title>
 		<link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
+		<link href="css/article.css" rel="stylesheet" type="text/css">
+		<script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+		<script src="js/article.js"></script>
+		<script src="../js/common-util.js"></script>
 	</head>
-	<style>
-		html{margin: auto;background:#f4f4f4;}
-		body{margin:0;padding:0}
-		*{margin:0;padding:0}
-		.tab_top_1{width:100% ;height:31px ;display: flex;justify-content: center;}
-		.tab_top_nav{width: 1210px;height: 100%;display: flex;justify-content:space-between;}
-		.tab_top_left{height: 100%;}
-		.tab_top_left li{float: left;}
-		.tab_top_left ul{list-style-type: none;overflow: hidden;height: 100%;display: flex;align-items:center;}
-		.weizhi{color: #e62637;text-align: center;position: relative;font-size: 15px;}
-		.tab_top_left p{text-align: center;font-size: 12px;}
-		.tab_top_left a{text-decoration:none;font-size: 12px;color: #666666;}
-		.tab_top_left a:hover{color: #e62637;}
-		.tab_top_right li{float: left;}
-		.tab_top_right ul{list-style-type: none;overflow: hidden;height: 100%;display: flex;align-items:center;}
-		.weibo,.weixin{color: #666666;text-align: center;position: relative;font-size: 20px;}
-		.tab_top_right p{text-align: center;font-size: 12px;}
-		.bg_fff{width:auto;height: 120px;display: flex;justify-content: center;background: white;}
-		.tab_logo_tel{width: 1210px;height: 100%;}
-		.logo img{height: 40px;position:relative;top: 40px;float: left;}
-		.searchTool{height:40px;width:450px;border: 1.5px solid #e62637;float: left;position:relative;top: 40px;}
-		.selSearch{height: 100%;width: 90px;background: #f4f4f4;float: left;}
-		.selSearch p{color: #666666;position: relative;top: 12px;font-size: 12px;float: left;margin-left: 15px;}
-		.selSearch i{float: left;position: relative;top: 12px;}
-		.mainSearch{width:250px;height:40px;float: left;}
-		.search_r_btn{float: left;height: 100%;width: 110px;background: #e62637;}
-		.search_r_btn p{margin-left: 36px;margin-top: 10px;color: white;}
-		.search_left{position: relative;top: 50px;float: left;}
-		.bg_fff a{text-decoration:none;font-size: 12px;color: #666666;}
-		.search_bottom{position:relative;top: 5px;}
-		.search_bottom a:hover{color: #e62637;}
-		.search_bottom ul{list-style-type: none;}
-		.search_bottom li{float: left;}
-		.search_bottom p{font-size: 12px;color: #666666;}
-		.icon_purpose{float: right;position: relative;top: 25px;}
-		.icon_purpose img{height: 80px;float: right;}
-		.menu{height: 40px;width: 100%;display: flex;justify-content: center;background: white;}
-		.menu_main{width: 1210px;height: 100%;}
-		.fl{background: #f4f4f4;height: 30px;width: 190px;color: #e62637;font-weight:500;font-size: 17px;padding-top: 10px;padding-left: 20px;float: left;}
-		.menu ul{list-style-type: none;overflow: hidden;height: 100%;display: flex;align-items:center;}
-		.menu li{height: 100%;width: 100px;text-align: center;padding-top: 20px;}
-		.menu a{text-decoration:none;color: black;}
-		.menu a:hover{color: #e62637;}
-		.clear{width: 100%;height: 2.5px;background: #e62637;}
-		.yj_location{display: flex;justify-content: center;position: relative;top: 10px;font-size: 12px;}
-		.yj_location p,a{color:  #666666;text-decoration:none;float: left;}
-		.yj_location a:hover{color: #e62637;}
-		.youji_detail{display: flex;justify-content: center;margin-top: 20px;}
-		.detail_left{height: auto;width: 73%;background: white;float: left;}
-		.detail_right{height: auto;width: 25%;background: white;float: left;margin-left: 2%;}
-		.author_zl{border-bottom: 1px solid #dcdcdc;width:800px;margin-left: 41px;margin-top: 20px;padding-bottom: 20px;}
-		.top_t img{border-radius:42.5px;height: 85px;float: left;}
-		.author_zl ul{list-style-type: none;overflow: hidden;margin-top: 8px;}
-		.author_zl li{float: left;font-size: 12px;color: #666666;}
-		.author_zl h2{margin-top: 16px;color: #666666;}
-		.detail_fb a{height: 38px;width: 102px;float: right;background: #f86b4f;border-radius:3px;color: white;font-size:16px;display: flex;align-items:center;justify-content: center;position: relative;top: -36px;}
-		.detail_fb a:hover{background: #f65d3f;}
-		.share{position:relative;margin-top: 20px;border-bottom: 1px solid #dcdcdc;text-align:right;color: #666666;font-size: 12px;}
-		.article{height: auto;margin-left: 25px;margin-right: 25px;margin-top: 25px;margin-bottom: 25px;}
-		.next_pre{background: #f8f8f8;height: 80.2px;}
-		.next_pre_1{margin-left: 25px;margin-right: 25px;padding-top: 15px;}
-		.next_next p,a{float: left;}
-		.next_next{margin-bottom: 10px;}
-		.next_next a:hover{color: #e62637;}
-		.about_rai{padding-top: 20px;background: #f4f4f4;color: #666666;}
-		.about_rai a{height: 40px;width: 50%;background: #38b8b9;text-align: center;padding-top: 20px;color: white;}
-		.about_rai h3{padding-bottom: 15px;}
-		.about_rai a:hover{color: #e62637;}
-		.detail_right{height: auto;}
-		.publish{background:white;height: 192px;}
-		.publish img{margin:15px;}
-		.divide{height: 10px;background: #f4f4f4;}
-		.area_ly{margin: 15px;background:white;height: 120px;}
-		.area_ly h3{border-bottom: 1px solid red;padding-bottom: 5px;}
-		.area_ly a:hover{color: #e62637;}
-		.fy_foot_cont{margin-top: 40px;border-top: 1px solid #dcdcdc;border-bottom: 1px solid #dcdcdc;}
-		.fy_foot_cont_s{height: 204px;margin-left: 150px;margin-right: 150px;}
-		.fy_foot_cont ul{float: left;margin: 30px;list-style-type: none;line-height:25px;color: #666666;font-size: 14px;}
-		.fy_foot_cont a:hover{color: #e62637;}
-		.footer{height: 224px;background: white;text-align:center;padding: 20px;line-height:25px;color: #666666;font-size: 12px;}
-		.footer ul{list-style-type: none;overflow: hidden;}
-		.footer li{float:left;}
-		.footer a:hover{color: #e62637;}
-		.footer p{font-size: 12px;}
-		.fir{display: flex;justify-content: center;}
-		.sec li{margin: 10px;}
-	</style>
 	<body>
 		<div class="tab_top_1">
 			<div class="tab_top_nav">
@@ -101,9 +18,9 @@
 						<li><p>&nbsp;宁波站&nbsp;&nbsp;</p></li>
 						<li><p style="color: red;">[切换]</p></li>
 						<li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
-						<li><a href="#">登陆</a></li>
+						<li><a href="../user/login.html">登陆</a></li>
 						<li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
-						<li><a href="#">免费注册</a></li>
+						<li><a href="../user/register.html">免费注册</a></li>
 					</ul>
 				</div>
 				<div class="tab_top_right">
@@ -147,8 +64,8 @@
 						</ul>
 					</div>
 				</div>
-				<div class="search_left"><a href="#">&nbsp;&nbsp;高级搜索</a></div>
-				<div class="icon_purpose"><img src="img/联系.png"></div>
+				<!--<div class="search_left"><a href="#">&nbsp;&nbsp;高级搜索</a></div>-->
+				<div class="icon_purpose"><img src="img/lianxi.png"></div>
 			</div>
 		</div>
 		<!--导航菜单开始-->
@@ -156,17 +73,15 @@
 			<div class="menu_main">
 				<div class="fl"><i class="Hui-iconfont Hui-iconfont-menu">&nbsp;&nbsp;全部旅游产品分类</i></div>
 				<ul>
-					<li style="background: #e62637;color: white;">首页</li>
-					<li><a href="#">&nbsp;&nbsp;出境旅游</a></li>
-					<li><a href="#">&nbsp;&nbsp;国内旅游</a></li>
-					<li><a href="#">&nbsp;&nbsp;周边旅游</a></li>
-					<li><a href="#">&nbsp;&nbsp;欧洲游</a></li>
-					<li><a href="#" style="color: blue;">日本</a></li>
-					<li><a href="#">台湾</a></li>
-					<li><a href="#">邮轮</a></li>
-					<li><a href="#">签证</a></li>
-					<li><a href="#">自驾游</a></li>
-					<li><a href="#" style="color: blue;">特价机票</a></li>
+					<li><a href="/dd_travel_war/index/index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首页</a></li>
+					<li><a href="/dd_travel_war/line-list/line-list.html?lineType=0">&nbsp;&nbsp;周边旅游</a></li>
+					<li><a href="/dd_travel_war/line-list/line-list.html?lineType=1">&nbsp;&nbsp;国内旅游</a></li>
+					<li><a href="/dd_travel_war/line-list/line-list.html?lineType=2">&nbsp;&nbsp;国际旅游</a></li>
+					<li><a href="/dd_travel_war/line-list/line-list.html?lineType=3">自驾游</a></li>
+					<li><a href="/dd_travel_war/line-list/line-list.html?lineType=4">邮轮游</a></li>
+					<li>
+						<a href="/dd_travel_war/aavisa/index.html">签证</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -179,7 +94,7 @@
 				<p>&nbsp;>>&nbsp;</p>
 				<a href="#">目的地</a>
 				<p>&nbsp;>>&nbsp;</p>
-				<a href="#">松阳旅游特色景点有哪些_松阳有什么好玩的</a>
+				<a href="#" class="title">松阳旅游特色景点有哪些_松阳有什么好玩的</a>
 			</div>
 		</div>
 		<!--detail start -->
@@ -191,11 +106,11 @@
 						<div class="author_zl">
 							<img src="img/6.jpg" />
 							<div style="height: 80px;">
-								<h2>&nbsp;&nbsp;松阳旅游特色景点有哪些_松阳有什么好玩的</h2>
+								<h2 class="title" style="margin-left: 100px">松阳旅游特色景点有哪些_松阳有什么好玩的</h2>
 								<ul>
-									<li><p>&nbsp;&nbsp;&nbsp;&nbsp;作者：骑马去旅行&nbsp;&nbsp;</p></li>
-									<li><p>&nbsp;&nbsp;发表于：2018-04-03 15:20:26&nbsp;&nbsp;</p></li>
-									<li><p>&nbsp;&nbsp;浏览： 43 次</p></li>
+									<li><p id="author" style="margin-left: 20px">作者：骑马去旅行</p></li>
+									<li><p id="create_time"style="margin-left: 10px">发表于：2018-04-03 15:20:26</p></li>
+									<li><p id="view" style="margin-left: 10px">浏览： 43 次</p></li>
 								</ul>
 							</div>
 							<div class="detail_fb">
@@ -256,35 +171,36 @@
 			<div class="fy_foot_cont_s">
 				<ul>
 					<h3>常见问题</h3>
-					<li><a href="#">如何预订旅游线路？</a></li>
-					<li><a href="#">单房差是什么？</a></li>
-					<li><a href="#">双飞、双卧都是什么意思？</a></li>
+					<li><a href="../help/main.html?key=01">如何预订旅游线路？</a></li>
+					<li><a href="../help/main.html?key=02">单房差是什么？</a></li>
+					<li><a href="../help/main.html?key=03">双飞、双卧都是什么意思？</a></li>
 				</ul>
 				<ul>
 					<h3>付款和发票</h3>
-					<li><a href="#">签约可以刷卡吗？</a></li>
-					<li><a href="#">付款方式有哪些？</a></li>
-					<li><a href="#">怎么网上支付？</a></li>
-					<li><a href="#">是否可提供发票？</a></li>
+					<li><a href="../help/main.html?key=04">签约可以刷卡吗？</a></li>
+					<li><a href="../help/main.html?key=05">付款方式有哪些？</a></li>
+					<li><a href="../help/main.html?key=06">怎么网上支付？</a></li>
+					<li><a href="../help/main.html?key=07">是否可提供发票？</a></li>
 				</ul>
 				<ul>
 					<h3>签署旅游合同</h3>
-					<li><a href="#">有旅游合同范本下载吗？</a></li>
-					<li><a href="#">能传真签约吗？</a></li>
-					<li><a href="#">可以不签合同吗？</a></li>
+					<li><a href="../help/main.html?key=08">有旅游合同范本下载吗？</a></li>
+					<li><a href="../help/main.html?key=09">能传真签约吗？</a></li>
+					<li><a href="../help/main.html?key=10">可以不签合同吗？</a></li>
 				</ul>
 				<ul>
 					<h3>旅游预订优惠政策</h3>
-					<li><a href="#">什么是抵用券？</a></li>
-					<li><a href="#">如何获得抵用券？</a></li>
+					<li><a href="../help/main.html?key=11">什么是抵用券？</a></li>
+					<li><a href="../help/main.html?key=12">如何获得抵用券？</a></li>
 				</ul>
 				<ul>
 					<h3>会员中心</h3>
-					<li><a href="#">会员有那些特权？</a></li>
+					<li><a href="../help/main.html?key=13">会员有那些特权？</a></li>
 				</ul>
 				<ul>
-					<h3>飞扬APP</h3>
+					<h3>大地微信公众号</h3>
 					<li><a href="#">扫描微信二维码关注我们</a></li>
+					<img src="img/wechat.jpg" style="height: 100px;">
 				</ul>
 			</div>
 		</div>
@@ -322,6 +238,34 @@
 					<li><a href="#"><img src="img/5.png"></a></li>
 					<li><a href="#"><img src="img/6.png"></a></li>
 				</ul>
+			</div>
+		</div>
+		<div class="right_sidebar">
+			<div class="">
+				<img src="http://www.iflying.com/zt/ceshi/index/chunjie.gif">
+			</div>
+			<div class="right-icon" style="">
+				<a href="../order-list/dingDanSearch.html" title="用户中心">
+					<!--<i class="icon Hui-iconfont Hui-iconfont-user right-icon" style="font-size:35px;color:#adadad;"></i>-->
+					<img src="img/yonghu1.jpg" style="width: 42px;" class="right_pic">
+				</a>
+			</div>
+			<div class="right-icon" style="">
+				<a href="javascript:;" title="客服">
+					<!--<i class="icon Hui-iconfont Hui-iconfont-kefu right-icon" style="font-size:35px;color:#adadad;"></i>-->
+					<img src="img/kefu1.jpg" style="width: 42px;" class="right_pic">
+				</a>
+			</div>
+			<div class="right-icon" style="">
+				<a href="javascript:;" title="微信">
+					<!--<i class="icon Hui-iconfont Hui-iconfont-kefu right-icon" style="font-size:35px;color:#adadad;"></i>-->
+					<img src="img/weixing1.jpg" style="width: 42px;" class="right_pic">
+				</a>
+			</div>
+			<div class="my_top">
+				<a href="javascript:;" title="顶部" id="toUp" onclick="toUp();">
+					<i class="icon Hui-iconfont Hui-iconfont-arrow2-top right-icon" style="font-size:35px;color:#adadad;"></i>
+				</a>
 			</div>
 		</div>
 	</body>

@@ -42,6 +42,13 @@
 		<div style="height: 100px;"></div>
 	</body>
 <script>
+
+    var b;//b=1表示是有订单
+    $(document).ready(function(){
+        //判断是否有订单
+        b = GetQueryString("order");
+    });
+
     function register() {
 	    alert($('#select').val());
         if (user_name === '' || password === '') {
@@ -64,13 +71,48 @@
 		    },
 		    dataType:"json",
 		    success:function (json) {
-		        alert(json.msg+"：账号重复，请更改");
+		        if(json.msg=="异常"){
+                    alert(json.msg+"账号重复");
+				}else {
+                    login();
+				}
 				console.log(json);
 			},
 		    error:function(data){
 		        console.log(data.msg);
 		    }
 		});
+    }
+
+    function login() {
+		$.ajax({
+		    type:"get",
+		    url:"/dd_travel_war/user",
+		    data:{
+                account: getValById('userAccount'),
+                password: getValById('password'),
+		        method:"login"
+		    },
+		    dataType:"json",
+		    success:function (json) {
+				console.log(json);
+                if(b==1){
+                    window.history.go(-2);
+                }else{
+                    window.location.href = "../index/index.html";
+                }
+			},
+		    error:function(data){
+		        console.log(data.msg);
+		    }
+		});
+    }
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
     }
 </script>
 </html>

@@ -1,0 +1,285 @@
+<!--<%&#45;&#45;<%@ page contentType="text/html;charset=UTF-8" language="java" %>&#45;&#45;%>-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>线路列表</title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../H-ui.admin/lib/html5shiv.js"></script>
+    <script type="text/javascript" src="../H-ui.admin/lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../H-ui.admin/static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/line_list.css">
+    <!--[if lt IE 9]>
+    <link href="../H-ui.admin/static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="H-ui/lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <!--自定义js-->
+    <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+    <script src="../js/common-util.js"></script>
+    <script src="../js/line-list.js"></script>
+</head>
+<body>
+<div class="header-wrap">
+    <div class="container">
+        <i class="Hui-iconfont" style="color: red;position: relative;padding: 0 7px 0 7px">&#xe671;</i>
+        <span style="font-size: 12px;position: relative;">宁波站</span>
+        <span style="color: #EA6037;font-size: 12px;position: relative;">[切换]</span>
+        <span style="position: relative;margin-top: 4px;font-size: 13px;opacity: 0.3;">|</span>
+        <div id="login-inf" style="display: inline;">
+            <a href="../user/login.html" class="tt"
+               style="font-size: 12px;position: relative;text-decoration: none;">登录</a>
+            <span style="position: relative;font-size: 13px;opacity: 0.3;">|</span>
+            <a href="../user/register.html" class="tt"
+               style="font-size: 12px;;position: relative;text-decoration: none;">免费注册</a>
+        </div>
+        <a href="#" class="tt"><p style="font-size: 12px;pxopacity: 0.8;float: right;">+微信</p>
+        </a><i class="Hui-iconfont" style="line-height: 30px;font-size: 20px;opacity: 0.4;float: right;">&#xe694;</i>
+
+        <span style="font-size: 13px;opacity: 0.9;float: right;">|</span>
+        <a href="#" class="tt"><p style="font-size: 12px;;opacity: 0.8;float: right;">+微博</p><i
+                class="Hui-iconfont" style="line-height: 30px;font-size: 20px;opacity: 0.4;float: right;;">&#xe6da;</i>
+        </a>
+    </div>
+</div>
+<div class="top">
+
+</div>
+<!--搜索区域开始-->
+<div class="search-wrap">
+    <div class="container pd-0">
+        <div class="search-box">
+            <input type="text" class="input-text inline" value="" style="width: 360px;" id="search-value">
+            <input type="button" class="btn-primary inline" id="search-btn" value="搜索" style="width: 90px;"
+                   onclick="keySearch();">
+        </div>
+    </div>
+</div>
+<!--搜索区域结束-->
+<div style="border-bottom: 2px solid #cb1425 !important;">
+    <div class="nav-wrap">
+        <div class="category">
+            <span><i class="Hui-iconfont" style="color: #CB1425;font-weight: bold;margin-left: 10px;"></i></span>
+            <span>全部旅游产品列表</span>
+        </div>
+        <div class="col-sm-10">
+            <ul class="nav-items f-14" id="nav-ul">
+                <li class="col-sm-1"><a href="../index/index.html">首页</a></li>
+                <li class="col-sm-1" id="tl0"><a href="line-list.html?lineType=0">周边游</a></li>
+                <li class="col-sm-1" id="tl1"><a href="line-list.html?lineType=1">国内游</a></li>
+                <li class="col-sm-1" id="tl2"><a href="line-list.html?lineType=2">国际游</a></li>
+                <li class="col-sm-1" id="tl3"><a href="line-list.html?lineType=3">自驾游</a></li>
+                <li class="col-sm-1" id="tl4"><a href="line-list.html?lineType=4">邮轮游</a></li>
+                <li class="col-sm-1"><a href="/dd_travel_war/aavisa/index.html">签证</a></li>
+                <!--清除导航栏右侧内容浮动-->
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        <!--清除导航栏外框浮动-->
+        <div class="clearfix"></div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="container">
+    <div class="location lh-36 ">
+        <span class="f-12 c-aaa">当前位置:</span>
+        <a href="baidu.com" class="c-aaa">大地旅游网</a>&nbsp;>
+        <a href="baidu.com" class="c-aaa">宁波旅游</a>
+    </div>
+    <div class="middle-content">
+        <div class="left-area col-sm-9" style="padding: 0">
+            <!--搜索条件开始-->
+            <div class="son-nav hide">
+                <div class="son-nav-head bc-f4f4f4 lh-36 f-14">
+                    <ul>
+                        <li class="">全部产品</li>
+                        <!--<span class="f-l">|</span>-->
+                        <!--<li class="">组团游戏</li>-->
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="son-nav-cnt f-12">
+                    <div class="bottomLine" id="area">
+                        <div class="col-sm-2">目的地</div>
+                        <div class="col-sm-10 spanp inf">
+                            <span class="col-sm-1 c-red">不限</span>
+                            <span class="col-sm-1" onclick="areaClicked(this);">浙江</span>
+                            <span class="col-sm-1" onclick="areaClicked(this);">广东</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="bottomLine" id="sonArea">
+                        <div class="col-sm-2">地区</div>
+                        <div class="col-sm-10 inf spanp">
+                            <span class="col-sm-1 c-red">不限</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="bottomLine" id="days">
+                        <div class="col-sm-2">行程天数</div>
+                        <div class="col-sm-10 inf spanp">
+                            <span class="col-sm-1 c-red">不限</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!--搜索条件结束-->
+            <!--线路信息开始-->
+            <div class="lines-wrap mt-20" style="padding: 0;">
+                <div id="line-key">
+                    <span class="f-18 col-sm-10 pl-0">宁波旅游</span>
+                    <span class="f-12 f-r mt-5" id="inf-num"></span>
+                </div>
+
+                <!--排序选项卡开始-->
+                <div class="col-sm-12"
+                     style="background: #f4f4f4; border: 1px solid #ddd; padding-left: 0;height: 40px;line-height: 40px;">
+                    <ul style="height: 30px;line-height: 40px">
+                        <li class="f-l plr-10 " style="border-right: 1px solid #aaa;" onclick="updateLineInf(0)">默认排序</li>
+                        <li class="f-l plr-10 " style="border-right: 1px solid #aaa;">
+                            <i class="Hui-iconfont Hui-iconfont-arrow2-top" onclick="updateLineInf(1)"></i>
+                            价格排序
+                            <i class="Hui-iconfont Hui-iconfont-arrow2-bottom" onclick="updateLineInf(2)"></i>
+                        </li>
+                        <li class="clearfix"></li>
+                    </ul>
+                </div>
+                <!--排序选项卡结束-->
+
+                <!--线路主体开始-->
+                <div class="col-sm-12 pd-0" id="line-inf-wrap">
+                    <ul>
+                        <!--<li>-->
+                        <!--<div class="line-pic-wrap col-sm-3 pd-0"><img-->
+                        <!--src="http://img1.vbooking.net/prd/201710/16/20171016171335499.jpg@170w" alt="显示失败">-->
+                        <!--</div>-->
+                        <!--<div class="line-mid-wrap col-sm-6 ml-15 pd-0">-->
+                        <!--<h2 class="f-16 pd-0">-->
+                        <!--<a href="baidu.com" class="c-blue">【宁波出发】【圆梦北京】北京全透明双飞5日游</a>-->
+                        <!--</h2>-->
+                        <!--<p class="c-aaa mt-10">线路特色：辛辛苦苦一辈子，北京总要去一次</p>-->
+                        <!--<p class="mt-30">线路编号：ZT0003904</p>-->
+                        <!--</div>-->
+                        <!--<div class="line-mid-wrap f-r">-->
+                        <!--<p>¥<span class="f-16">1199</span>起</p>-->
+                        <!--<p><a href="" class="btn btn-warning pt-10 plr-10">查看详情</a></p>-->
+                        <!--</div>-->
+                        <!--<div class="clearfix"></div>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+                <!--线路主体结束-->
+            </div>
+            <!--线路信息结束-->
+            <!--景点信息开始-->
+            <!--<div class="mt-20">-->
+            <!--<div class="f-18 col-sm-10 pl-0">北京景点</div>-->
+            <!--<div class="f-12 f-r mt-10"><a href="">更多旅游景点&nbsp;></a></div>-->
+            <!--<div class="clearfix"></div>-->
+            <!--</div>-->
+            <div style="border-bottom: 2px solid #f4f4f4;" class="mt-5"></div>
+        </div>
+        <div class="right-rea col-sm-3" style="padding-left: 10px;">
+            <div class="" style="border: 1px solid #ddd;">
+                <div class="pd-10 right-adb">
+                    <h3 class="pb-5 pt-5 mb-10" style="border-bottom: 2px solid #f86b4f;">相关推荐</h3>
+                    <ul>
+                        <p>暂无相关信息</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--清除浮动中间线路类标外框浮动-->
+        <div class="clearfix"></div>
+    </div>
+    <!--清除container浮动-->
+    <div class="clearfix"></div>
+</div>
+<div class="footer">
+    <div class="container">
+        <ul>
+            <li class="col-sm-2">
+                <div class="help-title"><i class="Hui-iconfont Hui-iconfont-arrow1-right"></i>&nbsp;预订常见问题</div>
+                <div class="help-item">如何预订旅游线路？</div>
+                <div class="help-item">单房差是什么？</div>
+                <div class="help-item">双飞、双卧都是什么意思？</div>
+            </li>
+            <li class="col-sm-2">
+                <div class="help-title"><i class="Hui-iconfont Hui-iconfont-arrow1-right"></i>&nbsp;付款和发票</div>
+                <div class="help-item">签约可以刷卡吗？</div>
+                <div class="help-item">付款方式有哪些？</div>
+                <div class="help-item">如何预订旅游线路？</div>
+            </li>
+            <li class="col-sm-2">
+                <div class="help-title"><i class="Hui-iconfont Hui-iconfont-arrow1-right"></i>&nbsp;签署旅游合同</div>
+                <div class="help-item"></div>
+                <div class="help-item">有旅游合同范本下载吗？</div>
+                <div class="help-item">如何预订旅游线路？</div>
+            </li>
+            <li class="col-sm-2">
+                <div class="help-title"><i class="Hui-iconfont Hui-iconfont-arrow1-right"></i>&nbsp;抵用券信息</div>
+                <div class="help-item">什么是抵用券？</div>
+                <div class="help-item">如何获得抵用券？</div>
+                <div class="help-item">如何预订旅游线路？</div>
+            </li>
+            <li class="col-sm-2">
+                <div class="help-title"><i class="Hui-iconfont Hui-iconfont-arrow1-right"></i>&nbsp;会员中心</div>
+                <div class="help-item">会员有那些特权？</div>
+            </li>
+            <li class="clearfix"></li>
+        </ul>
+    </div>
+</div>
+<div class="right_sidebar">
+    <div class="">
+        <img src="http://www.iflying.com/zt/ceshi/index/chunjie.gif">
+    </div>
+    <div class="right-icon" style="">
+        <a href="../order-list/dingDanSearch.html" title="用户中心">
+            <i class="icon Hui-iconfont Hui-iconfont-user right-icon" style="font-size:35px;color:#adadad;"></i>
+        </a>
+    </div>
+    <div class="right-icon" style="">
+        <a href="javascript:;" title="客服">
+            <i class="icon Hui-iconfont Hui-iconfont-kefu right-icon" style="font-size:35px;color:#adadad;"></i>
+        </a>
+    </div>
+    <div class="my_top">
+        <a href="javascript:;" title="顶部" id="toUp" onclick="toUp()">
+            <i class="icon Hui-iconfont Hui-iconfont-arrow2-top right-icon" style="font-size:35px;color:#adadad;"></i>
+        </a>
+    </div>
+</div>
+<script>
+    //搜索框搜索时不考虑线路类型,所以传-1进行搜索
+    function keySearch() {
+        var lineType = getUrlParam('lineType');
+        if (lineType == undefined) {
+            lineType = -1;
+        }
+        initPage($('#search-value').val(), '', -1);
+
+    }
+
+    $(function () {
+        //使当前板块变红，例如国内游变红
+        redNavItem(getUrlParam('lineType'));
+        //更新右侧广告信息
+        updateRightAdbInf();
+        //显示用户信息
+        showUserInf();
+        //初始化线路界面
+        initPage(getUrlParam('key'), getUrlParam('toName'), getUrlParam('lineType'));
+    })
+
+</script>
+</body>
+</html>

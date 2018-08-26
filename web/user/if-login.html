@@ -21,7 +21,7 @@
                         <img src="http://u.iflying.com/ajax/verifycode/loadView?">
                     </div>
                 </div>
-                <div style="margin: 5px"><a href="../user/if-register.html">还没有账号？点击注冊</a></div>
+                <div style="margin: 5px"><a id="toregister" href="../user/if-register.html">还没有账号？点击注冊</a></div>
                 <div class="input"><input type="checkbox">我已阅读并同意<a href="#"
                                                                     style="text-decoration: none">《大地旅游服务条款》</a></div>
                 <div class="input"><input class="input3" type="button" value="完成" onclick="login();"></div>
@@ -31,6 +31,12 @@
     </div>
 </div>
 <script type="text/javascript">
+    var b;//b=1表示是有订单
+    $(document).ready(function(){
+        //判断是否有订单
+        b = GetQueryString("order");
+    });
+
     function login() {
         if (account === '' || password === '') {
             alert('账号和密码不能为空');
@@ -53,7 +59,11 @@
                 // alert('success');
                 console.log(json);
                 if (json.flag == 1) {
-                    window.location.href = "../index/index.html";
+                    if(b==1){
+                        window.history.go(-1);
+                    }else{
+                        window.location.href = "../index/index.html";
+                    }
                 } else {
                     alert(json.msg);
                 }
@@ -65,6 +75,13 @@
             }
         });
         
+    }
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
     }
 </script>
 </body>

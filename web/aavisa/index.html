@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>文章AAAAAd</title>
+    <title>大地国旅签证</title>
     <link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/visa-list.css">
 
     <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
     <script src="js/visa-list.js"></script>
+    <script src="../js/common-util.js"></script>
+
     <style>
         html {
             margin: auto;
@@ -531,9 +533,11 @@
                 <li><p>&nbsp;宁波站&nbsp;&nbsp;</p></li>
                 <li><p style="color: red;">[切换]</p></li>
                 <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
-                <li><a href="#">登陆</a></li>
-                <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
-                <li><a href="#">免费注册</a></li>
+                <div id="login-inf" style="font-size: 12px">
+                    <li><a href="../user/login.html">登陆</a></li>
+                    <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="../user/register.html">免费注册</a></li>
+                </div>
             </ul>
         </div>
         <div class="tab_top_right">
@@ -550,7 +554,7 @@
 <div class="bg_fff">
     <div class="tab_logo_tel">
         <div class="logo">
-            <img src="img/index_logo.png"/>
+            <img src="img/index_logo.png" style="margin-right: 20px"/>
         </div>
         <div class="searchTool">
             <div class="selSearch">
@@ -577,8 +581,8 @@
                 </ul>
             </div>
         </div>
-        <div class="search_left"><a href="#">&nbsp;&nbsp;高级搜索</a></div>
-        <div class="icon_purpose"><img src="img/联系.png"></div>
+        <!--<div class="search_left"><a href="#">&nbsp;&nbsp;高级搜索</a></div>-->
+        <div class="icon_purpose"><img src="img/lianxi.png" style="margin-top: 5px"></div>
     </div>
 </div>
 <!--导航菜单开始-->
@@ -592,7 +596,9 @@
             <li><a href="/dd_travel_war/line-list/line-list.html?lineType=2">&nbsp;&nbsp;国际旅游</a></li>
             <li><a href="/dd_travel_war/line-list/line-list.html?lineType=3">自驾游</a></li>
             <li><a href="/dd_travel_war/line-list/line-list.html?lineType=4">邮轮游</a></li>
-            <li style="background: #e62637;color: white;">签证</li>
+            <li style="background: #e62637;">
+                <a href="/dd_travel_war/aavisa/index.html" style="color: white;height: 100%;width:100%">签证</a>
+            </li>
         </ul>
     </div>
 </div>
@@ -601,7 +607,7 @@
 <div class="yj_location">
     <div class="menu_main">
         <p>当前位置:&nbsp;&nbsp;</p>
-        <a href="#">飞扬旅游网</a>
+        <a href="#">大地旅游网</a>
         <p>&nbsp;>>&nbsp;</p>
         <a href="#">签证</a>
     </div>
@@ -620,6 +626,14 @@
             <div class="search-btn-box">
                 <button class="search-btn" onclick="GitAllDetail()">搜索</button>
             </div>
+            <div class="choose_item">
+                <a class="choose_item_0">泰国签证</a>
+                <a class="choose_item_0">韩国签证</a>
+                <a class="choose_item_0">日本签证</a>
+                <a class="choose_item_0">美国签证</a>
+                <a class="choose_item_0">英国签证</a>
+                <a class="choose_item_0">新西兰签证</a>
+            </div>
 
         </div>
         <!--导航信息end-->
@@ -629,11 +643,11 @@
                 <div class="power-prove-img f-l"
                      style="background-image: url('img/bz.png'); width: 70px; height: 70px;margin-left: -12px;margin-top: -12px;">
                 </div>
-                <h2 class="power-title-text f-l">选择飞扬 选择放心</h2>
+                <h2 class="power-title-text f-l">选择大地 选择放心</h2>
                 <div style="clear: both;"></div>
             </div>
             <ul class="power-ul">
-                <li>飞扬签证中心可代签全球多数国家</li>
+                <li>大地签证中心可代签全球多数国家</li>
                 <li>在上海设有独立签证中心,减少二次代理,出签更快</li>
                 <li>从事签证12年,与各大使馆保持着良好的关系</li>
                 <li>1000人就有998人成功出签</li>
@@ -721,44 +735,45 @@
     <div class="fy_foot_cont_s">
         <ul>
             <h3>常见问题</h3>
-            <li><a href="#">如何预订旅游线路？</a></li>
-            <li><a href="#">单房差是什么？</a></li>
-            <li><a href="#">双飞、双卧都是什么意思？</a></li>
+            <li><a href="../help/main.html?key=01">如何预订旅游线路？</a></li>
+            <li><a href="../help/main.html?key=02">单房差是什么？</a></li>
+            <li><a href="../help/main.html?key=03">双飞、双卧都是什么意思？</a></li>
         </ul>
         <ul>
             <h3>付款和发票</h3>
-            <li><a href="#">签约可以刷卡吗？</a></li>
-            <li><a href="#">付款方式有哪些？</a></li>
-            <li><a href="#">怎么网上支付？</a></li>
-            <li><a href="#">是否可提供发票？</a></li>
+            <li><a href="../help/main.html?key=04">签约可以刷卡吗？</a></li>
+            <li><a href="../help/main.html?key=05">付款方式有哪些？</a></li>
+            <li><a href="../help/main.html?key=06">怎么网上支付？</a></li>
+            <li><a href="../help/main.html?key=07">是否可提供发票？</a></li>
         </ul>
         <ul>
             <h3>签署旅游合同</h3>
-            <li><a href="#">有旅游合同范本下载吗？</a></li>
-            <li><a href="#">能传真签约吗？</a></li>
-            <li><a href="#">可以不签合同吗？</a></li>
+            <li><a href="../help/main.html?key=08">有旅游合同范本下载吗？</a></li>
+            <li><a href="../help/main.html?key=09">能传真签约吗？</a></li>
+            <li><a href="../help/main.html?key=10">可以不签合同吗？</a></li>
         </ul>
         <ul>
             <h3>旅游预订优惠政策</h3>
-            <li><a href="#">什么是抵用券？</a></li>
-            <li><a href="#">如何获得抵用券？</a></li>
+            <li><a href="../help/main.html?key=11">什么是抵用券？</a></li>
+            <li><a href="../help/main.html?key=12">如何获得抵用券？</a></li>
         </ul>
         <ul>
             <h3>会员中心</h3>
-            <li><a href="#">会员有那些特权？</a></li>
+            <li><a href="../help/main.html?key=13">会员有那些特权？</a></li>
         </ul>
         <ul>
-            <h3>飞扬APP</h3>
+            <h3>大地微信公众号</h3>
             <li><a href="#">扫描微信二维码关注我们</a></li>
+            <img src="img/wechat.jpg" style="height: 100px;">
         </ul>
     </div>
 </div>
 <div class="footer">
     <div class="fir">
         <ul>
-            <li><a href="#">飞扬文化</a></li>
+            <li><a href="#">大地文化</a></li>
             <li><p>&nbsp;|&nbsp;</p></li>
-            <li><a href="#">飞扬荣誉</a></li>
+            <li><a href="#">大地荣誉</a></li>
             <li><p>&nbsp;|&nbsp;</p></li>
             <li><a href="#">诚征英才</a></li>
             <li><p>&nbsp;|&nbsp;</p></li>
@@ -766,9 +781,9 @@
             <li><p>&nbsp;|&nbsp;</p></li>
             <li><a href="#">相关法律</a></li>
             <li>
-                <p>&nbsp;|&
+                <p>&nbsp;|&nbsp;
                     <n></n>
-                    bsp;
+
                 </p>
             </li>
             <li><a href="#">联系方式</a></li>
@@ -778,12 +793,11 @@
             <li><a href="#">游客表扬信</a></li>
         </ul>
     </div>
-    <p>Copyright © 浙江飞扬国际旅游集团股份有限公司 | 飞扬国际旅游广场 2002-2018, All Rights Reserved</p>
-    <p>总部地址：宁波市中山东路2437号五一广场东楼\飞扬旅游广场 投诉电话：0574-87238555 旅游质监投诉电话：12301 旅游许可证号：L-ZJ-CJ00063 浙ICP备09059850号-2
-        浙ICP证B2-20140054 </p>
-    <p>24小时旅游预订电话(免长途费)：4000-365-666 飞扬旅游网呼叫中心位于宁波 | 统一呼出电话为 0574-27666666 </p>
-    <p>法律顾问：袁汝中（浙江共业律师事务所）</p>
-    <p>浙江飞扬国际旅游集团股份有限公司 版权所有 站长统计</p>
+    <p>Copyright © 宁波大地国际旅行社有限公司 | 大地旅行社 2002-2018, All Rights Reserved</p>
+    <p>地址：宁波市海曙区南站东路66号月湖银座318室（火车站北广场） 联系电话：0574-87275388 旅游质监投诉电话：12301 旅游许可证号：L-ZJ00598 浙ICP备</p>
+    <!--<p>24小时旅游预订电话(免长途费)：4000-365-666 飞扬旅游网呼叫中心位于宁波 | 统一呼出电话为 0574-27666666 </p>-->
+    <!--<p>法律顾问：袁汝中（浙江共业律师事务所）</p>-->
+    <p>浙江大地国际旅游集团股份有限公司 版权所有 站长统计</p>
     <div class="fir sec">
         <ul>
             <li><a href="#"><img src="img/1.png"></a></li>
@@ -795,5 +809,36 @@
         </ul>
     </div>
 </div>
+
+<div class="right_sidebar">
+    <div class="">
+        <img src="http://www.iflying.com/zt/ceshi/index/chunjie.gif">
+    </div>
+    <div class="right-icon" style="">
+        <a href="../order-list/dingDanSearch.html" title="用户中心">
+            <!--<i class="icon Hui-iconfont Hui-iconfont-user right-icon" style="font-size:35px;color:#adadad;"></i>-->
+            <img src="img/yonghu1.jpg" style="width: 42px;" class="right_pic">
+        </a>
+    </div>
+    <div class="right-icon" style="">
+        <a href="javascript:;" title="客服">
+            <!--<i class="icon Hui-iconfont Hui-iconfont-kefu right-icon" style="font-size:35px;color:#adadad;"></i>-->
+            <img src="img/kefu1.jpg" style="width: 42px;" class="right_pic">
+        </a>
+    </div>
+    <div class="right-icon" style="">
+        <a href="javascript:;" title="微信">
+            <!--<i class="icon Hui-iconfont Hui-iconfont-kefu right-icon" style="font-size:35px;color:#adadad;"></i>-->
+            <img src="img/weixing1.jpg" style="width: 42px;" class="right_pic">
+        </a>
+    </div>
+    <div class="my_top">
+        <a href="javascript:;" title="顶部" id="toUp" onclick="toUp();">
+            <i class="icon Hui-iconfont Hui-iconfont-arrow2-top right-icon" style="font-size:35px;color:#adadad;"></i>
+        </a>
+    </div>
+</div>
+
+
 </body>
 </html>

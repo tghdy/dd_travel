@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大地国旅-公司简介</title>
+    <script src="../H-ui.admin/lib/jquery/1.9.1/jquery.js"></script>
+    <link href="../H-ui.admin/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+<div class="tab_top_1">
+    <div class="tab_top_nav">
+        <div class="tab_top_left">
+            <ul>
+                <li><i class="Hui-iconfont Hui-iconfont-weizhi weizhi"></i></li>
+                <li><p>&nbsp;宁波站&nbsp;&nbsp;</p></li>
+                <li><p style="color: red;">[切换]</p></li>
+                <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                <li><a href="../userborder/main.html?type=0">登陆</a></li>
+                <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                <li><a href="../userborder/main.html?type=1">免费注册</a></li>
+            </ul>
+        </div>
+        <div class="tab_top_right">
+            <ul>
+                <li><i class="Hui-iconfont Hui-iconfont-share-weibo weibo"></i></li>
+                <li><p style="color: #666666;">&nbsp;+微博</p></li>
+                <li><p style="color: #c9d1dc;">&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                <li><i class="Hui-iconfont Hui-iconfont-share-weixin weixin"></i></li>
+                <li><p style="color: #666666;">&nbsp;+微信</p></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bg_fff">
+    <div class="tab_logo_tel">
+        <div class="logo">
+            <img src="img/index_logo.png"/>
+        </div>
+        <div class="searchTool">
+            <div class="selSearch">
+                <p>全部产品</p>
+                <i class="Hui-iconfont Hui-iconfont-arrow2-bottom"></i>
+            </div>
+            <div class="mainSearch">
+                <input type="text" id="searchValue" name="name" style="outline: none;border:none;height: 100%;width: 100%;">
+            </div>
+            <div class="search_r_btn" onclick="searchLine()">
+                <p>搜索</p>
+            </div>
+            <div class="search_bottom">
+                <ul>
+                    <li><a href="#">日本</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#">新加坡</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#">邮轮</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#" style="color: #e62637;">欧洲游</a></li>
+                    <li><p>&nbsp;&nbsp;|&nbsp;&nbsp;</p></li>
+                    <li><a href="#">港澳</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="search_left"><a href="#">&nbsp;&nbsp;高级搜索</a></div>
+        <div class="icon_purpose"><img src="img/lianxi.png"></div>
+    </div>
+</div>
+<!--导航菜单开始-->
+<div class="menu">
+    <div class="menu_main">
+        <div class="fl"><i class="Hui-iconfont Hui-iconfont-menu">&nbsp;&nbsp;全部旅游产品分类</i></div>
+        <ul>
+            <li><a href="/dd_travel_war/index/index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首页</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=0">&nbsp;&nbsp;周边旅游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=1">&nbsp;&nbsp;国内旅游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=2">&nbsp;&nbsp;国际旅游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=3">自驾游</a></li>
+            <li><a href="/dd_travel_war/line-list/line-list.html?lineType=4">邮轮游</a></li>
+            <li><a href="/dd_travel_war/aavisa/index.html">签证</a></li>
+        </ul>
+    </div>
+</div>
+<!--导航菜单结束-->
+
+<!--<div class="mainbody">-->
+    <!--<iframe id="iFrame1" name="iFrame1" width="100%"-->
+            <!--onload="this.height=iFrame1.document.body.scrollHeight"-->
+            <!--frameborder="0" scrolling="no" src="">-->
+        <!--您的浏览器不支持iframe，请升级-->
+    <!--</iframe>-->
+<!--</div>-->
+
+<div class="content">
+    <div class="content_sub">
+        <div class="nav">当前位置：大地旅游网>>大地文化</div>
+
+        <div class="main_title">关于大地</div>
+
+        <div class="main_left">
+            <div id="mln_01" class="main_left_nav">如何预订旅游线路？</div>
+            <div id="mln_02" class="main_left_nav">单房差是什么？</div>
+            <div id="mln_03" class="main_left_nav">双飞、双卧都是什么意思？</div>
+            <div id="mln_04" class="main_left_nav">签约可以刷卡吗？</div>
+            <div id="mln_05" class="main_left_nav">付款方式有哪些？</div>
+            <div id="mln_06" class="main_left_nav">怎么网上支付？</div>
+            <div id="mln_07" class="main_left_nav">是否可提供发票？</div>
+            <div id="mln_08" class="main_left_nav">有旅游合同范本下载吗？</div>
+            <div id="mln_09" class="main_left_nav">能传真签约吗？</div>
+            <div id="mln_10" class="main_left_nav">可以不签合同吗？</div>
+            <div id="mln_11" class="main_left_nav">什么是抵用券？</div>
+            <div id="mln_12" class="main_left_nav">如何获得抵用券？</div>
+            <div id="mln_13" class="main_left_nav">会员有那些特权？</div>
+        </div>
+
+        <div class="main_right">
+            <div id="mrs_01" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>如何预订旅游线路？</h3></div>
+                    <div class="rs_contant">
+                        第一步：在网上查找您最想出游的旅游线路（或者拨打：4000-365-666进行咨询）；<br>
+
+                        第二步：选择好您要出游的日期；<br>
+
+                        第三步：登录或注册（您可以选择快速注册，输入您的手机号码即可）；<br>
+
+                        第四步：直接预订并输入相关信息（人数、保险及其他要求信息）进行预订；<br>
+
+                        第五步：等待您的“私人旅游顾问”与您确认（一般为30分钟）并开通支付通道；<br>
+
+                        第六步：在线网银支付（您可以选择多种支付方式：1、在线网银支付  2、上我社现场支付 3、转账支付）；<br>
+
+                        第七步：开心出游；<br>
+
+                        第八步：游玩归来在飞扬旅游网上发表对此次旅行的评论。<br>
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_02" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>单房差是什么？</h3></div>
+                    <div class="rs_contant">
+                        因旅游过程中的住宿一般是标准间，即两个床位，
+                        如果您的出游人数（成人）为单数时，有可能需要补足另
+                        外一个床位的费用。您也可以选择接受与其他人拼房，当无法拼房时再补单房差。
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_03" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>双飞、双卧都是什么意思？</h3></div>
+                    <div class="rs_contant">
+                        这是旅游的常用语，双飞是指往返交通都是飞机，双卧是指往返交
+                        通都是火车。所以也有单飞单卧之类的说法。
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_04" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>签约可以刷卡吗？</h3></div>
+                    <div class="rs_contant">
+                        目前浙江飞扬国际旅游广场提供刷卡支付的方式。<br>
+
+                        为保障您的权益，谢绝使用非您本人名下的信用卡支付，一切后果由您本人承担。
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_05" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>付款方式有哪些？</h3></div>
+                    <div class="rs_contant">
+                        目前可以选择现金付款、网上在线支付款、对公转账、信用卡付款、刷卡以及转账支票等。<br>
+
+
+
+                        银行卡号：<br>
+
+                        账户名称：浙江飞扬国际旅游集团股份有限公司<br>
+                        帐 号： 8241 0120 1050 11615<br>
+                        开户行： 宁波银行繁景支行<br>
+
+
+
+                        开户名：浙江飞扬国际旅游集团股份有限公司<br>
+                        账号：5749 0396 8510 202<br>
+                        开户行：招商银行宁波分行天一支行<br>
+
+
+
+                        户名：张奕红<br>
+                        账号：6214865745686688<br>
+                        开户行：招商银行宁波海曙支行<br>
+
+                        支付宝: 33749171@qq.com。<br>
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_06" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>怎么网上支付？</h3></div>
+                    <div class="rs_contant">
+                        只要您的银行卡有银联功能及网上支付功能均可以网上支付，在网上支付前，请联系客服专员确认您的订单已打开网上支付通道。
+
+                        使用网上支付，请先确认您的银行卡已开通网上支付功能。
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_07" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>是否可提供发票？</h3></div>
+                    <div class="rs_contant">
+                        严格按照国家税务规定提供发票，请您在出游归来后二个月内索要。
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_08" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>有旅游合同范本下载吗？</h3></div>
+                    <div class="rs_contant">
+                        您可以点击下面的链接下载旅游合同范本：
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_09" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>能传真签约吗？</h3></div>
+                    <div class="rs_contant">
+                        合同可以选择传真签约、快递签约或者电子签约。建
+                        议您选择电子签约（电子签约是把您的旅游合同发至您指定的邮箱，在您邮箱里进行确认生效）
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_10" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>可以不签合同吗？</h3></div>
+                    <div class="rs_contant">
+                        为了保障您的权益，飞扬旅游网建议您签署正规的旅游合同。
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_11" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>什么是抵用券？</h3></div>
+                    <div class="rs_contant">
+                        飞扬旅游网抵用券是为了回馈新老客户进行的一项优惠措施，可以用
+                        抵用部分团款，抵用券不可转让、不可折现、不可合并使用、不与其它优惠同享。
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_12" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>如何获得抵用券？</h3></div>
+                    <div class="rs_contant">
+                        抵用券功能后续推出，敬请期待！
+                    </div>
+                </div>
+            </div>
+            <div id="mrs_13" class="main_right_sub">
+                <div class="rs_main">
+                    <div class="rs_title"><h3>会员有哪些特权？</h3></div>
+                    <div class="rs_contant">
+                        会员特权与等级后续推出，敬请关注！!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="fir">
+        <ul>
+            <li><a href="#">大地文化</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">大地荣誉</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">诚征英才</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">经营范围 </a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">相关法律</a></li>
+            <li>
+                <p>&nbsp;|&nbsp;
+                    <n></n>
+
+                </p>
+            </li>
+            <li><a href="#">联系方式</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">友情链接</a></li>
+            <li><p>&nbsp;|&nbsp;</p></li>
+            <li><a href="#">游客表扬信</a></li>
+        </ul>
+    </div>
+    <p>Copyright © 宁波大地国际旅行社有限公司 | 大地旅行社 2002-2018, All Rights Reserved</p>
+    <p>地址：宁波市海曙区南站东路66号月湖银座318室（火车站北广场） 联系电话：0574-87275388 旅游质监投诉电话：12301 旅游许可证号：L-ZJ00598 浙ICP备</p>
+    <!--<p>24小时旅游预订电话(免长途费)：4000-365-666 飞扬旅游网呼叫中心位于宁波 | 统一呼出电话为 0574-27666666 </p>-->
+    <!--<p>法律顾问：袁汝中（浙江共业律师事务所）</p>-->
+    <p>浙江大地国际旅游集团股份有限公司 版权所有 站长统计</p>
+    <div class="fir sec">
+        <ul>
+            <li><a href="#"><img src="img/1.png"></a></li>
+            <li><a href="#"><img src="img/2.png"></a></li>
+            <li><a href="#"><img src="img/3.png"></a></li>
+            <li><a href="#"><img src="img/4.png"></a></li>
+            <li><a href="#"><img src="img/5.png"></a></li>
+            <li><a href="#"><img src="img/6.png"></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="right_sidebar">
+    <div class="">
+        <img src="http://www.iflying.com/zt/ceshi/index/chunjie.gif">
+    </div>
+    <div class="right-icon" style="">
+        <a href="../order-list/dingDanSearch.html" title="用户中心">
+            <!--<i class="icon Hui-iconfont Hui-iconfont-user right-icon" style="font-size:35px;color:#adadad;"></i>-->
+            <img src="img/yonghu1.jpg" style="width: 42px;" class="right_pic">
+        </a>
+    </div>
+    <div class="right-icon" style="">
+        <a href="javascript:;" title="客服">
+            <!--<i class="icon Hui-iconfont Hui-iconfont-kefu right-icon" style="font-size:35px;color:#adadad;"></i>-->
+            <img src="img/kefu1.jpg" style="width: 42px;" class="right_pic">
+        </a>
+    </div>
+    <div class="right-icon" style="">
+        <a href="javascript:;" title="微信">
+            <!--<i class="icon Hui-iconfont Hui-iconfont-kefu right-icon" style="font-size:35px;color:#adadad;"></i>-->
+            <img src="img/weixing1.jpg" style="width: 42px;" class="right_pic">
+        </a>
+    </div>
+    <div class="my_top">
+        <a href="javascript:;" title="顶部" id="toUp" onclick="toUp();">
+            <i class="icon Hui-iconfont Hui-iconfont-arrow2-top right-icon" style="font-size:35px;color:#adadad;"></i>
+        </a>
+    </div>
+</div>
+
+
+</body>
+
+<script>
+    $(document).ready(function(){
+        var key = GetQueryString("key");
+        var id_1="#mln_"+key;
+        var id_2="#mrs_"+key;
+        $(id_1).addClass("mlnischoose");
+        $(id_2).addClass("mrsshow");
+
+
+        $(".main_left_nav").click(function () {
+           var num = $(this).attr("id")[4]+$(this).attr("id")[5];
+           //选择框变色
+           $(".main_left_nav").removeClass("mlnischoose");
+           $(this).addClass("mlnischoose");
+
+           var id = "#mrs_"+num;
+           $(".main_right_sub").removeClass("mrsshow");
+           $(id).addClass("mrsshow");
+        });
+    });
+
+    function searchLine() {
+        var value = $('#searchValue').val();
+        window.location.href = '../line-list/line-list.html?key=' + value;
+    }//搜索框
+
+    //返回顶部
+    function toUp() {
+        $("html,body").animate({scrollTop: 0}, 500);
+    }
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+</script>
+</html>

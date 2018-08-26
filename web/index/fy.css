@@ -595,6 +595,10 @@ a {
     background: #333;
     z-index: 10001;
 }
+.right-icon{
+    border-bottom: 2px #666666 solid;
+}
+
 .right-icon:hover {
     color: #fff !important;
 }
@@ -629,3 +633,8 @@ a {
 .wechatclick{
     display: block;
 }
+
+
+/*鼠标经过 图片高亮*/
+.right_pic:hover{opacity:1;filter(alpha=100)}
+.right_pic{opacity:0.8;filter(alpha=80)}

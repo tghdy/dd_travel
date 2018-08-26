@@ -58,6 +58,56 @@ function showUserInf() {
     });
 }
 
+function showUserInf_visa() {
+    var ins = '';
+    $.ajax({
+        type: 'get',
+        url: '/dd_travel_war/user',
+        data: {
+            method: 'userInf',
+        },
+        dataType: 'json',
+        success: function (json) {
+            var data = json.data;
+            if (data == null) {
+                return;
+            }
+            if (data.userAccount == null) {
+                ins += '<li style="color:#c9c9c9">欢迎您:' + data.mobilePhone + '</li>';
+            } else {
+                ins += '<li style="color:#c9c9c9">欢迎您:' + data.userName + '</li>';
+            }
+            ins += '<li><a href="../order-list/dingDanSearch.html" style="margin-left: 12px;font-size: 12px">会员中心</a></li>';
+            ins += '<li style="position: relative;opacity: 0.3;margin:0 5px;font-size: 12px">|</li>';
+            ins += '<li><a href="javascript:;" onclick="exitUser();" style="font-size: 12px;">退出</a></li>';
+            $('#login-inf').html(ins);
+        },
+        error: function (data) {
+            console.log(data.msg);
+        }
+    });
+}
+
+function userIsLogin() {
+    $.ajax({
+        type:"get",
+        url:"/dd_travel_war/user",
+        data:{
+            method:"userInf"
+        },
+        dataType:"json",
+        success:function (json) {
+    		console.log(json);
+    		if(json.msg!="成功") {
+                alert("请登陆！");
+            }
+    	},
+        error:function(data){
+            console.log(data.msg);
+        }
+    });
+}
+
 function exitUser() {
     $.ajax({
         type: 'get',
